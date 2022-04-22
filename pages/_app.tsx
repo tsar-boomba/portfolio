@@ -2,9 +2,8 @@ import App, { AppContext, AppProps } from 'next/app';
 import Head from 'next/head';
 import { ColorScheme, ColorSchemeProvider, MantineProvider } from '@mantine/core';
 import { ReactNode, useState } from 'react';
-import { cookieParser } from '../utils/cookieParser';
-import { clientCookieSetter } from '../utils/clientCookieSetter';
 import { Layout } from '../components/Layout';
+import { setCookie, getCookie } from 'ez-cookies';
 
 interface _App<P = {}> {
 	(props: AppProps & P): ReactNode;
@@ -19,7 +18,7 @@ const MyApp: _App<{ colorScheme: ColorScheme }> = (props) => {
 	const toggleColorScheme = (value?: ColorScheme) => {
 		const nextColorScheme = colorScheme === 'dark' ? 'light' : 'dark';
 		setColorScheme(value || nextColorScheme);
-		clientCookieSetter('colorScheme', value || nextColorScheme, { maxAge: 60 * 60 * 24 * 365 });
+		setCookie('colorScheme', value || nextColorScheme, { maxAge: 60 * 60 * 24 * 365 });
 	};
 
 	const { Component, pageProps } = props;
@@ -69,7 +68,7 @@ const MyApp: _App<{ colorScheme: ColorScheme }> = (props) => {
 
 MyApp.getInitialProps = (appCtx) => {
 	App.getInitialProps(appCtx);
-	return { colorScheme: cookieParser(appCtx.ctx.req?.headers.cookie)?.colorScheme || 'dark' };
+	return { colorScheme: getCookie('colorScheme', { req: appCtx.ctx.req }) || 'dark' };
 };
 
 export default MyApp;
