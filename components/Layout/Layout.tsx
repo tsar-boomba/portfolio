@@ -1,10 +1,11 @@
-import { ReactNode } from "react";
-import ThemeToggle from "./ThemeToggle";
+import { ReactNode } from 'react';
+import Header from './Header';
 
 const Layout: React.FC<{ children: ReactNode }> = ({ children }) => {
 	return (
 		<div>
-			<ThemeToggle />
+			<Header links={[{ link: '/#hero', label: 'Top' }]} />
+			{children}
 		</div>
 	);
 };

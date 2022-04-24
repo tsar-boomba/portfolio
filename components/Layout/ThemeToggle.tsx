@@ -1,6 +1,6 @@
 import React from 'react';
 import { createStyles, Switch, Group, useMantineColorScheme } from '@mantine/core';
-import { Sun, MoonStars } from 'tabler-icons-react';
+import { CgSun, CgMoon } from 'react-icons/cg';
 
 const useStyles = createStyles((theme) => ({
 	root: {
@@ -35,8 +35,8 @@ const ThemeToggle = () => {
 	return (
 		<Group position='center' my={30}>
 			<div className={classes.root}>
-				<Sun className={cx(classes.icon, classes.iconLight)} size={18} />
-				<MoonStars className={cx(classes.icon, classes.iconDark)} size={18} />
+				<CgSun className={cx(classes.icon, classes.iconLight)} size={18} />
+				<CgMoon className={cx(classes.icon, classes.iconDark)} size={18} />
 				<Switch
 					checked={colorScheme === 'dark'}
 					onChange={() => toggleColorScheme()}
