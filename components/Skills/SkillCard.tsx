@@ -15,6 +15,10 @@ const useStyles = createStyles((theme) => ({
 		width: 300,
 	},
 
+	name: {
+		color: theme.colors[theme.primaryColor][6],
+	},
+
 	description: {
 		padding: 8,
 		maxWidth: 300,
@@ -29,12 +33,14 @@ const useStyles = createStyles((theme) => ({
 		borderRadius: theme.radius.sm,
 		backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[5] : theme.colors.gray[0],
 		lineHeight: 0,
+		color: theme.colors[theme.primaryColor][6],
 	},
 
 	chevron: {
 		margin: 8,
 		transition: 'transform 0.2s ease',
 		cursor: 'pointer',
+		color: theme.colors[theme.primaryColor][6],
 	},
 }));
 
@@ -43,10 +49,11 @@ const SkillCard: React.FC<SkillCardProps> = ({ icon, name, description }) => {
 	const [opened, toggleOpened] = useBooleanToggle(false);
 
 	return (
-		<Paper withBorder className={classes.card}>
+		<Paper withBorder shadow='xs' className={classes.card}>
 			<Group position='apart' align='center'>
 				<Group>
-					<Box className={classes.icon}>{icon}</Box> {name}
+					<Box className={classes.icon}>{icon}</Box>{' '}
+					<Box className={classes.name}>{name}</Box>
 				</Group>
 				<CgChevronLeft
 					onClick={() => toggleOpened()}

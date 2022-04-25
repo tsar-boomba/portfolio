@@ -100,7 +100,7 @@ const Skills = () => {
 				>
 					Skills
 				</Text>
-				<Group align='center' position='center' sx={{ marginTop: 24 }}>
+				<Group align='start' position='center' sx={{ marginTop: 24 }}>
 					{mySkills.map((skill, i) => (
 						<SkillCard key={i} {...skill} />
 					))}
