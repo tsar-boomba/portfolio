@@ -1,4 +1,6 @@
-import { createStyles, Container, Text, Button, Group, useMantineTheme } from '@mantine/core';
+import { createStyles, Container, Text, Group, useMantineTheme } from '@mantine/core';
+import { mySkills } from './mySkills';
+import SkillCard from './SkillCard';
 
 const BREAKPOINT = '@media (max-width: 755px)';
 
@@ -6,13 +8,13 @@ const useStyles = createStyles((theme) => ({
 	wrapper: {
 		position: 'relative',
 		boxSizing: 'border-box',
-		backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[8] : theme.white,
+		backgroundColor: theme.colorScheme === 'dark' ? undefined : theme.colors.gray[0],
 	},
 
 	inner: {
 		position: 'relative',
-		paddingTop: 200,
-		paddingBottom: 120,
+		paddingTop: 100,
+		paddingBottom: 100,
 
 		[BREAKPOINT]: {
 			paddingBottom: 80,
@@ -22,7 +24,7 @@ const useStyles = createStyles((theme) => ({
 
 	title: {
 		fontFamily: `Greycliff CF, ${theme.fontFamily}`,
-		fontSize: 62,
+		fontSize: 56,
 		fontWeight: 900,
 		lineHeight: 1.1,
 		margin: 0,
@@ -30,7 +32,7 @@ const useStyles = createStyles((theme) => ({
 		color: theme.colorScheme === 'dark' ? theme.white : theme.black,
 
 		[BREAKPOINT]: {
-			fontSize: 42,
+			fontSize: 36,
 			lineHeight: 1.2,
 		},
 	},
@@ -78,63 +80,34 @@ const useStyles = createStyles((theme) => ({
 	},
 }));
 
-const Hero = () => {
-	const { classes, cx } = useStyles();
+const Skills = () => {
+	const { classes } = useStyles();
 	const theme = useMantineTheme();
 
 	return (
-		<div id='hero' className={classes.wrapper}>
+		<div id='skills' className={classes.wrapper}>
 			<Container size={700} className={classes.inner}>
 				<Text
 					component='h1'
 					variant='gradient'
 					className={classes.title}
 					gradient={{
-						from: theme.colors[theme.primaryColor][8],
-						to: theme.colors[theme.primaryColor][5],
+						from: theme.colors[theme.primaryColor][7],
+						to: theme.colors[theme.primaryColor][4],
 						deg: 75,
 					}}
 					align='center'
 				>
-					Isaiah Gamble
+					Skills
 				</Text>
-
-				<Text className={classes.description} color='dimmed'>
-					Self-taught web developer with experience creating and deploying multiple
-					full-stack projects with real world usage.
-				</Text>
-
-				<Group className={classes.controls}>
-					<Button
-						component='a'
-						size='xl'
-						className={classes.control}
-						variant='gradient'
-						gradient={{
-							from: theme.colors[theme.primaryColor][7],
-							to: theme.colors[theme.primaryColor][5],
-						}}
-						href='/#skills'
-					>
-						Get started
-					</Button>
-
-					<Button
-						component='a'
-						href='https://github.com/tsar-boomba'
-						target='_blank'
-						rel='noopener noreferrer'
-						size='xl'
-						variant='outline'
-						className={cx(classes.control, classes.githubControl)}
-						color={theme.colorScheme === 'dark' ? 'gray' : 'dark'}
-					>
-						GitHub
-					</Button>
+				<Group align='center' position='center' sx={{ marginTop: 24 }}>
+					{mySkills.map((skill, i) => (
+						<SkillCard key={i} {...skill} />
+					))}
 				</Group>
 			</Container>
 		</div>
 	);
 };
 
-export default Hero;
+export default Skills;

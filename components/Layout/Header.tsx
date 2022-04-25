@@ -7,7 +7,6 @@ import {
 	Burger,
 	Text,
 	useMantineTheme,
-	Stack,
 	Collapse,
 } from '@mantine/core';
 import { useBooleanToggle } from '@mantine/hooks';
@@ -106,6 +105,7 @@ const Header: React.FC<HeaderSimpleProps> = ({ links }) => {
 			onClick={(e) => {
 				e.preventDefault();
 				setActive(link.link);
+				location.href = link.link;
 			}}
 		>
 			{link.label}
