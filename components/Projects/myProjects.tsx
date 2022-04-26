@@ -1,6 +1,7 @@
 import { Anchor, Text } from '@mantine/core';
 import {
 	SiAmazonaws,
+	SiGatsby,
 	SiMaterialui,
 	SiMongodb,
 	SiNestjs,
@@ -9,10 +10,10 @@ import {
 	SiNodedotjs,
 	SiPostgresql,
 	SiReact,
+	SiSass,
 	SiStyledcomponents,
 	SiTypescript,
 	SiVercel,
-	SiWebassembly,
 } from 'react-icons/si';
 import { ProjectCardProps } from './ProjectCard';
 import scoutingImg from '@/public/scouting/stand-form.png';
@@ -93,7 +94,8 @@ export const myProjects: ProjectCardProps[] = [
 				, who inspired me to make this after I saw his success in python. I wanted to bring
 				the ability to convert images to amoguses to every device that can run a browser. I
 				learned a lot about browser APIs and pushed what I thought I could do in a browser
-				to its limits. Above is an example of a result of using the converter.
+				to its limits. This is by far the project I am most proud of, and I consider it my
+				magnum opus. Above is an example of a result of using the converter.
 			</Text>
 		),
 		technologies: [
@@ -102,16 +104,16 @@ export const myProjects: ProjectCardProps[] = [
 				name: 'TypeScript',
 			},
 			{
-				icon: <SiWebassembly size={16} />,
-				name: 'WebAssembly',
-			},
-			{
 				icon: <SiReact size={16} />,
 				name: 'React',
 			},
 			{
 				icon: <SiNextdotjs size={16} />,
 				name: 'Next.js',
+			},
+			{
+				icon: <SiVercel size={16} />,
+				name: 'Vercel',
 			},
 		],
 	},
@@ -166,6 +168,82 @@ export const myProjects: ProjectCardProps[] = [
 			{
 				icon: <SiNginx size={16} />,
 				name: 'Nginx',
+			},
+		],
+	},
+	{
+		title: 'Tsar OS',
+		mainTech: 'React',
+		repo: githubUrl('tsar-os'),
+		deployed: 'https://tsar-os.vercel.app/os',
+		description: (
+			<Text size='sm' mt='sm'>
+				This project may forever lay unfinished, but I'm proud of what I did before I had to
+				abandon it to work on PUDO. It is a mock desktop made with React. I was planning on
+				making full blown apps for it and you can see the beginnings of those plans on the
+				site. You can open windows, resize windows, minimize windows, fullscreen windows,
+				and close windows. Custom hooks and the context API are used to handle state between
+				windows and provides for an authentic experience.
+			</Text>
+		),
+		technologies: [
+			{
+				icon: <SiReact size={16} />,
+				name: 'React',
+			},
+			{
+				icon: <SiNextdotjs size={16} />,
+				name: 'Next.js',
+			},
+			{
+				icon: <SiTypescript size={16} />,
+				name: 'TypeScript',
+			},
+			{
+				icon: <SiSass size={16} />,
+				name: 'SASS/SCSS',
+			},
+			{
+				icon: <SiVercel size={16} />,
+				name: 'Vercel',
+			},
+		],
+	},
+	{
+		title: 'Yeti Site',
+		mainTech: 'React',
+		repo: githubUrl('yeti-robotics-site'),
+		deployed: 'https://yeti-robotics-site.vercel.app',
+		description: (
+			<Text size='sm' mt='sm'>
+				This project was one of my first projects and introduced me to Styled Components. It
+				was meant to be used as a general site for my robotics team, but we never ended up
+				using it. It has <i>cool</i> icicles on the header, statically generates event pages
+				using MDX and Gatsby's graphql api, and has a custom image slideshow on the home
+				page. I'm quite proud of this site and I learned a lot about css, animation,
+				responsive design, and statically generating content while making it.
+			</Text>
+		),
+		technologies: [
+			{
+				icon: <SiReact size={16} />,
+				name: 'React',
+			},
+			{
+				icon: <SiGatsby size={16} />,
+				name: 'Gatsby',
+			},
+			{
+				icon: <SiTypescript size={16} />,
+				name: 'TypeScript',
+			},
+			{
+				icon: <SiStyledcomponents size={16} />,
+				name: 'Styled Components',
+			},
+			{
+				icon: <SiVercel size={16} />,
+				name: 'Vercel',
 			},
 		],
 	},
