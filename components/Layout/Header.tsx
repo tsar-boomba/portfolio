@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import {
 	createStyles,
 	Header as MantineHeader,
@@ -55,6 +55,7 @@ const useStyles = createStyles((theme) => ({
 		width: '100%',
 		left: 0,
 		zIndex: 1,
+		backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[7] : theme.white,
 		[theme.fn.largerThan('xs')]: {
 			display: 'none',
 		},
@@ -91,11 +92,28 @@ interface HeaderSimpleProps {
 	links: { link: string; label: string }[];
 }
 
+const CLICK_OUT_EVENTS: (keyof DocumentEventMap)[] = ['touchstart', 'mousedown'];
+
 const Header: React.FC<HeaderSimpleProps> = ({ links }) => {
 	const [opened, toggleOpened] = useBooleanToggle(false);
+	const buttonRef = useRef<HTMLButtonElement>(null);
+	const menuRef = useRef<HTMLDivElement>(null);
 	const [active, setActive] = useState(links[0].link);
 	const theme = useMantineTheme();
 	const { classes, cx } = useStyles();
+
+	useEffect(() => {
+		const handler = () => toggleOpened(false);
+
+		const listener = (e: Event) => {
+			!menuRef.current?.contains(e.target as Node) &&
+				!buttonRef.current?.contains(e.target as Node) &&
+				handler();
+		};
+
+		CLICK_OUT_EVENTS.forEach((ev) => document.addEventListener(ev, listener));
+		return () => CLICK_OUT_EVENTS.forEach((ev) => document.removeEventListener(ev, listener));
+	}, [menuRef, buttonRef]);
 
 	const items = links.map((link) => (
 		<a
@@ -105,6 +123,7 @@ const Header: React.FC<HeaderSimpleProps> = ({ links }) => {
 			onClick={(e) => {
 				e.preventDefault();
 				setActive(link.link);
+				toggleOpened(false);
 				location.href = link.link;
 			}}
 		>
@@ -134,6 +153,7 @@ const Header: React.FC<HeaderSimpleProps> = ({ links }) => {
 
 				<Burger
 					opened={opened}
+					ref={buttonRef}
 					onClick={() => toggleOpened()}
 					className={classes.burger}
 					size='sm'
@@ -144,7 +164,7 @@ const Header: React.FC<HeaderSimpleProps> = ({ links }) => {
 					<ColorPicker />
 				</Group>
 
-				<div className={classes.mobileMenu}>
+				<div className={classes.mobileMenu} ref={menuRef}>
 					<Collapse in={opened}>{items}</Collapse>
 				</div>
 			</Container>

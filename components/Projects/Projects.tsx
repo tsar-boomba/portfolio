@@ -1,6 +1,6 @@
 import { createStyles, Container, Text, Group, useMantineTheme } from '@mantine/core';
-import { mySkills } from './mySkills';
-import SkillCard from './SkillCard';
+import { myProjects } from './myProjects';
+import ProjectCard from './ProjectCard';
 
 const BREAKPOINT = '@media (max-width: 755px)';
 
@@ -8,7 +8,7 @@ const useStyles = createStyles((theme) => ({
 	wrapper: {
 		position: 'relative',
 		boxSizing: 'border-box',
-		backgroundColor: theme.colorScheme === 'dark' ? undefined : theme.colors.gray[0],
+		backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[8] : theme.white,
 	},
 
 	inner: {
@@ -80,13 +80,13 @@ const useStyles = createStyles((theme) => ({
 	},
 }));
 
-const Skills = () => {
+const Projects = () => {
 	const { classes } = useStyles();
 	const theme = useMantineTheme();
 
 	return (
-		<div id='skills' className={classes.wrapper}>
-			<Container size={700} className={classes.inner}>
+		<div id='projects' className={classes.wrapper}>
+			<Container size={900} className={classes.inner}>
 				<Text
 					component='h1'
 					variant='gradient'
@@ -98,11 +98,11 @@ const Skills = () => {
 					}}
 					align='center'
 				>
-					Skills
+					Projects
 				</Text>
 				<Group align='start' position='center' sx={{ marginTop: 24 }}>
-					{mySkills.map((skill, i) => (
-						<SkillCard key={i} {...skill} />
+					{myProjects.map((project, i) => (
+						<ProjectCard key={i} {...project} />
 					))}
 				</Group>
 			</Container>
@@ -110,4 +110,4 @@ const Skills = () => {
 	);
 };
 
-export default Skills;
+export default Projects;

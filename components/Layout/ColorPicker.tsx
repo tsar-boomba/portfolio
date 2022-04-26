@@ -1,4 +1,5 @@
 import {
+	ActionIcon,
 	Box,
 	createStyles,
 	getSharedColorScheme,
@@ -65,9 +66,9 @@ const ColorPicker = () => {
 		<div ref={ref} className={classes.wrapper}>
 			<Popover
 				target={
-					<ThemeIcon className={classes.menuButton} onClick={() => toggleOpened()}>
+					<ActionIcon className={classes.menuButton} onClick={() => toggleOpened()}>
 						<CgDrop color='white' />
-					</ThemeIcon>
+					</ActionIcon>
 				}
 				opened={opened}
 				position='bottom'

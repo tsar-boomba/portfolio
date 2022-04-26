@@ -96,8 +96,8 @@ export const mySkills: SkillCardProps[] = [
 		description: (
 			<Text>
 				Through using Java for robot programming on my robotics team I have become very
-				familiar with the language. I experience writing unit tests with JUnit and a small
-				amount of experience with Spring.
+				familiar with the language. I have experience writing unit tests with JUnit and a
+				small amount of experience with Spring.
 			</Text>
 		),
 	},

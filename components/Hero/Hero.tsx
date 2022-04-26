@@ -1,4 +1,5 @@
 import { createStyles, Container, Text, Button, Group, useMantineTheme } from '@mantine/core';
+import { SiGithub } from 'react-icons/si';
 
 const BREAKPOINT = '@media (max-width: 755px)';
 
@@ -67,14 +68,6 @@ const useStyles = createStyles((theme) => ({
 
 	githubControl: {
 		borderWidth: 2,
-		borderColor: theme.colorScheme === 'dark' ? 'transparent' : theme.colors.dark[9],
-		backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[5] : 'transparent',
-
-		'&:hover': {
-			backgroundColor: `${
-				theme.colorScheme === 'dark' ? theme.colors.dark[6] : theme.colors.gray[0]
-			} !important`,
-		},
 	},
 }));
 
@@ -127,7 +120,7 @@ const Hero = () => {
 						size='xl'
 						variant='outline'
 						className={cx(classes.control, classes.githubControl)}
-						color={theme.colorScheme === 'dark' ? 'gray' : 'dark'}
+						leftIcon={<SiGithub size={24} />}
 					>
 						GitHub
 					</Button>

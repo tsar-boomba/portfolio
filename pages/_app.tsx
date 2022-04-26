@@ -68,7 +68,7 @@ const MyApp: _App<{ colorScheme: ColorScheme; primaryColor: DefaultMantineColor 
 MyApp.getInitialProps = (appCtx) => {
 	App.getInitialProps(appCtx);
 	return {
-		colorScheme: getCookie('colorScheme', { req: appCtx.ctx.req }) || 'dark',
+		colorScheme: getCookie('colorScheme', { req: appCtx.ctx.req }) || 'light',
 		primaryColor: getCookie('primaryColor', { req: appCtx.ctx.req }) || 'orange',
 	};
 };

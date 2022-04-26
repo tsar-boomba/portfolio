@@ -8,6 +8,8 @@ const Layout: React.FC<{ children: ReactNode }> = ({ children }) => {
 				links={[
 					{ link: '#hero', label: 'Top' },
 					{ link: '#skills', label: 'Skills' },
+					{ link: '#projects', label: 'Projects' },
+					{ link: '#contact', label: 'Contact' },
 				]}
 			/>
 			{children}
