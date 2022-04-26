@@ -121,13 +121,13 @@ export const myProjects: ProjectCardProps[] = [
 		description: (
 			<Text size='sm' mt='sm'>
 				Sadly, I cannot share pictures or the source code for this application because I
-				have business plans for it in the future. It is an application for use by truck
-				brokerages. They basically connect truckers with people who are looking to have
-				something moved. This app helps keeps track of customers, truckers, loads, and
-				employee progress on closing loads. This is my second largest application after Yeti
-				Scouting and my first paid gig, although I still own the source code. I deployed the
-				frontend, backend, and database on AWS using Docker and used Nginx to have both
-				servers running in one container.
+				have business plans for it in the future. It is an application I made for a use by
+				truck brokerage, I was paid for it, but still own the source code, and it is my
+				second largest application after Yeti Scouting. Brokerages basically connect
+				truckers with people who are looking to have something moved. This app helps keeps
+				track of customers, truckers, loads, and employee progress on closing loads. I
+				deployed the frontend, backend, and database on AWS using Docker and used Nginx to
+				have both servers running in one container.
 			</Text>
 		),
 		technologies: [
