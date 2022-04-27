@@ -2,12 +2,15 @@ import { Anchor, Text } from '@mantine/core';
 import {
 	SiAmazonaws,
 	SiGatsby,
+	SiJava,
+	SiJest,
 	SiMaterialui,
 	SiMongodb,
 	SiNestjs,
 	SiNextdotjs,
 	SiNginx,
 	SiNodedotjs,
+	SiNpm,
 	SiPostgresql,
 	SiReact,
 	SiSass,
@@ -18,6 +21,9 @@ import {
 import { ProjectCardProps } from './ProjectCard';
 import scoutingImg from '@/public/scouting/stand-form.png';
 import imgConvert from '@/public/img-convert/example.gif';
+import tsarOs from '@/public/tsar-os/desktop.png';
+import yetiSite from '@/public/yeti-site/home.png';
+import portfolio from '@/public/portfolio/hero.png';
 
 const githubUrl = (repo: string, owner = 'tsar-boomba') => `https://github.com/${owner}/${repo}`;
 
@@ -176,6 +182,7 @@ export const myProjects: ProjectCardProps[] = [
 		mainTech: 'React',
 		repo: githubUrl('tsar-os'),
 		deployed: 'https://tsar-os.vercel.app/os',
+		images: [tsarOs],
 		description: (
 			<Text size='sm' mt='sm'>
 				This project may forever lay unfinished, but I'm proud of what I did before I had to
@@ -214,6 +221,7 @@ export const myProjects: ProjectCardProps[] = [
 		mainTech: 'React',
 		repo: githubUrl('yeti-robotics-site'),
 		deployed: 'https://yeti-robotics-site.vercel.app',
+		images: [yetiSite],
 		description: (
 			<Text size='sm' mt='sm'>
 				This project was one of my first projects and introduced me to Styled Components. It
@@ -244,6 +252,147 @@ export const myProjects: ProjectCardProps[] = [
 			{
 				icon: <SiVercel size={16} />,
 				name: 'Vercel',
+			},
+		],
+	},
+	{
+		title: 'Portfolio Site',
+		mainTech: 'React',
+		repo: githubUrl('portfolio'),
+		deployed: 'https://igamble.dev',
+		images: [portfolio],
+		description: (
+			<Text size='sm' mt='sm'>
+				This site was made to display my wide array of projects and experience in
+				development. It uses{' '}
+				<Anchor
+					size='sm'
+					target='_blank'
+					rel='noopener noreferrer'
+					href='https://mantine.dev'
+				>
+					mantine
+				</Anchor>
+				(if you haven't heard of it, its great, I'd deficiently use it over MUI) for theming
+				and components and my package, ez-cookie, to server render theme to prevent{' '}
+				<Anchor
+					size='sm'
+					target='_blank'
+					rel='noopener noreferrer'
+					href='https://css-tricks.com/flash-of-inaccurate-color-theme-fart/'
+				>
+					FART
+				</Anchor>
+				. Try reloading the page to see how your selected theme is rendered with no
+				flashing.
+			</Text>
+		),
+		technologies: [
+			{
+				icon: <SiReact size={16} />,
+				name: 'React',
+			},
+			{
+				icon: <SiNextdotjs size={16} />,
+				name: 'Next.js',
+			},
+			{
+				icon: <SiTypescript size={16} />,
+				name: 'TypeScript',
+			},
+			{
+				icon: <SiVercel size={16} />,
+				name: 'Vercel',
+			},
+		],
+	},
+	{
+		title: 'Java JS',
+		mainTech: 'Java',
+		repo: githubUrl('JavaJs'),
+		description: (
+			<Text size='sm' mt='sm'>
+				Java JS is a collection of implementations of JavaScript APIs in Java. Right now
+				there is not the JSArray class. I acts as close as it can the Array class in
+				JavaScript by using Java lambdas through functional interfaces. It also extends
+				AbstractList, meaning it has all of the method you would expect a list to have in
+				Java. I also use this repository to test my Java formatting solution using prettier
+				which I would like to add to my robotics team's repositories.
+			</Text>
+		),
+		technologies: [
+			{
+				icon: <SiJava size={16} />,
+				name: 'Java',
+			},
+		],
+	},
+	{
+		title: 'Next Route Handler',
+		mainTech: 'TypeScript',
+		repo: githubUrl('next-route-handler'),
+		deployed: 'https://www.npmjs.com/package/next-route-handler',
+		description: (
+			<Text size='sm' mt='sm'>
+				I wrote next-route-handler for fun, while I was working on Yeti Scouting (check
+				lib/api in that repo 🤭). I wanted to make it easier to use Next.js's serverless API
+				routes. I already know about libraries that do this, but did it myself for fun.
+			</Text>
+		),
+		technologies: [
+			{
+				icon: <SiTypescript size={16} />,
+				name: 'TypeScript',
+			},
+			{
+				icon: <SiNodedotjs size={16} />,
+				name: 'TypeScript',
+			},
+			{
+				icon: <SiNpm size={16} />,
+				name: 'NPM',
+			},
+		],
+	},
+	{
+		title: 'EZ Cookie',
+		mainTech: 'TypeScript',
+		repo: githubUrl('next-route-handler'),
+		deployed: 'https://www.npmjs.com/package/next-route-handler',
+		description: (
+			<Text size='sm' mt='sm'>
+				Similarly to next-route-handler, I wrote EZ Cookie for fun, while I was working on
+				another project, this time it was while I was working on this very site. The{' '}
+				<Anchor
+					size='sm'
+					target='_blank'
+					rel='noopener noreferrer'
+					href='https://mantine.dev/theming/dark-theme/#save-color-scheme-in-cookie'
+				>
+					mantine docs
+				</Anchor>{' '}
+				said to use a package called cookies-next for help managing cookies. I went to look
+				at the repo for the package, and it had a dependency, so I decided to make my own.
+				On top of having zero dependencies, my package is smaller and has test written with
+				Jest to ensure every release works as intended.
+			</Text>
+		),
+		technologies: [
+			{
+				icon: <SiTypescript size={16} />,
+				name: 'TypeScript',
+			},
+			{
+				icon: <SiNodedotjs size={16} />,
+				name: 'TypeScript',
+			},
+			{
+				icon: <SiJest size={16} />,
+				name: 'Jest',
+			},
+			{
+				icon: <SiNpm size={16} />,
+				name: 'NPM',
 			},
 		],
 	},
