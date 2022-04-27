@@ -1,4 +1,15 @@
-import { createStyles, Container, Text, Button, Group, useMantineTheme } from '@mantine/core';
+import {
+	createStyles,
+	Container,
+	Text,
+	Button,
+	Group,
+	useMantineTheme,
+	Transition,
+	TransitionProps,
+} from '@mantine/core';
+import { useBooleanToggle } from '@mantine/hooks';
+import { useEffect } from 'react';
 import { SiGithub } from 'react-icons/si';
 
 const BREAKPOINT = '@media (max-width: 755px)';
@@ -12,12 +23,12 @@ const useStyles = createStyles((theme) => ({
 
 	inner: {
 		position: 'relative',
-		paddingTop: 200,
+		paddingTop: 220,
 		paddingBottom: 120,
 
 		[BREAKPOINT]: {
 			paddingBottom: 80,
-			paddingTop: 80,
+			paddingTop: 100,
 		},
 	},
 
@@ -71,26 +82,54 @@ const useStyles = createStyles((theme) => ({
 	},
 }));
 
+const POSSIBLE_TRANSITIONS: TransitionProps['transition'][] = [
+	'fade',
+	'pop',
+	'scale',
+	'scale-x',
+	'slide-down',
+	'slide-left',
+	'slide-right',
+];
+
 const Hero = () => {
 	const { classes, cx } = useStyles();
+	const [animate, toggleAnimate] = useBooleanToggle(false);
 	const theme = useMantineTheme();
+
+	useEffect(() => {
+		setTimeout(() => toggleAnimate(true), 500);
+	}, []);
 
 	return (
 		<div id='hero' className={classes.wrapper}>
 			<Container size={700} className={classes.inner}>
-				<Text
-					component='h1'
-					variant='gradient'
-					className={classes.title}
-					gradient={{
-						from: theme.colors[theme.primaryColor][8],
-						to: theme.colors[theme.primaryColor][5],
-						deg: 75,
-					}}
-					align='center'
+				<Transition
+					mounted={animate}
+					duration={500}
+					transition={
+						POSSIBLE_TRANSITIONS[
+							Math.floor(Math.random() * POSSIBLE_TRANSITIONS.length)
+						]
+					}
 				>
-					Isaiah Gamble
-				</Text>
+					{(styles) => (
+						<Text
+							component='h1'
+							variant='gradient'
+							className={classes.title}
+							style={styles}
+							gradient={{
+								from: theme.colors[theme.primaryColor][8],
+								to: theme.colors[theme.primaryColor][5],
+								deg: 75,
+							}}
+							align='center'
+						>
+							Isaiah Gamble
+						</Text>
+					)}
+				</Transition>
 
 				<Text className={classes.description} color='dimmed'>
 					Self-taught web developer with experience creating and deploying multiple

@@ -8,6 +8,7 @@ import {
 	Text,
 	useMantineTheme,
 	Collapse,
+	Affix,
 } from '@mantine/core';
 import { useBooleanToggle } from '@mantine/hooks';
 import ThemeToggle from './ThemeToggle';
@@ -20,6 +21,7 @@ const useStyles = createStyles((theme) => ({
 		alignItems: 'center',
 		height: '100%',
 		position: 'relative',
+		width: '100%',
 	},
 
 	title: {
@@ -51,7 +53,7 @@ const useStyles = createStyles((theme) => ({
 		display: 'flex',
 		flexDirection: 'column',
 		position: 'absolute',
-		top: '61px',
+		top: '60px',
 		width: '100%',
 		left: 0,
 		zIndex: 1,
@@ -132,43 +134,45 @@ const Header: React.FC<HeaderSimpleProps> = ({ links }) => {
 	));
 
 	return (
-		<MantineHeader height={60} position={{ top: 0, left: 0 }}>
-			<Container className={classes.header}>
-				<Text
-					component='h1'
-					variant='gradient'
-					className={classes.title}
-					gradient={{
-						from: theme.colors[theme.primaryColor][8],
-						to: theme.colors[theme.primaryColor][5],
-						deg: 75,
-					}}
-					align='center'
-				>
-					Isaiah G.
-				</Text>
-				<Group spacing={5} className={classes.links}>
-					{items}
-				</Group>
+		<Affix position={{ top: 0, left: 0 }} zIndex={1} style={{ width: '100vw' }}>
+			<MantineHeader height={60}>
+				<Container className={classes.header}>
+					<Text
+						component='h1'
+						variant='gradient'
+						className={classes.title}
+						gradient={{
+							from: theme.colors[theme.primaryColor][8],
+							to: theme.colors[theme.primaryColor][5],
+							deg: 75,
+						}}
+						align='center'
+					>
+						Isaiah G.
+					</Text>
+					<Group spacing={5} className={classes.links}>
+						{items}
+					</Group>
 
-				<Burger
-					opened={opened}
-					ref={buttonRef}
-					onClick={() => toggleOpened()}
-					className={classes.burger}
-					size='sm'
-				/>
+					<Burger
+						opened={opened}
+						ref={buttonRef}
+						onClick={() => toggleOpened()}
+						className={classes.burger}
+						size='sm'
+					/>
 
-				<Group>
-					<ThemeToggle />
-					<ColorPicker />
-				</Group>
+					<Group>
+						<ThemeToggle />
+						<ColorPicker />
+					</Group>
 
-				<div className={classes.mobileMenu} ref={menuRef}>
-					<Collapse in={opened}>{items}</Collapse>
-				</div>
-			</Container>
-		</MantineHeader>
+					<div className={classes.mobileMenu} ref={menuRef}>
+						<Collapse in={opened}>{items}</Collapse>
+					</div>
+				</Container>
+			</MantineHeader>
+		</Affix>
 	);
 };
 
