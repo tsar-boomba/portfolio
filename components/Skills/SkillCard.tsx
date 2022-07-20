@@ -1,7 +1,6 @@
 import { Box, Collapse, createStyles, Group, Paper } from '@mantine/core';
 import { useToggle } from '@mantine/hooks';
 import { ReactNode } from 'react';
-import { CgChevronLeft } from 'react-icons/cg';
 
 export interface SkillCardProps {
 	icon: ReactNode;
@@ -15,9 +14,7 @@ const useStyles = createStyles((theme) => ({
 		width: 300,
 	},
 
-	name: {
-		color: theme.colors[theme.primaryColor][6],
-	},
+	name: {},
 
 	description: {
 		padding: 8,
@@ -33,7 +30,6 @@ const useStyles = createStyles((theme) => ({
 		borderRadius: theme.radius.sm,
 		backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[5] : theme.colors.gray[0],
 		lineHeight: 0,
-		color: theme.colors[theme.primaryColor][6],
 	},
 
 	chevron: {
@@ -55,12 +51,6 @@ const SkillCard: React.FC<SkillCardProps> = ({ icon, name, description }) => {
 					<Box className={classes.icon}>{icon}</Box>{' '}
 					<Box className={classes.name}>{name}</Box>
 				</Group>
-				<CgChevronLeft
-					onClick={() => toggleOpened()}
-					className={classes.chevron}
-					size={30}
-					style={{ transform: opened ? 'rotate(-90deg)' : undefined }}
-				/>
 			</Group>
 			<Collapse in={opened}>
 				<Box className={classes.description}>{description}</Box>

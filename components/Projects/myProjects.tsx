@@ -14,10 +14,25 @@ import {
 	SiPostgresql,
 	SiReact,
 	SiSass,
-	SiStyledcomponents,
 	SiTypescript,
 	SiVercel,
 } from 'react-icons/si';
+import {
+	aws,
+	gatsby,
+	java,
+	jest,
+	mongodb,
+	mui,
+	nestjs,
+	nginx,
+	nodeJs,
+	npm,
+	postgres,
+	react,
+	scss,
+	typescript,
+} from '../../utils/brandColors';
 import { ProjectCardProps } from './ProjectCard';
 
 const githubUrl = (repo: string, owner = 'tsar-boomba') => `https://github.com/${owner}/${repo}`;
@@ -32,8 +47,8 @@ export const myProjects: ProjectCardProps[] = [
 		description: (
 			<Text size='sm' mt='sm'>
 				This site was created for my robotics team. We use it while at competitions to
-				collect data on others team for when teams are selected. Users can scout matches,
-				scout team pits and submit images, browse submitted form, bet on matches at the
+				collect data on others teams for when teams are selected. Users can scout matches,
+				scout team pits and submit images, browse submitted forms, bet on matches at the
 				competition, and view their scouting schedule. To complement this site, I also made
 				a discord bot with Node.js to remind people when they are scouting, which is also in
 				the repository. It uses Next.js API Routes for the backend and MongoDB for the
@@ -42,11 +57,11 @@ export const myProjects: ProjectCardProps[] = [
 		),
 		technologies: [
 			{
-				icon: <SiReact size={16} />,
+				icon: <SiReact size={16} color={react} />,
 				name: 'React',
 			},
 			{
-				icon: <SiTypescript size={16} />,
+				icon: <SiTypescript size={16} color={typescript} />,
 				name: 'TypeScript',
 			},
 			{
@@ -54,11 +69,11 @@ export const myProjects: ProjectCardProps[] = [
 				name: 'Next.js',
 			},
 			{
-				icon: <SiMaterialui size={16} />,
+				icon: <SiMaterialui size={16} color={mui} />,
 				name: 'MUI',
 			},
 			{
-				icon: <SiMongodb size={16} />,
+				icon: <SiMongodb size={16} color={mongodb} />,
 				name: 'MongoDB',
 			},
 			{
@@ -66,7 +81,7 @@ export const myProjects: ProjectCardProps[] = [
 				name: 'Emotion',
 			},
 			{
-				icon: <SiNodedotjs size={16} />,
+				icon: <SiNodedotjs size={16} color={nodeJs} />,
 				name: 'Node.js',
 			},
 			{
@@ -101,11 +116,11 @@ export const myProjects: ProjectCardProps[] = [
 		),
 		technologies: [
 			{
-				icon: <SiTypescript size={16} />,
+				icon: <SiTypescript size={16} color={typescript} />,
 				name: 'TypeScript',
 			},
 			{
-				icon: <SiReact size={16} />,
+				icon: <SiReact size={16} color={react} />,
 				name: 'React',
 			},
 			{
@@ -135,11 +150,11 @@ export const myProjects: ProjectCardProps[] = [
 		),
 		technologies: [
 			{
-				icon: <SiReact size={16} />,
+				icon: <SiReact size={16} color={react} />,
 				name: 'React',
 			},
 			{
-				icon: <SiTypescript size={16} />,
+				icon: <SiTypescript size={16} color={typescript} />,
 				name: 'TypeScript',
 			},
 			{
@@ -147,27 +162,27 @@ export const myProjects: ProjectCardProps[] = [
 				name: 'Next.js',
 			},
 			{
-				icon: <SiStyledcomponents size={16} />,
+				icon: '💅',
 				name: 'Styled Components',
 			},
 			{
-				icon: <SiNodedotjs size={16} />,
+				icon: <SiNodedotjs size={16} color={nodeJs} />,
 				name: 'Node.js',
 			},
 			{
-				icon: <SiNestjs size={16} />,
+				icon: <SiNestjs size={16} color={nestjs} />,
 				name: 'Nest.js',
 			},
 			{
-				icon: <SiPostgresql size={16} />,
+				icon: <SiPostgresql size={16} color={postgres} />,
 				name: 'PostgreSQL',
 			},
 			{
-				icon: <SiAmazonaws size={16} />,
+				icon: <SiAmazonaws size={16} color={aws} />,
 				name: 'AWS',
 			},
 			{
-				icon: <SiNginx size={16} />,
+				icon: <SiNginx size={16} color={nginx} />,
 				name: 'Nginx',
 			},
 		],
@@ -180,7 +195,7 @@ export const myProjects: ProjectCardProps[] = [
 		images: ['/tsar-os/desktop.png'],
 		description: (
 			<Text size='sm' mt='sm'>
-				This project may forever lay unfinished, but I'm proud of what I did before I had to
+				This project may forever lie unfinished, but I'm proud of what I did before I had to
 				abandon it to work on PUDO. It is a mock desktop made with React. I was planning on
 				making full blown apps for it and you can see the beginnings of those plans on the
 				site. You can open windows, resize windows, minimize windows, fullscreen windows,
@@ -190,7 +205,7 @@ export const myProjects: ProjectCardProps[] = [
 		),
 		technologies: [
 			{
-				icon: <SiReact size={16} />,
+				icon: <SiReact size={16} color={react} />,
 				name: 'React',
 			},
 			{
@@ -198,11 +213,11 @@ export const myProjects: ProjectCardProps[] = [
 				name: 'Next.js',
 			},
 			{
-				icon: <SiTypescript size={16} />,
+				icon: <SiTypescript size={16} color={typescript} />,
 				name: 'TypeScript',
 			},
 			{
-				icon: <SiSass size={16} />,
+				icon: <SiSass size={16} color={scss} />,
 				name: 'SASS/SCSS',
 			},
 			{
@@ -219,29 +234,30 @@ export const myProjects: ProjectCardProps[] = [
 		images: ['/yeti-site/home.png'],
 		description: (
 			<Text size='sm' mt='sm'>
-				This project was one of my first projects and introduced me to Styled Components. It
-				was meant to be used as a general site for my robotics team, but we never ended up
-				using it. It has <i>cool</i> icicles on the header, statically generates event pages
-				using MDX and Gatsby's graphql api, and has a custom image slideshow on the home
-				page. I'm quite proud of this site and I learned a lot about css, animation,
-				responsive design, and statically generating content while making it.
+				This project was one of my first projects and introduced me to Styled
+				Components/CSS-inJS. It was meant to be used as a general site for my robotics team,
+				but we never ended up using it. It has <i>cool</i> icicles on the header, statically
+				generates event pages using MDX and Gatsby's graphql api, and has a custom image
+				slideshow on the home page. I'm quite proud of this site and I learned a lot about
+				css, animation, responsive design, and statically generating content while making
+				it.
 			</Text>
 		),
 		technologies: [
 			{
-				icon: <SiReact size={16} />,
+				icon: <SiReact size={16} color={react} />,
 				name: 'React',
 			},
 			{
-				icon: <SiGatsby size={16} />,
+				icon: <SiGatsby size={16} color={gatsby} />,
 				name: 'Gatsby',
 			},
 			{
-				icon: <SiTypescript size={16} />,
+				icon: <SiTypescript size={16} color={typescript} />,
 				name: 'TypeScript',
 			},
 			{
-				icon: <SiStyledcomponents size={16} />,
+				icon: '💅',
 				name: 'Styled Components',
 			},
 			{
@@ -269,22 +285,13 @@ export const myProjects: ProjectCardProps[] = [
 					mantine
 				</Anchor>
 				(if you haven't heard of it, its great, I'd deficiently use it over MUI) for theming
-				and components and my package, ez-cookie, to server render theme to prevent{' '}
-				<Anchor
-					size='sm'
-					target='_blank'
-					rel='noopener noreferrer'
-					href='https://css-tricks.com/flash-of-inaccurate-color-theme-fart/'
-				>
-					FART
-				</Anchor>
-				. Try reloading the page to see how your selected theme is rendered with no
-				flashing.
+				and components. It is deployed on github pages using next.js' export feature to
+				export static files for serving.
 			</Text>
 		),
 		technologies: [
 			{
-				icon: <SiReact size={16} />,
+				icon: <SiReact size={16} color={react} />,
 				name: 'React',
 			},
 			{
@@ -292,7 +299,7 @@ export const myProjects: ProjectCardProps[] = [
 				name: 'Next.js',
 			},
 			{
-				icon: <SiTypescript size={16} />,
+				icon: <SiTypescript size={16} color={typescript} />,
 				name: 'TypeScript',
 			},
 			{
@@ -308,16 +315,16 @@ export const myProjects: ProjectCardProps[] = [
 		description: (
 			<Text size='sm' mt='sm'>
 				Java JS is a collection of implementations of JavaScript APIs in Java. Right now
-				there is not the JSArray class. I acts as close as it can the Array class in
+				there is only the JSArray class. It acts as close as it can the Array class in
 				JavaScript by using Java lambdas through functional interfaces. It also extends
-				AbstractList, meaning it has all of the method you would expect a list to have in
-				Java. I also use this repository to test my Java formatting solution using prettier
+				AbstractList, meaning it has all of the methods you would expect a list to have in
+				Java. I also used this repository to test my Java formatting solution using prettier
 				which I would like to add to my robotics team's repositories.
 			</Text>
 		),
 		technologies: [
 			{
-				icon: <SiJava size={16} />,
+				icon: <SiJava size={16} color={java} />,
 				name: 'Java',
 			},
 		],
@@ -336,27 +343,27 @@ export const myProjects: ProjectCardProps[] = [
 		),
 		technologies: [
 			{
-				icon: <SiTypescript size={16} />,
+				icon: <SiTypescript size={16} color={typescript} />,
 				name: 'TypeScript',
 			},
 			{
-				icon: <SiNodedotjs size={16} />,
+				icon: <SiNodedotjs size={16} color={nodeJs} />,
 				name: 'TypeScript',
 			},
 			{
-				icon: <SiNpm size={16} />,
+				icon: <SiNpm size={16} color={npm} />,
 				name: 'NPM',
 			},
 		],
 	},
 	{
-		title: 'EZ Cookie',
+		title: 'EZ Cookies',
 		mainTech: 'TypeScript',
-		repo: githubUrl('next-route-handler'),
-		deployed: 'https://www.npmjs.com/package/next-route-handler',
+		repo: githubUrl('ez-cookies'),
+		deployed: 'https://www.npmjs.com/package/ez-cookies',
 		description: (
 			<Text size='sm' mt='sm'>
-				Similarly to next-route-handler, I wrote EZ Cookie for fun, while I was working on
+				Similarly to next-route-handler, I wrote EZ Cookies for fun, while I was working on
 				another project, this time it was while I was working on this very site. The{' '}
 				<Anchor
 					size='sm'
@@ -368,25 +375,25 @@ export const myProjects: ProjectCardProps[] = [
 				</Anchor>{' '}
 				said to use a package called cookies-next for help managing cookies. I went to look
 				at the repo for the package, and it had a dependency, so I decided to make my own.
-				On top of having zero dependencies, my package is smaller and has test written with
+				On top of having zero dependencies, my package is smaller and has tests written with
 				Jest to ensure every release works as intended.
 			</Text>
 		),
 		technologies: [
 			{
-				icon: <SiTypescript size={16} />,
+				icon: <SiTypescript size={16} color={typescript} />,
 				name: 'TypeScript',
 			},
 			{
-				icon: <SiNodedotjs size={16} />,
+				icon: <SiNodedotjs size={16} color={nodeJs} />,
 				name: 'TypeScript',
 			},
 			{
-				icon: <SiJest size={16} />,
+				icon: <SiJest size={16} color={jest} />,
 				name: 'Jest',
 			},
 			{
-				icon: <SiNpm size={16} />,
+				icon: <SiNpm size={16} color={npm} />,
 				name: 'NPM',
 			},
 		],

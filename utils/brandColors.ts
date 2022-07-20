@@ -1,0 +1,15 @@
+export const nodeJs = '#539E43';
+export const css = '#264de4';
+export const react = '#61dbfb';
+export const typescript = '#007acc';
+export const mongodb = '#4db33d';
+export const postgres = '#008bb9';
+export const java = '#ed8b00';
+export const nestjs = '#E0234E';
+export const aws = '#FF9900';
+export const nginx = '#009900';
+export const scss = '#c69';
+export const gatsby = '#663399';
+export const npm = '#CB3837';
+export const jest = '#C63D14';
+export const mui = '#007FFF';

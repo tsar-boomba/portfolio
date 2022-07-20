@@ -10,11 +10,12 @@ import {
 	SiTypescript,
 } from 'react-icons/si';
 import { Text } from '@mantine/core';
+import { css, java, mongodb, nodeJs, postgres, react, typescript } from '../../utils/brandColors';
 
 export const mySkills: SkillCardProps[] = [
 	{
 		name: <Text component='h1'>TypeScript</Text>,
-		icon: <SiTypescript size={36} />,
+		icon: <SiTypescript size={36} color={typescript} />,
 		description: (
 			<Text>
 				I began my development journey with TypeScript and I can say wth certainty I
@@ -26,7 +27,7 @@ export const mySkills: SkillCardProps[] = [
 	},
 	{
 		name: <Text component='h1'>React</Text>,
-		icon: <SiReact size={36} />,
+		icon: <SiReact size={36} color={react} />,
 		description: (
 			<Text>
 				React was my first front-end library/framework and I enjoy making beautiful and
@@ -36,7 +37,7 @@ export const mySkills: SkillCardProps[] = [
 	},
 	{
 		name: <Text component='h1'>CSS</Text>,
-		icon: <SiCss3 size={36} />,
+		icon: <SiCss3 size={36} color={css} />,
 		description: (
 			<Text>
 				Through my many projects I have gained experience with css in many forms. I have
@@ -47,7 +48,7 @@ export const mySkills: SkillCardProps[] = [
 	},
 	{
 		name: <Text component='h1'>Node.js</Text>,
-		icon: <SiNodedotjs size={36} />,
+		icon: <SiNodedotjs size={36} color={nodeJs} />,
 		description: (
 			<Text>
 				I've used node.js to build the backend for all of my full-stack projects. I have
@@ -69,7 +70,7 @@ export const mySkills: SkillCardProps[] = [
 	},
 	{
 		name: <Text component='h1'>MongoDB</Text>,
-		icon: <SiMongodb size={36} />,
+		icon: <SiMongodb size={36} color={mongodb} />,
 		description: (
 			<Text>
 				MongoDB is a document based Database which I have become very familiar with, using
@@ -81,7 +82,7 @@ export const mySkills: SkillCardProps[] = [
 	},
 	{
 		name: <Text component='h1'>PostgreSQL</Text>,
-		icon: <SiPostgresql size={36} />,
+		icon: <SiPostgresql size={36} color={postgres} />,
 		description: (
 			<Text>
 				PostgreSQL is one of the most widely used relational databases. Through using it in
@@ -92,7 +93,7 @@ export const mySkills: SkillCardProps[] = [
 	},
 	{
 		name: <Text component='h1'>Java</Text>,
-		icon: <SiJava size={36} />,
+		icon: <SiJava size={36} color={java} />,
 		description: (
 			<Text>
 				Through using Java for robot programming on my robotics team I have become very

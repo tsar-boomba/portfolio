@@ -21,7 +21,9 @@ const useStyles = createStyles((theme) => ({
 		borderBottom: `1px solid ${
 			theme.colorScheme === 'dark' ? theme.colors.dark[4] : theme.colors.gray[3]
 		}`,
-		padding: theme.spacing.md,
+		paddingLeft: theme.spacing.md,
+		paddingRight: theme.spacing.md,
+		paddingBottom: theme.spacing.md,
 	},
 
 	like: {
@@ -88,7 +90,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
 				</Card.Section>
 			)}
 
-			<Card.Section className={classes.section}>
+			<Card.Section className={classes.section} style={{ paddingTop: 16 }}>
 				<Group position='apart'>
 					<Text size='lg' weight={500}>
 						{title}
