@@ -1,4 +1,4 @@
-import App, { AppContext, AppInitialProps, AppProps } from 'next/app';
+import { AppContext, AppInitialProps, AppProps } from 'next/app';
 import Head from 'next/head';
 import {
 	ColorScheme,
@@ -6,24 +6,33 @@ import {
 	DefaultMantineColor,
 	MantineProvider,
 } from '@mantine/core';
-import { ReactNode, useState } from 'react';
+import { ReactNode } from 'react';
 import { Layout } from '../components/Layout';
-import { setCookie, getCookie } from 'ez-cookies';
+import { setCookie } from 'ez-cookies';
 import { ColorProvider } from '../components/ColorProvider';
+import { useColorScheme, useLocalStorage } from '@mantine/hooks';
 
 interface _App<P = {}> {
 	(props: AppProps & P): ReactNode;
-	getInitialProps(ctx: AppContext): Promise<AppInitialProps & P>;
+	getInitialProps?(ctx: AppContext): Promise<AppInitialProps & P>;
 }
 
 const MyApp: _App<{ colorScheme: ColorScheme; primaryColor: DefaultMantineColor }> = (props) => {
-	const [primaryColor, _setPrimaryColor] = useState(props.primaryColor);
-	const [colorScheme, setColorScheme] = useState(props.colorScheme);
+	const preferredColorScheme = useColorScheme();
+	const [colorScheme, setColorScheme] = useLocalStorage<ColorScheme>({
+		key: 'colorScheme',
+		defaultValue: preferredColorScheme,
+		getInitialValueInEffect: true,
+	});
+	const [primaryColor, _setPrimaryColor] = useLocalStorage<DefaultMantineColor>({
+		key: 'primaryColor',
+		defaultValue: 'blue',
+		getInitialValueInEffect: true,
+	});
 
-	const toggleColorScheme = (value?: ColorScheme) => {
+	const toggleColorScheme = (value?: 'dark' | 'light') => {
 		const nextColorScheme = colorScheme === 'dark' ? 'light' : 'dark';
 		setColorScheme(value || nextColorScheme);
-		setCookie('colorScheme', value || nextColorScheme, { maxAge: 60 * 60 * 24 * 365 });
 	};
 
 	const setPrimaryColor = (color: DefaultMantineColor) => {
@@ -64,16 +73,6 @@ const MyApp: _App<{ colorScheme: ColorScheme; primaryColor: DefaultMantineColor 
 			</ColorSchemeProvider>
 		</>
 	);
-};
-
-MyApp.getInitialProps = async (appCtx) => {
-	const props = await App.getInitialProps(appCtx);
-	console.log('init props');
-	return {
-		colorScheme: (getCookie('colorScheme') || 'light') as ColorScheme,
-		primaryColor: (getCookie('primaryColor') || 'orange') as DefaultMantineColor,
-		...props,
-	};
 };
 
 export default MyApp;
