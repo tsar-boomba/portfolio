@@ -4,6 +4,7 @@ import {
 	Container,
 	Grid,
 	Group,
+	Kbd,
 	Stack,
 	Text,
 	useMantineTheme,
@@ -149,6 +150,27 @@ export const PuzzleGame = () => {
 					</GradientCard>
 				</Group>
 			</Container>
+			<Stack sx={{ fontSize: 18, fontWeight: 500 }} align='center' spacing={0}>
+				<Text sx={{ fontSize: 32, fontWeight: 500 }}>How To Play</Text>
+				<Text>
+					<Kbd>←</Kbd>/<Kbd>→</Kbd>: move left/right
+				</Text>
+				<Text>
+					<Kbd>↑</Kbd>: rotate right
+				</Text>
+				<Text>
+					<Kbd>↓</Kbd>: Soft drop
+				</Text>
+				<Text>
+					<Kbd>Z</Kbd>: Rotate left
+				</Text>
+				<Text>
+					<Kbd>X</Kbd>: Rotate right
+				</Text>
+				<Text>
+					<Kbd>C</Kbd>: Hold
+				</Text>
+			</Stack>
 		</Center>
 	);
 };
