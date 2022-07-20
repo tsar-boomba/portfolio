@@ -19,11 +19,6 @@ import {
 	SiVercel,
 } from 'react-icons/si';
 import { ProjectCardProps } from './ProjectCard';
-import scoutingImg from '@/public/scouting/stand-form.png';
-import imgConvert from '@/public/img-convert/example.gif';
-import tsarOs from '@/public/tsar-os/desktop.png';
-import yetiSite from '@/public/yeti-site/home.png';
-import portfolio from '@/public/portfolio/hero.png';
 
 const githubUrl = (repo: string, owner = 'tsar-boomba') => `https://github.com/${owner}/${repo}`;
 
@@ -33,7 +28,7 @@ export const myProjects: ProjectCardProps[] = [
 		mainTech: 'React',
 		repo: githubUrl('2022-scouting-real', 'Yeti-Robotics'),
 		deployed: 'https://scouting.yetirobotics.org',
-		images: [scoutingImg],
+		images: ['/scouting/stand-form.png'],
 		description: (
 			<Text size='sm' mt='sm'>
 				This site was created for my robotics team. We use it while at competitions to
@@ -85,7 +80,7 @@ export const myProjects: ProjectCardProps[] = [
 		mainTech: 'TypeScript',
 		repo: githubUrl('amogus-image-converter'),
 		deployed: 'https://img-convert.igamble.dev',
-		images: [imgConvert],
+		images: ['/img-convert/example.gif'],
 		description: (
 			<Text size='sm' mt='sm'>
 				First of all, I would like to dedicate this site to my good friend,{' '}
@@ -182,7 +177,7 @@ export const myProjects: ProjectCardProps[] = [
 		mainTech: 'React',
 		repo: githubUrl('tsar-os'),
 		deployed: 'https://tsar-os.vercel.app/os',
-		images: [tsarOs],
+		images: ['/tsar-os/desktop.png'],
 		description: (
 			<Text size='sm' mt='sm'>
 				This project may forever lay unfinished, but I'm proud of what I did before I had to
@@ -221,7 +216,7 @@ export const myProjects: ProjectCardProps[] = [
 		mainTech: 'React',
 		repo: githubUrl('yeti-robotics-site'),
 		deployed: 'https://yeti-robotics-site.vercel.app',
-		images: [yetiSite],
+		images: ['/yeti-site/home.png'],
 		description: (
 			<Text size='sm' mt='sm'>
 				This project was one of my first projects and introduced me to Styled Components. It
@@ -260,7 +255,7 @@ export const myProjects: ProjectCardProps[] = [
 		mainTech: 'React',
 		repo: githubUrl('portfolio'),
 		deployed: 'https://igamble.dev',
-		images: [portfolio],
+		images: ['/portfolio/hero.png'],
 		description: (
 			<Text size='sm' mt='sm'>
 				This site was made to display my wide array of projects and experience in

@@ -1,6 +1,14 @@
 import React, { ReactNode } from 'react';
-import { Card, Text, Group, Badge, Button, createStyles, useMantineTheme } from '@mantine/core';
-import Image, { StaticImageData } from 'next/image';
+import {
+	Card,
+	Text,
+	Group,
+	Badge,
+	Button,
+	createStyles,
+	Image,
+	useMantineTheme,
+} from '@mantine/core';
 import { SiGithub } from 'react-icons/si';
 
 const useStyles = createStyles((theme) => ({
@@ -35,7 +43,7 @@ const useStyles = createStyles((theme) => ({
 }));
 
 export interface ProjectCardProps {
-	images?: StaticImageData[];
+	images?: string[];
 	title: string;
 	description: ReactNode;
 	repo?: string;
@@ -78,7 +86,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
 		<Card withBorder shadow='sm' p='md' className={classes.card}>
 			{images && (
 				<Card.Section>
-					<Image src={images[0]} alt={title} layout='responsive' priority />
+					<Image src={images[0]} alt={title} />
 				</Card.Section>
 			)}
 
