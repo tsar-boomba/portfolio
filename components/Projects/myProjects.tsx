@@ -309,6 +309,57 @@ export const myProjects: ProjectCardProps[] = [
 		],
 	},
 	{
+		title: 'Tstris',
+		mainTech: 'TypeScript',
+		repo: 'https://github.com/tstris/tstris',
+		deployed: 'https://www.npmjs.com/package/@tstris/core',
+		description: (
+			<Text size='sm' mt='sm'>
+				Tstris is a very special project to me because I've been thinking about making it
+				for a while. It's mean't to be a runtime and frontend agnostic library for
+				implementing falling block puzzles with javascript. It is written in TypeScript, has
+				0 dependencies, and has tests written with Jest. I decided to architecture the
+				project using a monorepo and taking advantage of scoped packages on npm. This allows
+				for me to make more specific packages while relying on the same underlying code. One
+				example of this is the{' '}
+				<Anchor
+					size='sm'
+					target='_blank'
+					rel='noopener noreferrer'
+					href='https://www.npmjs.com/package/@tstris/react'
+				>
+					@tstris/react
+				</Anchor>{' '}
+				package which depends on @tstris/core, but is made specifically for use with React.
+				I actually included an example of the package being used at the bottom of the page
+				(if your screen is big enough), have fun after you're done checking out all my
+				projects 😉!
+			</Text>
+		),
+		technologies: [
+			{
+				icon: <SiTypescript size={16} color={typescript} />,
+				name: 'TypeScript',
+			},
+			{
+				icon: <SiJest size={16} color={jest} />,
+				name: 'Jest',
+			},
+			{
+				icon: <SiNpm size={16} color={npm} />,
+				name: 'NPM',
+			},
+			{
+				icon: <SiReact size={16} color={react} />,
+				name: 'React',
+			},
+			{
+				icon: <SiNodedotjs size={16} color={nodeJs} />,
+				name: 'TypeScript',
+			},
+		],
+	},
+	{
 		title: 'Java JS',
 		mainTech: 'Java',
 		repo: githubUrl('JavaJs'),
