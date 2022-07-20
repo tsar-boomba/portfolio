@@ -1,4 +1,4 @@
-import App, { AppContext, AppProps } from 'next/app';
+import App, { AppContext, AppInitialProps, AppProps } from 'next/app';
 import Head from 'next/head';
 import {
 	ColorScheme,
@@ -13,7 +13,7 @@ import { ColorProvider } from '../components/ColorProvider';
 
 interface _App<P = {}> {
 	(props: AppProps & P): ReactNode;
-	getInitialProps(ctx: AppContext): Record<string, unknown>;
+	getInitialProps(ctx: AppContext): Promise<AppInitialProps & P>;
 }
 
 const MyApp: _App<{ colorScheme: ColorScheme; primaryColor: DefaultMantineColor }> = (props) => {
@@ -52,6 +52,7 @@ const MyApp: _App<{ colorScheme: ColorScheme; primaryColor: DefaultMantineColor 
 						/** Put your mantine theme override here */
 						colorScheme,
 						primaryColor,
+						cursorType: 'pointer',
 					}}
 				>
 					<ColorProvider primaryColor={primaryColor} setPrimaryColor={setPrimaryColor}>
@@ -65,11 +66,13 @@ const MyApp: _App<{ colorScheme: ColorScheme; primaryColor: DefaultMantineColor 
 	);
 };
 
-MyApp.getInitialProps = (appCtx) => {
-	App.getInitialProps(appCtx);
+MyApp.getInitialProps = async (appCtx) => {
+	const props = await App.getInitialProps(appCtx);
+	console.log('init props');
 	return {
-		colorScheme: getCookie('colorScheme', { req: appCtx.ctx.req }) || 'light',
-		primaryColor: getCookie('primaryColor', { req: appCtx.ctx.req }) || 'orange',
+		colorScheme: (getCookie('colorScheme') || 'light') as ColorScheme,
+		primaryColor: (getCookie('primaryColor') || 'orange') as DefaultMantineColor,
+		...props,
 	};
 };
 

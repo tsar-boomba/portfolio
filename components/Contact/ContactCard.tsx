@@ -25,8 +25,7 @@ const ContactCard: React.FC<CopyButtonProps> = ({ text, children, icon, href }) 
 	return (
 		<Tooltip
 			label='Copied to clipboard!'
-			gutter={10}
-			placement='center'
+			offset={10}
 			position='bottom'
 			radius='xl'
 			transition='slide-down'

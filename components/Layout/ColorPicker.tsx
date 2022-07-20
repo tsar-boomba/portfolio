@@ -2,7 +2,6 @@ import {
 	ActionIcon,
 	Box,
 	createStyles,
-	getSharedColorScheme,
 	Group,
 	Popover,
 	Stack,
@@ -10,12 +9,12 @@ import {
 	ThemeIcon,
 	useMantineTheme,
 } from '@mantine/core';
-import { useBooleanToggle, useClickOutside } from '@mantine/hooks';
+import { useToggle, useClickOutside } from '@mantine/hooks';
 import { usePrimaryColor } from '../ColorProvider';
 import { CgDrop, CgCheck } from 'react-icons/cg';
 
 const useStyles = createStyles((theme) => {
-	const colors = getSharedColorScheme({ color: theme.primaryColor, theme, variant: 'filled' });
+	const colors = theme.fn.variant({ color: theme.primaryColor, variant: 'filled' });
 
 	return {
 		wrapper: {},
@@ -37,7 +36,7 @@ const useStyles = createStyles((theme) => {
 
 const ColorPicker = () => {
 	const { classes } = useStyles();
-	const [opened, toggleOpened] = useBooleanToggle(false);
+	const [opened, toggleOpened] = useToggle([false, true]);
 	const ref = useClickOutside(() => toggleOpened(false));
 	const theme = useMantineTheme();
 	const { primaryColor, setPrimaryColor } = usePrimaryColor();
@@ -64,28 +63,24 @@ const ColorPicker = () => {
 
 	return (
 		<div ref={ref} className={classes.wrapper}>
-			<Popover
-				target={
+			<Popover opened={opened} position='bottom' withArrow withinPortal={false}>
+				<Popover.Target>
 					<ActionIcon className={classes.menuButton} onClick={() => toggleOpened()}>
 						<CgDrop color='white' />
 					</ActionIcon>
-				}
-				opened={opened}
-				position='bottom'
-				placement='end'
-				withArrow
-				withinPortal={false}
-			>
-				<Box sx={{ minWidth: 150, maxWidth: 300 }} py={8}>
-					<Stack align='center' onClick={(e) => e.stopPropagation()}>
-						<Text sx={{ fontWeight: 500 }} align='center'>
-							Choose a color
-						</Text>
-						<Group sx={{ justifyContent: 'center' }} grow>
-							{colors}
-						</Group>
-					</Stack>
-				</Box>
+				</Popover.Target>
+				<Popover.Dropdown>
+					<Box sx={{ minWidth: 150, maxWidth: 300 }} py={8}>
+						<Stack align='center' onClick={(e) => e.stopPropagation()}>
+							<Text sx={{ fontWeight: 500 }} align='center'>
+								Choose a color
+							</Text>
+							<Group sx={{ justifyContent: 'center' }} grow>
+								{colors}
+							</Group>
+						</Stack>
+					</Box>
+				</Popover.Dropdown>
 			</Popover>
 		</div>
 	);

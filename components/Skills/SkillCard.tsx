@@ -1,5 +1,5 @@
 import { Box, Collapse, createStyles, Group, Paper } from '@mantine/core';
-import { useBooleanToggle } from '@mantine/hooks';
+import { useToggle } from '@mantine/hooks';
 import { ReactNode } from 'react';
 import { CgChevronLeft } from 'react-icons/cg';
 
@@ -46,7 +46,7 @@ const useStyles = createStyles((theme) => ({
 
 const SkillCard: React.FC<SkillCardProps> = ({ icon, name, description }) => {
 	const { classes } = useStyles();
-	const [opened, toggleOpened] = useBooleanToggle(false);
+	const [opened, toggleOpened] = useToggle([false, true]);
 
 	return (
 		<Paper withBorder shadow='xs' className={classes.card}>

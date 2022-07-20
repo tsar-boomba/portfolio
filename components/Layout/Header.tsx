@@ -9,7 +9,7 @@ import {
 	Collapse,
 	Paper,
 } from '@mantine/core';
-import { useBooleanToggle } from '@mantine/hooks';
+import { useToggle } from '@mantine/hooks';
 import ThemeToggle from './ThemeToggle';
 import ColorPicker from './ColorPicker';
 
@@ -105,7 +105,7 @@ interface HeaderSimpleProps {
 const CLICK_OUT_EVENTS: (keyof DocumentEventMap)[] = ['touchstart', 'mousedown'];
 
 const Header: React.FC<HeaderSimpleProps> = ({ links }) => {
-	const [opened, toggleOpened] = useBooleanToggle(false);
+	const [opened, toggleOpened] = useToggle([false, true]);
 	const buttonRef = useRef<HTMLButtonElement>(null);
 	const menuRef = useRef<HTMLDivElement>(null);
 	const [active, setActive] = useState(links[0].link);
@@ -142,7 +142,7 @@ const Header: React.FC<HeaderSimpleProps> = ({ links }) => {
 	));
 
 	return (
-		<Paper component='header' className={classes.root}>
+		<Paper shadow='md' component='header' className={classes.root}>
 			<Container className={classes.header}>
 				<Text
 					component='h1'

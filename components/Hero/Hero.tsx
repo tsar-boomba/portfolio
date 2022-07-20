@@ -8,7 +8,7 @@ import {
 	Transition,
 	TransitionProps,
 } from '@mantine/core';
-import { useBooleanToggle } from '@mantine/hooks';
+import { useToggle } from '@mantine/hooks';
 import { useEffect } from 'react';
 import { SiGithub } from 'react-icons/si';
 
@@ -94,7 +94,7 @@ const POSSIBLE_TRANSITIONS: TransitionProps['transition'][] = [
 
 const Hero = () => {
 	const { classes, cx } = useStyles();
-	const [animate, toggleAnimate] = useBooleanToggle(false);
+	const [animate, toggleAnimate] = useToggle([false, true]);
 	const theme = useMantineTheme();
 
 	useEffect(() => {
