@@ -46,9 +46,10 @@ export const PuzzleGame = () => {
 		status,
 	} = useTstris();
 	const theme = useMantineTheme();
+	// breaks hydration
 	const screen = useViewportSize();
 
-	if (screen.width <= 1000)
+	if (screen.width !== 0 && screen.width <= 1000)
 		return (
 			<Container
 				py={60}

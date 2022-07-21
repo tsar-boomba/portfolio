@@ -130,7 +130,7 @@ const Hero = () => {
 				</Transition>
 
 				<Text className={classes.description} color='dimmed'>
-					Full-stack developer with real world project experience
+					Full-stack developer with real-world project experience.
 				</Text>
 			</Container>
 		</div>
