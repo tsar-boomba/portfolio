@@ -153,10 +153,10 @@ export const PuzzleGame = () => {
 			<Stack sx={{ fontSize: 18, fontWeight: 500 }} align='center' spacing={0}>
 				<Text sx={{ fontSize: 32, fontWeight: 500 }}>How To Play</Text>
 				<Text>
-					<Kbd>←</Kbd>/<Kbd>→</Kbd>: move left/right
+					<Kbd>←</Kbd>/<Kbd>→</Kbd>: Move left/right
 				</Text>
 				<Text>
-					<Kbd>↑</Kbd>: rotate right
+					<Kbd>↑</Kbd>: Rotate right
 				</Text>
 				<Text>
 					<Kbd>↓</Kbd>: Soft drop

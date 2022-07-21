@@ -2,15 +2,12 @@ import {
 	createStyles,
 	Container,
 	Text,
-	Button,
-	Group,
 	useMantineTheme,
 	Transition,
 	TransitionProps,
 } from '@mantine/core';
 import { useToggle } from '@mantine/hooks';
 import { useEffect } from 'react';
-import { SiGithub } from 'react-icons/si';
 
 const BREAKPOINT = '@media (max-width: 755px)';
 
@@ -48,6 +45,7 @@ const useStyles = createStyles((theme) => ({
 	},
 
 	description: {
+		textAlign: 'center',
 		marginTop: theme.spacing.xl,
 		fontSize: 24,
 
@@ -93,7 +91,7 @@ const POSSIBLE_TRANSITIONS: TransitionProps['transition'][] = [
 ];
 
 const Hero = () => {
-	const { classes, cx } = useStyles();
+	const { classes } = useStyles();
 	const [animate, toggleAnimate] = useToggle([false, true]);
 	const theme = useMantineTheme();
 
@@ -132,38 +130,8 @@ const Hero = () => {
 				</Transition>
 
 				<Text className={classes.description} color='dimmed'>
-					Self-taught web developer with experience creating and deploying multiple
-					full-stack projects with real world usage.
+					Full-stack developer with real world project experience
 				</Text>
-
-				<Group className={classes.controls}>
-					<Button
-						component='a'
-						size='xl'
-						className={classes.control}
-						variant='gradient'
-						gradient={{
-							from: theme.colors[theme.primaryColor][7],
-							to: theme.colors[theme.primaryColor][5],
-						}}
-						href='/#skills'
-					>
-						Get started
-					</Button>
-
-					<Button
-						component='a'
-						href='https://github.com/tsar-boomba'
-						target='_blank'
-						rel='noopener noreferrer'
-						size='xl'
-						variant='outline'
-						className={cx(classes.control, classes.githubControl)}
-						leftIcon={<SiGithub size={24} />}
-					>
-						GitHub
-					</Button>
-				</Group>
 			</Container>
 		</div>
 	);
