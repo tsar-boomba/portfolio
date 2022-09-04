@@ -44,7 +44,7 @@ export const Board = ({
 				{board
 					.flatMap((piece) => piece)
 					.map((piece, i) => (
-						<Cell key={i} piece={piece} size={40} />
+						<Cell key={i} piece={piece} size={30} />
 					))}
 			</SimpleGrid>
 		</Paper>

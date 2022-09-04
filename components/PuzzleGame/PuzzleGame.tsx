@@ -69,6 +69,7 @@ export const PuzzleGame = () => {
 	return (
 		<Center
 			id='tstris-example'
+			pt={120}
 			sx={{
 				flexDirection: 'column',
 				minHeight: '100vh',
