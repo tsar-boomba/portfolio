@@ -1,5 +1,5 @@
 import { createStyles, Container, Text, Group, useMantineTheme } from '@mantine/core';
-import { SiDiscord, SiGithub, SiGmail } from 'react-icons/si';
+import { SiDiscord, SiGithub, SiGmail, SiLinkedin } from 'react-icons/si';
 import ContactCard from './ContactCard';
 
 const BREAKPOINT = '@media (max-width: 755px)';
@@ -117,6 +117,11 @@ const Contact = () => {
 					<ContactCard icon={<SiDiscord size={20} />} text='Ibomb#0221'>
 						<Text component='h1' align='center'>
 							Discord
+						</Text>
+					</ContactCard>
+					<ContactCard icon={<SiLinkedin size={20} />} href='https://www.linkedin.com/in/isaiah-gamble-18b298252/'>
+						<Text component='h1' align='center'>
+							Linkedin
 						</Text>
 					</ContactCard>
 				</Group>
