@@ -119,7 +119,10 @@ const Contact = () => {
 							Discord
 						</Text>
 					</ContactCard>
-					<ContactCard icon={<SiLinkedin size={20} />} href='https://www.linkedin.com/in/isaiah-gamble-18b298252/'>
+					<ContactCard
+						icon={<SiLinkedin size={20} />}
+						href='https://www.linkedin.com/in/isaiah-gamble-18b298252/'
+					>
 						<Text component='h1' align='center'>
 							Linkedin
 						</Text>
