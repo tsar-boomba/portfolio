@@ -2,6 +2,7 @@ import { Anchor, Text } from '@mantine/core';
 import {
 	SiAmazonaws,
 	SiGatsby,
+	SiGithub,
 	SiJava,
 	SiJest,
 	SiMaterialui,
@@ -13,6 +14,7 @@ import {
 	SiNpm,
 	SiPostgresql,
 	SiReact,
+	SiRust,
 	SiSass,
 	SiTypescript,
 	SiVercel,
@@ -30,6 +32,7 @@ import {
 	npm,
 	postgres,
 	react,
+	rust,
 	scss,
 	typescript,
 } from '../../utils/brandColors';
@@ -130,6 +133,50 @@ export const myProjects: ProjectCardProps[] = [
 			{
 				icon: <SiVercel size={16} />,
 				name: 'Vercel',
+			},
+		],
+	},
+	{
+		title: 'Milky Web',
+		mainTech: 'Rust',
+		repo: 'https://github.com/milky-web/site',
+		deployed: 'https://milkyweb.app',
+		images: ['/milky-web/example.png'],
+		description: (
+			<Text size='sm' mt='sm'>
+				Milky Web is a business that I started in May of 2022. Since then, I have made great
+				progress on the product. It works! and I am planning to launch in early 2023. I
+				can't show it here since it's proprietary, but the site is open source. The product
+				itself is built with TypeScript and Next.JS for the frontend and Rust for the
+				backend. I use AWS to host the product and provision resources for customers, and
+				used GitHub Pages to host the main website. The main site (what's linked here) is
+				still a work in progress, the product is taking priority over it.
+			</Text>
+		),
+		technologies: [
+			{
+				icon: <SiTypescript size={16} color={typescript} />,
+				name: 'TypeScript',
+			},
+			{
+				icon: <SiRust size={16} color={rust} />,
+				name: 'Rust',
+			},
+			{
+				icon: <SiReact size={16} color={react} />,
+				name: 'React',
+			},
+			{
+				icon: <SiNextdotjs size={16} />,
+				name: 'Next.js',
+			},
+			{
+				icon: <SiAmazonaws size={16} color={aws} />,
+				name: 'AWS',
+			},
+			{
+				icon: <SiGithub size={16} />,
+				name: 'GitHub',
 			},
 		],
 	},

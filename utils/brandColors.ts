@@ -13,3 +13,4 @@ export const gatsby = '#663399';
 export const npm = '#CB3837';
 export const jest = '#C63D14';
 export const mui = '#007FFF';
+export const rust = '#F74C00';
