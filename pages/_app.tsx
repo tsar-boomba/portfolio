@@ -45,7 +45,30 @@ const MyApp: _App<{ colorScheme: ColorScheme; primaryColor: DefaultMantineColor 
 	return (
 		<>
 			<Head>
-				<title>{'Isaiah Gamble - Portfolio'}</title>
+				<title>Isaiah Gamble - Portfolio</title>
+				<meta name='title' content='Isaiah Gamble - Portfolio' />
+				<meta
+					name='description'
+					content='Full-stack developer with real world experience'
+				/>
+
+				<meta property='og:type' content='website' />
+				<meta property='og:url' content='https://igamble.dev/' />
+				<meta property='og:title' content='Isaiah Gamble - Portfolio' />
+				<meta
+					property='og:description'
+					content='Full-stack developer with real world experience'
+				/>
+				<meta property='og:image' content='/img-convert/example.gif' />
+
+				<meta property='twitter:card' content='summary_large_image' />
+				<meta property='twitter:url' content='https://igamble.dev/' />
+				<meta property='twitter:title' content='Isaiah Gamble - Portfolio' />
+				<meta
+					property='twitter:description'
+					content='Full-stack developer with real world experience'
+				/>
+				<meta property='twitter:image' content='/img-convert/example.gif' />
 				<meta
 					name='viewport'
 					content='minimum-scale=1, initial-scale=1, width=device-width'
