@@ -313,48 +313,48 @@ export const myProjects: ProjectCardProps[] = [
 			},
 		],
 	},
-	{
-		title: 'Portfolio Site',
-		mainTech: 'React',
-		repo: githubUrl('portfolio'),
-		deployed: 'https://igamble.dev',
-		images: ['/portfolio/hero.png'],
-		description: (
-			<Text size='sm' mt='sm'>
-				This site was made to display my wide array of projects and experience in
-				development. It uses{' '}
-				<Anchor
-					size='sm'
-					target='_blank'
-					rel='noopener noreferrer'
-					href='https://mantine.dev'
-				>
-					mantine
-				</Anchor>
-				(if you haven't heard of it, its great, I'd deficiently use it over MUI) for theming
-				and components. It is deployed on github pages using next.js' export feature to
-				export static files for serving.
-			</Text>
-		),
-		technologies: [
-			{
-				icon: <SiReact size={16} color={react} />,
-				name: 'React',
-			},
-			{
-				icon: <SiNextdotjs size={16} />,
-				name: 'Next.js',
-			},
-			{
-				icon: <SiTypescript size={16} color={typescript} />,
-				name: 'TypeScript',
-			},
-			{
-				icon: <SiVercel size={16} />,
-				name: 'Vercel',
-			},
-		],
-	},
+	// {
+	// 	title: 'Portfolio Site',
+	// 	mainTech: 'React',
+	// 	repo: githubUrl('portfolio'),
+	// 	deployed: 'https://igamble.dev',
+	// 	images: ['/portfolio/hero.png'],
+	// 	description: (
+	// 		<Text size='sm' mt='sm'>
+	// 			This site was made to display my wide array of projects and experience in
+	// 			development. It uses{' '}
+	// 			<Anchor
+	// 				size='sm'
+	// 				target='_blank'
+	// 				rel='noopener noreferrer'
+	// 				href='https://mantine.dev'
+	// 			>
+	// 				mantine
+	// 			</Anchor>
+	// 			(if you haven't heard of it, its great, I'd deficiently use it over MUI) for theming
+	// 			and components. It is deployed on github pages using next.js' export feature to
+	// 			export static files for serving.
+	// 		</Text>
+	// 	),
+	// 	technologies: [
+	// 		{
+	// 			icon: <SiReact size={16} color={react} />,
+	// 			name: 'React',
+	// 		},
+	// 		{
+	// 			icon: <SiNextdotjs size={16} />,
+	// 			name: 'Next.js',
+	// 		},
+	// 		{
+	// 			icon: <SiTypescript size={16} color={typescript} />,
+	// 			name: 'TypeScript',
+	// 		},
+	// 		{
+	// 			icon: <SiVercel size={16} />,
+	// 			name: 'Vercel',
+	// 		},
+	// 	],
+	// },
 	{
 		title: 'Tstris',
 		mainTech: 'TypeScript',
