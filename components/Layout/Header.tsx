@@ -126,9 +126,12 @@ const Header: React.FC<HeaderSimpleProps> = ({ links }) => {
 	}, [menuRef, buttonRef]);
 
 	const items = links.map((link) => (
+		// eslint-disable-next-line react/jsx-no-target-blank
 		<a
 			key={link.label}
 			href={link.link}
+			target={link.link.startsWith('http') ? '_blank' : undefined}
+			rel={link.link.startsWith('http') ? 'norefrerer' : undefined}
 			className={cx(classes.link, { [classes.linkActive]: active === link.link })}
 			onClick={(e) => {
 				e.preventDefault();

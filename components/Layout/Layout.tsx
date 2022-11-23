@@ -10,6 +10,7 @@ const Layout: React.FC<{ children: ReactNode }> = ({ children }) => {
 					{ link: '#skills', label: 'Skills' },
 					{ link: '#projects', label: 'Projects' },
 					{ link: '#contact', label: 'Contact' },
+					{ link: 'https://blog.igamble.dev', label: 'Blog' },
 				]}
 			/>
 			{children}
