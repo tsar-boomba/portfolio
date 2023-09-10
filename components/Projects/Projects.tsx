@@ -86,7 +86,7 @@ const Projects = () => {
 
 	return (
 		<div id='projects' className={classes.wrapper}>
-			<Container size={1500} className={classes.inner}>
+			<Container size={1600} className={classes.inner}>
 				<Text
 					component='h1'
 					variant='gradient'

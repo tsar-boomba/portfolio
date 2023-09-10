@@ -1,5 +1,6 @@
 import { SkillCardProps } from './SkillCard';
 import {
+	SiC,
 	SiCss3,
 	SiJava,
 	SiMongodb,
@@ -7,10 +8,21 @@ import {
 	SiNodedotjs,
 	SiPostgresql,
 	SiReact,
+	SiRust,
 	SiTypescript,
 } from 'react-icons/si';
 import { Text } from '@mantine/core';
-import { css, java, mongodb, nodeJs, postgres, react, typescript } from '../../utils/brandColors';
+import {
+	c,
+	css,
+	java,
+	mongodb,
+	nodeJs,
+	postgres,
+	react,
+	rust,
+	typescript,
+} from '../../utils/brandColors';
 
 export const mySkills: SkillCardProps[] = [
 	{
@@ -101,5 +113,15 @@ export const mySkills: SkillCardProps[] = [
 				small amount of experience with Spring.
 			</Text>
 		),
+	},
+	{
+		name: <Text component='h1'>Rust</Text>,
+		icon: <SiRust size={36} color={rust} />,
+		description: <Text>I love rust</Text>,
+	},
+	{
+		name: <Text component='h1'>C</Text>,
+		icon: <SiC size={36} color={c} />,
+		description: <Text>C is cool</Text>,
 	},
 ];

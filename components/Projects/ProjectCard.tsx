@@ -14,7 +14,7 @@ import { SiGithub } from 'react-icons/si';
 const useStyles = createStyles((theme) => ({
 	card: {
 		backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[7] : theme.white,
-		maxWidth: 400,
+		maxWidth: 500,
 	},
 
 	section: {
@@ -103,7 +103,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
 
 			<Card.Section className={classes.section}>
 				<Text mt='md' className={classes.label} color='dimmed'>
-					Built with:
+					Technologies:
 				</Text>
 				<Group spacing={7} mt={5}>
 					{builtWith}
