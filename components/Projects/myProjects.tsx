@@ -275,6 +275,45 @@ export const myProjects: ProjectCardProps[] = [
 		],
 	},
 	{
+		title: 'Tstris',
+		mainTech: 'TypeScript',
+		images: ['/tstris/demo.png'],
+		repo: 'https://github.com/tstris/tstris',
+		deployed: 'https://www.npmjs.com/package/@tstris/core',
+		description: (
+			<Text size='sm' mt='sm'>
+				A low-level implementation a falling block puzzle game similar to Tetris.
+				<List size='sm'>
+					<List.Item>Runtime agnostic implementation</List.Item>
+					<List.Item>Proper rotation and sliding</List.Item>
+					<List.Item>Hold and next piece</List.Item>
+				</List>
+			</Text>
+		),
+		technologies: [
+			{
+				icon: <SiTypescript size={16} color={typescript} />,
+				name: 'TypeScript',
+			},
+			{
+				icon: <SiJest size={16} color={jest} />,
+				name: 'Jest',
+			},
+			{
+				icon: <SiNpm size={16} color={npm} />,
+				name: 'NPM',
+			},
+			{
+				icon: <SiReact size={16} color={react} />,
+				name: 'React',
+			},
+			{
+				icon: <SiNodedotjs size={16} color={nodeJs} />,
+				name: 'TypeScript',
+			},
+		],
+	},
+	{
 		title: 'Tsar OS',
 		mainTech: 'React',
 		repo: githubUrl('tsar-os'),
@@ -398,43 +437,4 @@ export const myProjects: ProjectCardProps[] = [
 	// 		},
 	// 	],
 	// },
-	{
-		title: 'Tstris',
-		mainTech: 'TypeScript',
-		images: ['/tstris/demo.png'],
-		repo: 'https://github.com/tstris/tstris',
-		deployed: 'https://www.npmjs.com/package/@tstris/core',
-		description: (
-			<Text size='sm' mt='sm'>
-				A low-level implementation a falling block puzzle game similar to Tetris.
-				<List size='sm'>
-					<List.Item>Runtime agnostic implementation</List.Item>
-					<List.Item>Proper rotation and sliding</List.Item>
-					<List.Item>Hold and next piece</List.Item>
-				</List>
-			</Text>
-		),
-		technologies: [
-			{
-				icon: <SiTypescript size={16} color={typescript} />,
-				name: 'TypeScript',
-			},
-			{
-				icon: <SiJest size={16} color={jest} />,
-				name: 'Jest',
-			},
-			{
-				icon: <SiNpm size={16} color={npm} />,
-				name: 'NPM',
-			},
-			{
-				icon: <SiReact size={16} color={react} />,
-				name: 'React',
-			},
-			{
-				icon: <SiNodedotjs size={16} color={nodeJs} />,
-				name: 'TypeScript',
-			},
-		],
-	},
 ];
