@@ -157,7 +157,7 @@ export const myProjects: ProjectCardProps[] = [
 		description: (
 			<Text size='sm' mt='sm'>
 				A desktop application created with Tauri, which allows performant, hassle-free robot
-				tuning adn information display.
+				tuning and information display.
 				<List size='sm'>
 					<List.Item>Used a publisher/subscriber protocol for comms.</List.Item>
 					<List.Item>
@@ -306,10 +306,6 @@ export const myProjects: ProjectCardProps[] = [
 			{
 				icon: <SiReact size={16} color={react} />,
 				name: 'React',
-			},
-			{
-				icon: <SiNodedotjs size={16} color={nodeJs} />,
-				name: 'TypeScript',
 			},
 		],
 	},

@@ -15,6 +15,7 @@ import { useTstris } from '@tstris/react';
 import GradientCard from '../GradientCard';
 import { Board } from './Board';
 import { Cell } from './Cell';
+import { useEffect, useRef } from 'react';
 
 const RenderPiece = ({ shape }: { shape: ('' | DefaultPieceTypes)[][] }) => {
 	return (
@@ -48,8 +49,13 @@ export const PuzzleGame = () => {
 	const theme = useMantineTheme();
 	// breaks hydration
 	const screen = useViewportSize();
+	const firstRender = useRef(true);
 
-	if (screen.width !== 0 && screen.width <= 1000)
+	useEffect(() => {
+		firstRender.current = false;
+	}, []);
+
+	if (firstRender.current || (screen.width !== 0 && screen.width <= 1000))
 		return (
 			<Container
 				py={60}
