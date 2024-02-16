@@ -49,7 +49,8 @@ export const NowPlaying = () => {
 			if (
 				!triedRefresh.current &&
 				currentPlaying.current &&
-				prev >= currentPlaying.current.playing.duration
+				// If local state over 2 seconds past end, update playing
+				prev >= currentPlaying.current.playing.duration + 2
 			) {
 				// Song ended, check API for new song
 				console.log('song ended locally');
