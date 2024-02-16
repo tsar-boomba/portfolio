@@ -144,7 +144,7 @@ export const NowPlaying = () => {
 														</Anchor>
 														<span
 															style={{
-																textWrap: 'nowrap',
+																whiteSpace: 'nowrap',
 																overflow: 'hidden',
 															}}
 														>
