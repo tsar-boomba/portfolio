@@ -2,9 +2,11 @@ import {
 	ActionIcon,
 	Affix,
 	Anchor,
+	Box,
 	Card,
 	Group,
 	Image,
+	Popover,
 	Progress,
 	Stack,
 	Text,
@@ -19,8 +21,8 @@ import { FUNCTION_URL } from '.';
 import { fetcher } from '@/utils/fetcher';
 import { Playing } from './types';
 import { spotify } from '@/utils/brandColors';
-import { useRef, useState } from 'react';
-import { useInterval } from '@mantine/hooks';
+import { useEffect, useRef, useState } from 'react';
+import { useInterval, useTimeout } from '@mantine/hooks';
 import {
 	TbArrowLoopRight,
 	TbArrowLoopRight2,
@@ -40,13 +42,27 @@ import {
 export const NowPlaying = () => {
 	const [progressSecs, setProgressSecs] = useState(0);
 	const currentPlaying = useRef<Playing | null>(null);
+	const triedRefresh = useRef(false);
+	const [showPopup, setShowPopup] = useState(true);
+	const popupTimeout = useTimeout(
+		() => {
+			setShowPopup(false);
+		},
+		5000,
+		{ autoInvoke: false },
+	);
 
 	const progressInterval = useInterval(() => {
 		setProgressSecs((prev) => {
-			if (currentPlaying.current && prev >= currentPlaying.current.playing.duration) {
+			if (
+				!triedRefresh.current &&
+				currentPlaying.current &&
+				prev >= currentPlaying.current.playing.duration
+			) {
 				// Song ended, check API for new song
 				console.log('song ended locally');
 				progressInterval.stop();
+				triedRefresh.current = true;
 				mutate(FUNCTION_URL + '/playing').then(() => {
 					progressInterval.start();
 				});
@@ -57,118 +73,159 @@ export const NowPlaying = () => {
 
 	const { data } = useSWR<Playing | null>(FUNCTION_URL + '/playing', fetcher, {
 		refreshInterval: 10000,
+		revalidateOnFocus: true,
 		onSuccess: (newData) => {
 			progressInterval.start();
 			currentPlaying.current = newData;
 			if (newData) {
-				console.log(newData?.playing.name);
+				triedRefresh.current = false;
 				setProgressSecs(newData.progressSecs);
 			}
 		},
 	});
 
+	useEffect(() => {
+		if (data) {
+			popupTimeout.start();
+		}
+	}, [data]);
+
 	return (
 		<Affix position={{ bottom: rem(20), right: rem(20) }}>
-			<Transition transition='pop-bottom-right' mounted={!!data}>
+			<Transition transition='pop-bottom-right' mounted={!!data} duration={500}>
 				{(styles) => (
 					<>
 						{data && (
-							<Card maw={`calc(100vw - ${rem(40)})`} withBorder shadow='md' p='xs'>
-								<Group spacing='xs' noWrap>
-									<Text
-										style={{
-											writingMode: 'vertical-rl',
-											transform: 'rotate(180deg)',
-											textAlign: 'justify',
-											fontWeight: 800,
-										}}
-										size={rem(10)}
-									>
-										Listening To
-									</Text>
-
-									<Stack miw={250} spacing={0} style={{ ...styles, flexGrow: 1 }}>
-										<Group noWrap>
-											<Stack align='start' spacing={0}>
-												<Anchor
-													href={data.playing.url ?? undefined}
-													target='_blank'
-												>
-													<Title
-														order={4}
-														style={{
-															textOverflow: 'ellipsis',
-															overflow: 'hidden',
-															whiteSpace: 'nowrap',
-														}}
-													>
-														{data.playing.name}
-													</Title>
-												</Anchor>
-												<span>
-													{data.playing.artists.map((artist, i) => (
-														<span key={artist.name + i}>
-															<Anchor
-																href={artist.url ?? undefined}
-																target='_blank'
+							<Tooltip
+								withinPortal
+								withArrow
+								opened={showPopup}
+								openDelay={700}
+								label='Isaiah is currently listening to...'
+							>
+								<Card
+									style={{ ...styles }}
+									maw={`calc(100vw - ${rem(40)})`}
+									withBorder
+									shadow='md'
+									pos='relative'
+									p={0}
+								>
+									<Box p='xs'>
+										<Group spacing='xs' pb={rem(4)} noWrap>
+											{/* <Anchor
+												href={data.playing.url ?? undefined}
+												target='_blank'
+											>
+												<Image
+													height={rem(52)}
+													width={rem(52)}
+													src={data.playing.imageUrl ?? undefined}
+													alt={`${data.playing.name} album cover`}
+												/>
+											</Anchor> */}
+											<Stack spacing={0}>
+												<Group noWrap>
+													<Stack align='start' spacing={0}>
+														<Anchor
+															href={data.playing.url ?? undefined}
+															target='_blank'
+														>
+															<Title
+																order={5}
 																style={{
-																	color: spotify,
+																	textOverflow: 'ellipsis',
+																	overflow: 'hidden',
+																	whiteSpace: 'nowrap',
 																}}
 															>
-																{artist.name}
-															</Anchor>
-															{i ===
-															data.playing.artists.length - 1 ? (
-																<></>
-															) : (
-																<>, </>
+																{data.playing.name}
+															</Title>
+														</Anchor>
+														<span
+															style={{
+																textWrap: 'nowrap',
+																overflow: 'hidden',
+															}}
+														>
+															{data.playing.artists.map(
+																(artist, i) => (
+																	<span key={artist.name + i}>
+																		<Anchor
+																			href={
+																				artist.url ??
+																				undefined
+																			}
+																			target='_blank'
+																			style={{
+																				color: spotify,
+																			}}
+																		>
+																			{artist.name}
+																		</Anchor>
+																		{i ===
+																		data.playing.artists
+																			.length -
+																			1 ? (
+																			<></>
+																		) : (
+																			<>, </>
+																		)}
+																	</span>
+																),
 															)}
 														</span>
-													))}
-												</span>
+													</Stack>
+													<div style={{ flexGrow: 1 }} />
+													{data.context?.external_urls.spotify && (
+														<Tooltip
+															withinPortal
+															withArrow
+															label={
+																data.context.type[0].toUpperCase() +
+																data.context.type.slice(1)
+															}
+														>
+															<ActionIcon
+																component='a'
+																href={
+																	data.context.external_urls
+																		.spotify
+																}
+																target='_blank'
+															>
+																<TbPlaylist size={16} />
+															</ActionIcon>
+														</Tooltip>
+													)}
+													{data.device.type !== 'Unknown' && (
+														<Tooltip
+															withinPortal
+															withArrow
+															label={data.device.name}
+														>
+															<div style={{ lineHeight: 1 }}>
+																{data.device.type === 'Computer' ? (
+																	<TbDeviceLaptop />
+																) : data.device.type ===
+																		'Smartphone' ||
+																  data.device.type === 'Tablet' ? (
+																	<TbDeviceMobile />
+																) : data.device.type ===
+																  'Automobile' ? (
+																	<TbCar />
+																) : data.device.type ===
+																		'AudioDongle' ||
+																  data.device.type === 'Speaker' ? (
+																	<TbDeviceSpeaker />
+																) : (
+																	<TbQuestionMark />
+																)}
+															</div>
+														</Tooltip>
+													)}
+												</Group>
 											</Stack>
-											<div style={{ flexGrow: 1 }} />
-											{data.context?.external_urls.spotify && (
-												<Tooltip
-													withinPortal
-													withArrow
-													label={
-														data.context.type[0].toUpperCase() +
-														data.context.type.slice(1)
-													}
-												>
-													<ActionIcon
-														component='a'
-														href={data.context.external_urls.spotify}
-														target='_blank'
-													>
-														<TbPlaylist size={16} />
-													</ActionIcon>
-												</Tooltip>
-											)}
-											{data.device.type !== 'Unknown' && (
-												<Tooltip
-													withinPortal
-													withArrow
-													label={data.device.name}
-												>
-													<div style={{ lineHeight: 1 }}>
-														{data.device.type === 'Computer' ? (
-															<TbDeviceLaptop />
-														) : data.device.type === 'Smartphone' ||
-														  data.device.type === 'Tablet' ? (
-															<TbDeviceMobile />
-														) : data.device.type === 'Automobile' ? (
-															<TbCar />
-														) : data.device.type === 'AudioDongle' ||
-														  data.device.type === 'Speaker' ? (
-															<TbDeviceSpeaker />
-														) : (
-															<TbQuestionMark />
-														)}
-													</div>
-												</Tooltip>
-											)}
 										</Group>
 										<Group align='center'>
 											<TbArrowsShuffle
@@ -178,7 +235,9 @@ export const NowPlaying = () => {
 											<div style={{ flexGrow: 1 }}>
 												<Progress
 													size='sm'
-													styles={{ bar: { backgroundColor: spotify } }}
+													styles={{
+														bar: { backgroundColor: spotify },
+													}}
 													value={
 														(progressSecs / data.playing.duration) * 100
 													}
@@ -197,9 +256,9 @@ export const NowPlaying = () => {
 												/>
 											)}
 										</Group>
-									</Stack>
-								</Group>
-							</Card>
+									</Box>
+								</Card>
+							</Tooltip>
 						)}
 					</>
 				)}

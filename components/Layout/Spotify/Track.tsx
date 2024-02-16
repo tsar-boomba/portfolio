@@ -15,16 +15,18 @@ export const Track = ({ track, imgSize }: { track: TrackType; imgSize?: number }
 					/>
 				</Anchor>
 				<Stack align='start' spacing={0}>
-					<Title
-						order={4}
-						style={{
-							textOverflow: 'ellipsis',
-							overflow: 'hidden',
-							whiteSpace: 'nowrap',
-						}}
-					>
-						{track.name}
-					</Title>
+					<Anchor href={track.url ?? undefined} target='_blank'>
+						<Title
+							order={4}
+							style={{
+								textOverflow: 'ellipsis',
+								overflow: 'hidden',
+								whiteSpace: 'nowrap',
+							}}
+						>
+							{track.name}
+						</Title>
+					</Anchor>
 					<span>
 						{track.artists.map((artist, i) => (
 							<span key={artist.name + i}>

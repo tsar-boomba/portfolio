@@ -47,7 +47,7 @@ export const SpotifyModal = () => {
 						</Tabs.Tab>
 					</Tabs.List>
 
-					<Tabs.Panel value='shortTerm' pt='xs' style={{ overflowY: 'scroll' }}>
+					<Tabs.Panel value='shortTerm' pt='xs'>
 						<Stack>
 							{topTracks.shortTermTop.map((track) => (
 								<Track key={track.name} track={track} />
