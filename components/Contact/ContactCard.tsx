@@ -28,8 +28,7 @@ const ContactCard: React.FC<CopyButtonProps> = ({ text, children, icon, href }) 
 			offset={10}
 			position='bottom'
 			radius='xl'
-			transition='slide-down'
-			transitionDuration={200}
+			transitionProps={{ transition: 'slide-down', duration: 200 }}
 			opened={clipboard.copied}
 		>
 			<Button

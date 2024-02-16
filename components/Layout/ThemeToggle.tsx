@@ -35,8 +35,16 @@ const ThemeToggle = () => {
 	return (
 		<Group position='center' my={30}>
 			<div className={classes.root}>
-				<CgSun className={cx(classes.icon, classes.iconLight)} size={18} />
-				<CgMoon className={cx(classes.icon, classes.iconDark)} size={18} />
+				<CgSun
+					className={cx(classes.icon, classes.iconLight)}
+					size={18}
+					display={colorScheme === 'dark' ? 'block' : 'none'}
+				/>
+				<CgMoon
+					className={cx(classes.icon, classes.iconDark)}
+					size={18}
+					display={colorScheme !== 'dark' ? 'block' : 'none'}
+				/>
 				<Switch
 					checked={colorScheme === 'dark'}
 					onChange={() => toggleColorScheme()}

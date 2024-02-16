@@ -47,7 +47,7 @@ const useStyles = createStyles((theme) => ({
 	},
 
 	controls: {
-		marginTop: theme.spacing.xl * 2,
+		marginTop: `calc(${theme.spacing.xl} * 2)`,
 
 		[BREAKPOINT]: {
 			marginTop: theme.spacing.xl,
@@ -121,7 +121,7 @@ const Contact = () => {
 					</ContactCard>
 					<ContactCard
 						icon={<SiLinkedin size={20} />}
-						href='https://www.linkedin.com/in/isaiah-gamble-18b298252/'
+						href='https://www.linkedin.com/in/igamble/'
 					>
 						<Text component='h1' align='center'>
 							Linkedin

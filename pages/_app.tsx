@@ -11,11 +11,18 @@ import { Layout } from '../components/Layout';
 import { setCookie } from 'ez-cookies';
 import { ColorProvider } from '../components/ColorProvider';
 import { useColorScheme, useLocalStorage } from '@mantine/hooks';
+import { preload } from 'swr';
+import { FUNCTION_URL } from '@/components/Layout/Spotify';
+import { fetcher } from '@/utils/fetcher';
+import { ModalsProvider } from '@mantine/modals';
 
 interface _App<P = {}> {
 	(props: AppProps & P): ReactNode;
 	getInitialProps?(ctx: AppContext): Promise<AppInitialProps & P>;
 }
+
+preload(FUNCTION_URL, fetcher);
+preload(FUNCTION_URL + '/playing', fetcher);
 
 const MyApp: _App<{ colorScheme: ColorScheme; primaryColor: DefaultMantineColor }> = (props) => {
 	const preferredColorScheme = useColorScheme();
@@ -88,9 +95,11 @@ const MyApp: _App<{ colorScheme: ColorScheme; primaryColor: DefaultMantineColor 
 					}}
 				>
 					<ColorProvider primaryColor={primaryColor} setPrimaryColor={setPrimaryColor}>
-						<Layout>
-							<Component {...pageProps} />
-						</Layout>
+						<ModalsProvider>
+							<Layout>
+								<Component {...pageProps} />
+							</Layout>
+						</ModalsProvider>
 					</ColorProvider>
 				</MantineProvider>
 			</ColorSchemeProvider>

@@ -1,4 +1,4 @@
-const isProd = process.env.NODE_ENV === 'production';// c
+const isProd = process.env.NODE_ENV === 'production';
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
 	enabled: process.env.ANALYZE === 'true',
 });
@@ -6,6 +6,5 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 /** @type {import('next').NextConfig} */
 module.exports = withBundleAnalyzer({
 	reactStrictMode: true,
-	swcMinify: true,
 	// assetPrefix: isProd ? '/portfolio/' : ''
 });

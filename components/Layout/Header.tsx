@@ -8,10 +8,16 @@ import {
 	useMantineTheme,
 	Collapse,
 	Paper,
+	ActionIcon,
+	Title,
 } from '@mantine/core';
 import { useToggle } from '@mantine/hooks';
 import ThemeToggle from './ThemeToggle';
 import ColorPicker from './ColorPicker';
+import { SiSpotify } from 'react-icons/si';
+import { spotify } from '@/utils/brandColors';
+import { openModal } from '@mantine/modals';
+import { SpotifyModal } from './Spotify/SpotifyModal';
 
 const useStyles = createStyles((theme) => ({
 	root: {
@@ -20,7 +26,7 @@ const useStyles = createStyles((theme) => ({
 		position: 'fixed',
 		top: 0,
 		left: 0,
-		zIndex: 1,
+		zIndex: 2,
 	},
 
 	header: {
@@ -175,6 +181,19 @@ const Header: React.FC<HeaderSimpleProps> = ({ links }) => {
 				<Group>
 					<ThemeToggle />
 					<ColorPicker />
+					<ActionIcon
+						variant='filled'
+						style={{ backgroundColor: spotify }}
+						onClick={() =>
+							openModal({
+								title: <Title style={{ color: spotify }}>Top Tracks</Title>,
+								children: <SpotifyModal />,
+								lockScroll: true,
+							})
+						}
+					>
+						<SiSpotify size={16} />
+					</ActionIcon>
 				</Group>
 
 				<div className={classes.mobileMenu} ref={menuRef}>

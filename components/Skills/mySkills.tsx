@@ -2,7 +2,6 @@ import { SkillCardProps } from './SkillCard';
 import {
 	SiC,
 	SiCss3,
-	SiJava,
 	SiMongodb,
 	SiNextdotjs,
 	SiNodedotjs,
@@ -104,24 +103,13 @@ export const mySkills: SkillCardProps[] = [
 		),
 	},
 	{
-		name: <Text component='h1'>Java</Text>,
-		icon: <SiJava size={36} color={java} />,
-		description: (
-			<Text>
-				Through using Java for robot programming on my robotics team I have become very
-				familiar with the language. I have experience writing unit tests with JUnit and a
-				small amount of experience with Spring.
-			</Text>
-		),
-	},
-	{
 		name: <Text component='h1'>Rust</Text>,
 		icon: <SiRust size={36} color={rust} />,
 		description: <Text>I love rust</Text>,
 	},
-	{
-		name: <Text component='h1'>C</Text>,
-		icon: <SiC size={36} color={c} />,
-		description: <Text>C is cool</Text>,
-	},
+	// {
+	// 	name: <Text component='h1'>C</Text>,
+	// 	icon: <SiC size={36} color={c} />,
+	// 	description: <Text>C is cool</Text>,
+	// },
 ];

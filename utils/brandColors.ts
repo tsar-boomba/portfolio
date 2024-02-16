@@ -16,3 +16,4 @@ export const mui = '#007FFF';
 export const rust = '#F74C00';
 export const c = '#283593';
 export const docker = '#1D63ED';
+export const spotify = '#1db954';

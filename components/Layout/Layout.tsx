@@ -1,5 +1,6 @@
 import { ReactNode } from 'react';
 import Header from './Header';
+import { NowPlaying } from './Spotify';
 
 const Layout: React.FC<{ children: ReactNode }> = ({ children }) => {
 	return (
@@ -14,6 +15,7 @@ const Layout: React.FC<{ children: ReactNode }> = ({ children }) => {
 				]}
 			/>
 			{children}
+			<NowPlaying />
 		</div>
 	);
 };
