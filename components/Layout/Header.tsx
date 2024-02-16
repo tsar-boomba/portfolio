@@ -10,6 +10,7 @@ import {
 	Paper,
 	ActionIcon,
 	Title,
+	Tooltip,
 } from '@mantine/core';
 import { useToggle } from '@mantine/hooks';
 import ThemeToggle from './ThemeToggle';
@@ -18,6 +19,7 @@ import { SiSpotify } from 'react-icons/si';
 import { spotify } from '@/utils/brandColors';
 import { openModal } from '@mantine/modals';
 import { SpotifyModal } from './Spotify/SpotifyModal';
+import { TbExternalLink } from 'react-icons/tb';
 
 const useStyles = createStyles((theme) => ({
 	root: {
@@ -146,7 +148,7 @@ const Header: React.FC<HeaderSimpleProps> = ({ links }) => {
 				location.href = link.link;
 			}}
 		>
-			{link.label}
+			{link.label} {link.label === 'Blog' && <TbExternalLink />}
 		</a>
 	));
 
@@ -181,19 +183,21 @@ const Header: React.FC<HeaderSimpleProps> = ({ links }) => {
 				<Group>
 					<ThemeToggle />
 					<ColorPicker />
-					<ActionIcon
-						variant='filled'
-						style={{ backgroundColor: spotify }}
-						onClick={() =>
-							openModal({
-								title: <Title style={{ color: spotify }}>Top Tracks</Title>,
-								children: <SpotifyModal />,
-								lockScroll: true,
-							})
-						}
-					>
-						<SiSpotify size={16} />
-					</ActionIcon>
+					<Tooltip withinPortal withArrow label='My Top Tracks'>
+						<ActionIcon
+							variant='filled'
+							style={{ backgroundColor: spotify }}
+							onClick={() =>
+								openModal({
+									title: <Title style={{ color: spotify }}>Top Tracks</Title>,
+									children: <SpotifyModal />,
+									lockScroll: true,
+								})
+							}
+						>
+							<SiSpotify size={16} />
+						</ActionIcon>
+					</Tooltip>
 				</Group>
 
 				<div className={classes.mobileMenu} ref={menuRef}>

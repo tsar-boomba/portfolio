@@ -7,6 +7,7 @@ import {
 	Stack,
 	Text,
 	ThemeIcon,
+	Tooltip,
 	useMantineTheme,
 } from '@mantine/core';
 import { useToggle, useClickOutside } from '@mantine/hooks';
@@ -65,9 +66,11 @@ const ColorPicker = () => {
 		<div ref={ref} className={classes.wrapper}>
 			<Popover opened={opened} position='bottom' withArrow withinPortal={false}>
 				<Popover.Target>
-					<ActionIcon className={classes.menuButton} onClick={() => toggleOpened()}>
-						<CgDrop color='white' />
-					</ActionIcon>
+					<Tooltip withinPortal withArrow label='Change Color'>
+						<ActionIcon className={classes.menuButton} onClick={() => toggleOpened()}>
+							<CgDrop color='white' />
+						</ActionIcon>
+					</Tooltip>
 				</Popover.Target>
 				<Popover.Dropdown>
 					<Box sx={{ minWidth: 150, maxWidth: 300 }} py={8}>
