@@ -5,12 +5,8 @@ import {
 	Box,
 	Card,
 	Group,
-	Image,
-	Popover,
 	Progress,
 	Stack,
-	Text,
-	ThemeIcon,
 	Title,
 	Tooltip,
 	Transition,
@@ -24,15 +20,11 @@ import { spotify } from '@/utils/brandColors';
 import { useEffect, useRef, useState } from 'react';
 import { useInterval, useTimeout } from '@mantine/hooks';
 import {
-	TbArrowLoopRight,
-	TbArrowLoopRight2,
 	TbArrowsShuffle,
 	TbCar,
 	TbDeviceLaptop,
 	TbDeviceMobile,
 	TbDeviceSpeaker,
-	TbDeviceTablet,
-	TbPhone,
 	TbPlaylist,
 	TbQuestionMark,
 	TbRepeat,
@@ -104,14 +96,13 @@ export const NowPlaying = () => {
 								label='Isaiah is currently listening to...'
 							>
 								<Card
-									style={{ ...styles }}
 									maw={`calc(100vw - ${rem(40)})`}
 									withBorder
 									shadow='md'
 									pos='relative'
 									p={0}
 								>
-									<Box p='xs'>
+									<Box p='xs' style={{ ...styles }}>
 										<Group spacing='xs' pb={rem(4)} noWrap>
 											{/* <Anchor
 												href={data.playing.url ?? undefined}

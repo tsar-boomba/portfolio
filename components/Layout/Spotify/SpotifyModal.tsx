@@ -1,17 +1,14 @@
 import { fetcher } from '@/utils/fetcher';
-import { Loader, ScrollArea, Stack, Tabs } from '@mantine/core';
+import { Loader, Stack, Tabs } from '@mantine/core';
 import useSWRImmutable from 'swr/immutable';
-import { Data, Playing } from './types';
-import { SiSpotify } from 'react-icons/si';
+import { Data } from './types';
 import { spotify } from '@/utils/brandColors';
-import useSWR from 'swr';
 import { Track } from './Track';
 import { useState } from 'react';
 import { FUNCTION_URL } from '.';
 
 export const SpotifyModal = () => {
 	const { data: topTracks } = useSWRImmutable<Data>(FUNCTION_URL, fetcher);
-	const { data: playing } = useSWR<Playing | null>(FUNCTION_URL + '/playing', fetcher);
 	const [term, setTerm] = useState<'shortTerm' | 'midTerm' | 'longTerm'>('shortTerm');
 
 	return (
