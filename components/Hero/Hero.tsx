@@ -1,4 +1,13 @@
-import { createStyles, Container, Text, useMantineTheme } from '@mantine/core';
+import {
+	createStyles,
+	Container,
+	Text,
+	useMantineTheme,
+	Button,
+	Center,
+	Stack,
+	rem,
+} from '@mantine/core';
 
 const BREAKPOINT = '@media (max-width: 755px)';
 
@@ -15,8 +24,8 @@ const useStyles = createStyles((theme) => ({
 		paddingBottom: 120,
 
 		[BREAKPOINT]: {
-			paddingBottom: 80,
-			paddingTop: 100,
+			paddingBottom: 40,
+			paddingTop: 80,
 		},
 	},
 
@@ -54,20 +63,14 @@ const useStyles = createStyles((theme) => ({
 	},
 
 	control: {
-		height: 54,
 		paddingLeft: 38,
 		paddingRight: 38,
 
 		[BREAKPOINT]: {
-			height: 54,
+			fontSize: rem(20),
 			paddingLeft: 18,
 			paddingRight: 18,
-			flex: 1,
 		},
-	},
-
-	githubControl: {
-		borderWidth: 2,
 	},
 }));
 
@@ -78,22 +81,33 @@ const Hero = () => {
 	return (
 		<div id='hero' className={classes.wrapper}>
 			<Container size={700} className={classes.inner}>
-				<Text
-					component='h1'
-					variant='gradient'
-					className={classes.title}
-					gradient={{
-						from: theme.colors[theme.primaryColor][8],
-						to: theme.colors[theme.primaryColor][5],
-						deg: 75,
-					}}
-					align='center'
-				>
-					Isaiah Gamble
-				</Text>
-				<Text className={classes.description} color='dimmed'>
-					Full-stack developer with real-world project experience.
-				</Text>
+				<Stack align='center' justify='center'>
+					<Text
+						component='h1'
+						variant='gradient'
+						className={classes.title}
+						gradient={{
+							from: theme.colors[theme.primaryColor][8],
+							to: theme.colors[theme.primaryColor][5],
+							deg: 75,
+						}}
+						align='center'
+					>
+						Isaiah Gamble
+					</Text>
+					<Text className={classes.description} color='dimmed'>
+						Full-stack developer with real-world project experience.
+					</Text>
+					<Button
+						component='a'
+						className={classes.control}
+						size='xl'
+						fz={rem(24)}
+						href='https://docs.google.com/gview?url=https://docs.google.com/document/d/1WAgMu51cO2KIKjmv9Z4uf-WnF_XtYkld/export?format=pdf'
+					>
+						Resume
+					</Button>
+				</Stack>
 			</Container>
 		</div>
 	);

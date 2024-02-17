@@ -58,7 +58,7 @@ export const PuzzleGame = () => {
 	if (firstRender.current || (screen.width !== 0 && screen.width <= 1000))
 		return (
 			<Container
-				py={60}
+				py={40}
 				sx={{
 					flexDirection: 'column',
 					backgroundColor:

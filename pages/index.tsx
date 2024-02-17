@@ -13,7 +13,7 @@ const Home = () => {
 			<Projects />
 			<Contact />
 			<PuzzleGame />
-			<Container pt={60} pb={140}>
+			<Container pt={40} pb={140}>
 				<Text align='center'>
 					This website, like everything I program is dedicated to Hank. Without you, I
 					wouldn't be where I am today. Thank you.

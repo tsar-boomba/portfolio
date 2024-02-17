@@ -17,8 +17,8 @@ const useStyles = createStyles((theme) => ({
 		paddingBottom: 100,
 
 		[BREAKPOINT]: {
-			paddingBottom: 80,
-			paddingTop: 80,
+			paddingBottom: 40,
+			paddingTop: 40,
 		},
 	},
 
