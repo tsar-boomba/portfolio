@@ -13,7 +13,6 @@ import { SiGithub } from 'react-icons/si';
 
 const useStyles = createStyles((theme) => ({
 	card: {
-		backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[7] : theme.white,
 		maxWidth: 500,
 	},
 

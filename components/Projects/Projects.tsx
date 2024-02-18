@@ -8,7 +8,7 @@ const useStyles = createStyles((theme) => ({
 	wrapper: {
 		position: 'relative',
 		boxSizing: 'border-box',
-		backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[8] : theme.white,
+		backgroundColor: theme.colorScheme === 'dark' ? undefined : theme.colors.gray[0],
 	},
 
 	inner: {
@@ -64,18 +64,6 @@ const useStyles = createStyles((theme) => ({
 			paddingLeft: 18,
 			paddingRight: 18,
 			flex: 1,
-		},
-	},
-
-	githubControl: {
-		borderWidth: 2,
-		borderColor: theme.colorScheme === 'dark' ? 'transparent' : theme.colors.dark[9],
-		backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[5] : 'transparent',
-
-		'&:hover': {
-			backgroundColor: `${
-				theme.colorScheme === 'dark' ? theme.colors.dark[6] : theme.colors.gray[0]
-			} !important`,
 		},
 	},
 }));

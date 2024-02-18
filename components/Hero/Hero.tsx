@@ -1,13 +1,4 @@
-import {
-	createStyles,
-	Container,
-	Text,
-	useMantineTheme,
-	Button,
-	Center,
-	Stack,
-	rem,
-} from '@mantine/core';
+import { createStyles, Container, Text, useMantineTheme, Button, Stack, rem } from '@mantine/core';
 
 const BREAKPOINT = '@media (max-width: 755px)';
 
@@ -103,6 +94,7 @@ const Hero = () => {
 						className={classes.control}
 						size='xl'
 						fz={rem(24)}
+						target='_blank'
 						href='https://docs.google.com/gview?url=https://docs.google.com/document/d/1WAgMu51cO2KIKjmv9Z4uf-WnF_XtYkld/export?format=pdf'
 					>
 						Resume

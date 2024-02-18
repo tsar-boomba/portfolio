@@ -14,7 +14,6 @@ import { Text } from '@mantine/core';
 import {
 	c,
 	css,
-	java,
 	mongodb,
 	nodeJs,
 	postgres,
@@ -26,7 +25,7 @@ import {
 export const mySkills: SkillCardProps[] = [
 	{
 		name: <Text component='h1'>TypeScript</Text>,
-		icon: <SiTypescript size={36} color={typescript} />,
+		icon: <SiTypescript size={18} color={typescript} />,
 		description: (
 			<Text>
 				I began my development journey with TypeScript and I can say wth certainty I
@@ -38,7 +37,7 @@ export const mySkills: SkillCardProps[] = [
 	},
 	{
 		name: <Text component='h1'>React</Text>,
-		icon: <SiReact size={36} color={react} />,
+		icon: <SiReact size={18} color={react} />,
 		description: (
 			<Text>
 				React was my first front-end library/framework and I enjoy making beautiful and
@@ -48,7 +47,7 @@ export const mySkills: SkillCardProps[] = [
 	},
 	{
 		name: <Text component='h1'>CSS</Text>,
-		icon: <SiCss3 size={36} color={css} />,
+		icon: <SiCss3 size={18} color={css} />,
 		description: (
 			<Text>
 				Through my many projects I have gained experience with css in many forms. I have
@@ -59,7 +58,7 @@ export const mySkills: SkillCardProps[] = [
 	},
 	{
 		name: <Text component='h1'>Node.js</Text>,
-		icon: <SiNodedotjs size={36} color={nodeJs} />,
+		icon: <SiNodedotjs size={18} color={nodeJs} />,
 		description: (
 			<Text>
 				I've used node.js to build the backend for all of my full-stack projects. I have
@@ -69,7 +68,7 @@ export const mySkills: SkillCardProps[] = [
 	},
 	{
 		name: <Text component='h1'>Next.js</Text>,
-		icon: <SiNextdotjs size={36} />,
+		icon: <SiNextdotjs size={18} />,
 		description: (
 			<Text>
 				I've tried different ways to create React projects like gatsby and create-react-app,
@@ -81,7 +80,7 @@ export const mySkills: SkillCardProps[] = [
 	},
 	{
 		name: <Text component='h1'>MongoDB</Text>,
-		icon: <SiMongodb size={36} color={mongodb} />,
+		icon: <SiMongodb size={18} color={mongodb} />,
 		description: (
 			<Text>
 				MongoDB is a document based Database which I have become very familiar with, using
@@ -93,7 +92,7 @@ export const mySkills: SkillCardProps[] = [
 	},
 	{
 		name: <Text component='h1'>PostgreSQL</Text>,
-		icon: <SiPostgresql size={36} color={postgres} />,
+		icon: <SiPostgresql size={18} color={postgres} />,
 		description: (
 			<Text>
 				PostgreSQL is one of the most widely used relational databases. Through using it in
@@ -104,12 +103,23 @@ export const mySkills: SkillCardProps[] = [
 	},
 	{
 		name: <Text component='h1'>Rust</Text>,
-		icon: <SiRust size={36} color={rust} />,
+		icon: <SiRust size={18} color={rust} />,
 		description: <Text>I love rust</Text>,
 	},
-	// {
-	// 	name: <Text component='h1'>C</Text>,
-	// 	icon: <SiC size={36} color={c} />,
-	// 	description: <Text>C is cool</Text>,
-	// },
+	{
+		name: <Text component='h1'>Java</Text>,
+		icon: (
+			<img
+				src='https://www.vectorlogo.zone/logos/java/java-icon.svg'
+				height={18}
+				width={18}
+			/>
+		),
+		description: <Text>java</Text>,
+	},
+	{
+		name: <Text component='h1'>C</Text>,
+		icon: <SiC size={18} color={c} />,
+		description: <Text>C is cool</Text>,
+	},
 ];

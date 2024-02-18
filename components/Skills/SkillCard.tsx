@@ -10,8 +10,7 @@ export interface SkillCardProps {
 
 const useStyles = createStyles((theme) => ({
 	card: {
-		backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[8] : undefined,
-		width: 300,
+		width: 160,
 	},
 
 	name: {},
@@ -26,7 +25,7 @@ const useStyles = createStyles((theme) => ({
 
 	icon: {
 		padding: 8,
-		margin: 8,
+		margin: '8px 0 8px 8px',
 		borderRadius: theme.radius.sm,
 		backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[5] : theme.colors.gray[0],
 		lineHeight: 0,
@@ -47,8 +46,8 @@ const SkillCard: React.FC<SkillCardProps> = ({ icon, name, description }) => {
 	return (
 		<Paper withBorder shadow='xs' className={classes.card}>
 			<Group position='apart' align='center'>
-				<Group>
-					<Box className={classes.icon}>{icon}</Box>{' '}
+				<Group spacing='xs'>
+					<Box className={classes.icon}>{icon}</Box>
 					<Box className={classes.name}>{name}</Box>
 				</Group>
 			</Group>

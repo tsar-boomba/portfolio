@@ -9,6 +9,7 @@ const useStyles = createStyles((theme) => ({
 		zIndex: 1,
 		boxShadow: '0px 0px 24px 0px #00000080',
 		clipPath: 'inset(0px -24px 0px 0px)',
+		backgroundColor: theme.colorScheme === 'dark' ? undefined : theme.colors.gray[0],
 	},
 	grid: {
 		border: `1px solid ${theme.colorScheme === 'dark' ? 'white' : 'black'}`,

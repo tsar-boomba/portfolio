@@ -44,6 +44,11 @@ const useStyles = createStyles((theme) => ({
 		fontFamily: `Greycliff CF, ${theme.fontFamily}`,
 		fontSize: 30,
 		fontWeight: 900,
+		overflow: 'hidden',
+		textOverflow: 'ellipsis',
+		wordWrap: 'break-word',
+		lineHeight: '30px',
+		maxHeight: 30,
 		margin: 0,
 		padding: 0,
 		color: theme.colorScheme === 'dark' ? theme.white : theme.black,
@@ -180,7 +185,7 @@ const Header: React.FC<HeaderSimpleProps> = ({ links }) => {
 					size='sm'
 				/>
 
-				<Group>
+				<Group noWrap>
 					<ThemeToggle />
 					<ColorPicker />
 					<Tooltip withinPortal withArrow label='My Top Tracks'>

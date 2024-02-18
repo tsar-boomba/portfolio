@@ -8,7 +8,7 @@ const useStyles = createStyles((theme) => ({
 	wrapper: {
 		position: 'relative',
 		boxSizing: 'border-box',
-		backgroundColor: theme.colorScheme === 'dark' ? undefined : theme.colors.gray[0],
+		backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[8] : theme.white,
 	},
 
 	inner: {
@@ -66,18 +66,6 @@ const useStyles = createStyles((theme) => ({
 			flex: 1,
 		},
 	},
-
-	githubControl: {
-		borderWidth: 2,
-		borderColor: theme.colorScheme === 'dark' ? 'transparent' : theme.colors.dark[9],
-		backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[5] : 'transparent',
-
-		'&:hover': {
-			backgroundColor: `${
-				theme.colorScheme === 'dark' ? theme.colors.dark[6] : theme.colors.gray[0]
-			} !important`,
-		},
-	},
 }));
 
 const Skills = () => {
@@ -86,7 +74,7 @@ const Skills = () => {
 
 	return (
 		<div id='skills' className={classes.wrapper}>
-			<Container size={700} className={classes.inner}>
+			<Container size={900} className={classes.inner}>
 				<Text
 					component='h1'
 					variant='gradient'
@@ -100,7 +88,7 @@ const Skills = () => {
 				>
 					Skills
 				</Text>
-				<Group align='start' position='center' sx={{ marginTop: 24 }}>
+				<Group align='start' position='center' mt={24}>
 					{mySkills.map((skill, i) => (
 						<SkillCard key={i} {...skill} />
 					))}

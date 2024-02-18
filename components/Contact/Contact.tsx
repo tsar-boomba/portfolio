@@ -1,6 +1,7 @@
 import { createStyles, Container, Text, Group, useMantineTheme } from '@mantine/core';
 import { SiDiscord, SiGithub, SiGmail, SiLinkedin } from 'react-icons/si';
 import ContactCard from './ContactCard';
+import { TbFile } from 'react-icons/tb';
 
 const BREAKPOINT = '@media (max-width: 755px)';
 
@@ -86,7 +87,7 @@ const Contact = () => {
 
 	return (
 		<div id='contact' className={classes.wrapper}>
-			<Container size={700} className={classes.inner}>
+			<Container size={900} className={classes.inner}>
 				<Text
 					component='h1'
 					variant='gradient'
@@ -125,6 +126,14 @@ const Contact = () => {
 					>
 						<Text component='h1' align='center'>
 							Linkedin
+						</Text>
+					</ContactCard>
+					<ContactCard
+						icon={<TbFile size={20} />}
+						href='https://docs.google.com/gview?url=https://docs.google.com/document/d/1WAgMu51cO2KIKjmv9Z4uf-WnF_XtYkld/export?format=pdf'
+					>
+						<Text component='h1' align='center'>
+							Resume
 						</Text>
 					</ContactCard>
 				</Group>
