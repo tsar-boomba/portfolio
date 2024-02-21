@@ -64,3 +64,9 @@ export type Data = {
 	midTermTop: Track[];
 	longTermTop: Track[];
 };
+
+export type RecentlyPlayed = {
+	track: Track;
+	context: Context | null;
+	playedAt: string;
+};
