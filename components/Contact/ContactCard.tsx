@@ -33,6 +33,7 @@ const ContactCard: React.FC<CopyButtonProps> = ({ text, children, icon, href }) 
 		>
 			<Button
 				component='a'
+				download={false}
 				variant='outline'
 				size='xl'
 				className={classes.button}
