@@ -130,9 +130,9 @@ const Contact = () => {
 					</ContactCard>
 					<ContactCard
 						icon={<TbFile size={20} />}
-						href={`https://docs.google.com/gview?url=${encodeURIComponent(
-							'https://docs.google.com/document/d/1WAgMu51cO2KIKjmv9Z4uf-WnF_XtYkld/export?format=pdf',
-						)}`}
+						href={
+							'https://docs.google.com/document/d/1WAgMu51cO2KIKjmv9Z4uf-WnF_XtYkld/export?format=pdf&attachment=false'
+						}
 					>
 						<Text component='h1' align='center'>
 							Resume

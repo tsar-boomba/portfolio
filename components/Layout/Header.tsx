@@ -21,6 +21,8 @@ import { openModal } from '@mantine/modals';
 import { SpotifyModal } from './Spotify/SpotifyModal';
 import { TbExternalLink } from 'react-icons/tb';
 
+const BREAKPOINT = 650;
+
 const useStyles = createStyles((theme) => ({
 	root: {
 		height: 60,
@@ -59,13 +61,13 @@ const useStyles = createStyles((theme) => ({
 	},
 
 	links: {
-		[theme.fn.smallerThan('xs')]: {
+		[theme.fn.smallerThan(BREAKPOINT)]: {
 			display: 'none',
 		},
 	},
 
 	burger: {
-		[theme.fn.largerThan('xs')]: {
+		[theme.fn.largerThan(BREAKPOINT)]: {
 			display: 'none',
 		},
 	},
@@ -79,7 +81,7 @@ const useStyles = createStyles((theme) => ({
 		left: 0,
 		zIndex: 1,
 		backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[7] : theme.white,
-		[theme.fn.largerThan('xs')]: {
+		[theme.fn.largerThan(BREAKPOINT)]: {
 			display: 'none',
 		},
 	},

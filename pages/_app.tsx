@@ -23,6 +23,13 @@ interface _App<P = {}> {
 
 preload(FUNCTION_URL, fetcher);
 preload(FUNCTION_URL + '/playing', fetcher);
+fetch(
+	'https://docs.google.com/document/d/1WAgMu51cO2KIKjmv9Z4uf-WnF_XtYkld/export?format=pdf&attachment=false',
+	{
+		mode: 'no-cors',
+		cache: 'reload',
+	},
+);
 
 const MyApp: _App<{ colorScheme: ColorScheme; primaryColor: DefaultMantineColor }> = (props) => {
 	const preferredColorScheme = useColorScheme();
