@@ -47,7 +47,7 @@ export const SpotifyModal = () => {
 							value='longTerm'
 							style={{ borderColor: term === 'longTerm' ? spotify : undefined }}
 						>
-							All Time
+							Year
 						</Tabs.Tab>
 					</Tabs.List>
 
