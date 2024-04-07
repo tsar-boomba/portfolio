@@ -104,7 +104,7 @@ export const linkClass = style({
 		[vars.darkSelector]: {
 			color: vars.colors.dark[0],
 		},
-		['&:hover' + vars.darkSelector]: {
+		[vars.darkSelector + ':hover']: {
 			backgroundColor: vars.colors.dark[6],
 		},
 	},
