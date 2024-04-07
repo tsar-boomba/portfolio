@@ -17,3 +17,4 @@ export const rust = '#F74C00';
 export const c = '#283593';
 export const docker = '#1D63ED';
 export const spotify = '#1db954';
+export const esprissif = '#E8362D';

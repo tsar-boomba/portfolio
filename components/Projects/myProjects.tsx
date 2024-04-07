@@ -2,6 +2,7 @@ import { Anchor, Code, List, Text } from '@mantine/core';
 import {
 	SiAmazonaws,
 	SiDocker,
+	SiEspressif,
 	SiGatsby,
 	SiGithub,
 	SiJest,
@@ -21,6 +22,7 @@ import { TbTool } from 'react-icons/tb';
 import {
 	aws,
 	docker,
+	esprissif,
 	gatsby,
 	jest,
 	mongodb,
@@ -389,46 +391,42 @@ export const myProjects: ProjectCardProps[] = [
 			},
 		],
 	},
-	// {
-	// 	title: 'Portfolio Site',
-	// 	mainTech: 'React',
-	// 	repo: githubUrl('portfolio'),
-	// 	deployed: 'https://igamble.dev',
-	// 	images: ['/portfolio/hero.png'],
-	// 	description: (
-	// 		<Text size='sm' mt='sm'>
-	// 			This site was made to display my wide array of projects and experience in
-	// 			development. It uses{' '}
-	// 			<Anchor
-	// 				size='sm'
-	// 				target='_blank'
-	// 				rel='noopener noreferrer'
-	// 				href='https://mantine.dev'
-	// 			>
-	// 				mantine
-	// 			</Anchor>
-	// 			(if you haven't heard of it, its great, I'd deficiently use it over MUI) for theming
-	// 			and components. It is deployed on github pages using next.js' export feature to
-	// 			export static files for serving.
-	// 		</Text>
-	// 	),
-	// 	technologies: [
-	// 		{
-	// 			icon: <SiReact size={16} color={react} />,
-	// 			name: 'React',
-	// 		},
-	// 		{
-	// 			icon: <SiNextdotjs size={16} />,
-	// 			name: 'Next.js',
-	// 		},
-	// 		{
-	// 			icon: <SiTypescript size={16} color={typescript} />,
-	// 			name: 'TypeScript',
-	// 		},
-	// 		{
-	// 			icon: <SiVercel size={16} />,
-	// 			name: 'Vercel',
-	// 		},
-	// 	],
-	// },
+	{
+		title: 'ESP Spotify Display',
+		mainTech: 'Rust',
+		repo: githubUrl('esp-display'),
+		images: ['/esp-display/demo.jpg'],
+		description: (
+			<Text size='sm' mt='sm'>
+				A small embedded project that shows what I'm listening to on Spotify by using{' '}
+				<Anchor href='https://github.com/tsar-boomba/spotify-me' target='_blank'>
+					my Spotify service
+				</Anchor>
+				.
+				<List size='sm'>
+					<List.Item>ESP32-S3 board, written in Rust</List.Item>
+					<List.Item>Uses the SPI peripheral to communicate with the screen</List.Item>
+					<List.Item>Uses ESP-IDF's HTTP/S client to connect with my server</List.Item>
+					<List.Item>Uses WPA2(Personal / Enterprise) for Wifi authentication</List.Item>
+					<List.Item>
+						Uses FreeRTOS's tasks/threads to achieve non-blocking updates to UI
+					</List.Item>
+				</List>
+			</Text>
+		),
+		technologies: [
+			{
+				icon: <SiRust size={16} color={rust} />,
+				name: 'Rust',
+			},
+			{
+				icon: <SiEspressif size={16} color={esprissif} />,
+				name: 'Espressif',
+			},
+			{
+				icon: <TbTool size={16} />,
+				name: 'Embedded',
+			},
+		],
+	},
 ];
