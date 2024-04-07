@@ -22,7 +22,7 @@ export const SpotifyModal = () => {
 			) : (
 				<Tabs
 					value={term}
-					onTabChange={(t: typeof term | null) => setTerm(t ?? 'shortTerm')}
+					onChange={(t) => setTerm((t as typeof term | null) ?? 'shortTerm')}
 				>
 					<Tabs.List grow>
 						<Tabs.Tab

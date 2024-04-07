@@ -1,6 +1,7 @@
-import { Box, Collapse, createStyles, Group, Paper } from '@mantine/core';
+import { Box, Collapse, Group, Paper } from '@mantine/core';
 import { useToggle } from '@mantine/hooks';
 import { ReactNode } from 'react';
+import { card, descriptionClass, iconClass } from './SkillCard.css';
 
 export interface SkillCardProps {
 	icon: ReactNode;
@@ -8,51 +9,19 @@ export interface SkillCardProps {
 	description: ReactNode;
 }
 
-const useStyles = createStyles((theme) => ({
-	card: {
-		width: 160,
-	},
-
-	name: {},
-
-	description: {
-		padding: 8,
-		maxWidth: 300,
-		borderTop: `1px solid ${
-			theme.colorScheme === 'dark' ? theme.colors.dark[6] : theme.colors.gray[2]
-		}`,
-	},
-
-	icon: {
-		padding: 8,
-		margin: '8px 0 8px 8px',
-		borderRadius: theme.radius.sm,
-		backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[5] : theme.colors.gray[0],
-		lineHeight: 0,
-	},
-
-	chevron: {
-		margin: 8,
-		transition: 'transform 0.2s ease',
-		cursor: 'pointer',
-		color: theme.colors[theme.primaryColor][6],
-	},
-}));
-
 const SkillCard: React.FC<SkillCardProps> = ({ icon, name, description }) => {
-	const { classes } = useStyles();
-	const [opened, toggleOpened] = useToggle([false, true]);
+	const [opened] = useToggle([false, true]);
 
 	return (
-		<Paper withBorder shadow='xs' className={classes.card}>
-			<Group position='apart' align='center'>
-				<Group spacing='xs'>
-					<Box className={classes.icon}>{icon}</Box>
-					<Box className={classes.name}>{name}</Box>
+		<Paper withBorder shadow='xs' className={card}>
+			<Group justify='space-apart' align='center'>
+				<Group gap='xs'>
+					<Box className={iconClass}>{icon}</Box>
+					<div>{name}</div>
 				</Group>
 			</Group>
 			<Collapse in={opened}>
-				<Box className={classes.description}>{description}</Box>
+				<Box className={descriptionClass}>{description}</Box>
 			</Collapse>
 		</Paper>
 	);

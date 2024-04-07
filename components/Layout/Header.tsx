@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
 import {
-	createStyles,
 	Container,
 	Group,
 	Burger,
@@ -20,98 +19,16 @@ import { spotify } from '@/utils/brandColors';
 import { openModal } from '@mantine/modals';
 import { SpotifyModal } from './Spotify/SpotifyModal';
 import { TbExternalLink } from 'react-icons/tb';
-
-const BREAKPOINT = 650;
-
-const useStyles = createStyles((theme) => ({
-	root: {
-		height: 60,
-		width: '100vw',
-		position: 'fixed',
-		top: 0,
-		left: 0,
-		zIndex: 2,
-	},
-
-	header: {
-		display: 'flex',
-		justifyContent: 'space-between',
-		alignItems: 'center',
-		height: '100%',
-		position: 'relative',
-		width: '100%',
-	},
-
-	title: {
-		fontFamily: `Greycliff CF, ${theme.fontFamily}`,
-		fontSize: 30,
-		fontWeight: 900,
-		overflow: 'hidden',
-		textOverflow: 'ellipsis',
-		wordWrap: 'break-word',
-		lineHeight: '30px',
-		maxHeight: 30,
-		margin: 0,
-		padding: 0,
-		color: theme.colorScheme === 'dark' ? theme.white : theme.black,
-
-		[theme.fn.smallerThan('xs')]: {
-			fontSize: 24,
-		},
-	},
-
-	links: {
-		[theme.fn.smallerThan(BREAKPOINT)]: {
-			display: 'none',
-		},
-	},
-
-	burger: {
-		[theme.fn.largerThan(BREAKPOINT)]: {
-			display: 'none',
-		},
-	},
-
-	mobileMenu: {
-		display: 'flex',
-		flexDirection: 'column',
-		position: 'absolute',
-		top: '60px',
-		width: '100%',
-		left: 0,
-		zIndex: 1,
-		backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[7] : theme.white,
-		[theme.fn.largerThan(BREAKPOINT)]: {
-			display: 'none',
-		},
-	},
-
-	link: {
-		display: 'block',
-		lineHeight: 1,
-		padding: '8px 12px',
-		borderRadius: theme.radius.sm,
-		textDecoration: 'none',
-		color: theme.colorScheme === 'dark' ? theme.colors.dark[0] : theme.colors.gray[7],
-		fontSize: theme.fontSizes.sm,
-		fontWeight: 500,
-
-		'&:hover': {
-			backgroundColor:
-				theme.colorScheme === 'dark' ? theme.colors.dark[6] : theme.colors.gray[0],
-		},
-	},
-
-	linkActive: {
-		'&, &:hover': {
-			backgroundColor:
-				theme.colorScheme === 'dark'
-					? theme.fn.rgba(theme.colors[theme.primaryColor][9], 0.25)
-					: theme.colors[theme.primaryColor][0],
-			color: theme.colors[theme.primaryColor][theme.colorScheme === 'dark' ? 3 : 7],
-		},
-	},
-}));
+import {
+	desktopOnly,
+	header,
+	mobileMenu,
+	mobileOnly,
+	root,
+	title,
+	linkActive,
+	linkClass,
+} from './Header.css';
 
 interface HeaderSimpleProps {
 	links: { link: string; label: string }[];
@@ -125,7 +42,6 @@ const Header: React.FC<HeaderSimpleProps> = ({ links }) => {
 	const menuRef = useRef<HTMLDivElement>(null);
 	const [active, setActive] = useState(links[0].link);
 	const theme = useMantineTheme();
-	const { classes, cx } = useStyles();
 
 	useEffect(() => {
 		const handler = () => toggleOpened(false);
@@ -147,7 +63,7 @@ const Header: React.FC<HeaderSimpleProps> = ({ links }) => {
 			href={link.link}
 			target={link.link.startsWith('http') ? '_blank' : undefined}
 			rel={link.link.startsWith('http') ? 'norefrerer' : undefined}
-			className={cx(classes.link, { [classes.linkActive]: active === link.link })}
+			className={`${linkClass} ${link.link === active ? linkActive : ''}`}
 			onClick={(e) => {
 				e.preventDefault();
 				setActive(link.link);
@@ -160,22 +76,22 @@ const Header: React.FC<HeaderSimpleProps> = ({ links }) => {
 	));
 
 	return (
-		<Paper shadow='md' component='header' className={classes.root}>
-			<Container className={classes.header}>
+		<Paper shadow='md' component='header' className={root}>
+			<Container className={header}>
 				<Text
 					component='h1'
 					variant='gradient'
-					className={classes.title}
+					className={title}
 					gradient={{
 						from: theme.colors[theme.primaryColor][8],
 						to: theme.colors[theme.primaryColor][5],
 						deg: 75,
 					}}
-					align='center'
+					ta='center'
 				>
 					Isaiah G.
 				</Text>
-				<Group spacing={5} className={classes.links}>
+				<Group gap={5} className={desktopOnly}>
 					{items}
 				</Group>
 
@@ -183,11 +99,11 @@ const Header: React.FC<HeaderSimpleProps> = ({ links }) => {
 					opened={opened}
 					ref={buttonRef}
 					onClick={() => toggleOpened()}
-					className={classes.burger}
+					className={mobileOnly}
 					size='sm'
 				/>
 
-				<Group noWrap>
+				<Group wrap='nowrap'>
 					<ThemeToggle />
 					<ColorPicker />
 					<Tooltip withinPortal withArrow label='My Top Tracks'>
@@ -207,7 +123,7 @@ const Header: React.FC<HeaderSimpleProps> = ({ links }) => {
 					</Tooltip>
 				</Group>
 
-				<div className={classes.mobileMenu} ref={menuRef}>
+				<div className={mobileMenu} ref={menuRef}>
 					<Collapse in={opened}>{items}</Collapse>
 				</div>
 			</Container>

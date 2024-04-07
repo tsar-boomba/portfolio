@@ -1,3 +1,5 @@
+'use client';
+
 import {
 	Button,
 	Center,
@@ -7,6 +9,7 @@ import {
 	Kbd,
 	Stack,
 	Text,
+	useComputedColorScheme,
 	useMantineTheme,
 } from '@mantine/core';
 import { useViewportSize } from '@mantine/hooks';
@@ -47,6 +50,7 @@ export const PuzzleGame = () => {
 		status,
 	} = useTstris();
 	const theme = useMantineTheme();
+	const colorScheme = useComputedColorScheme('light');
 	// breaks hydration
 	const screen = useViewportSize();
 	const firstRender = useRef(true);
@@ -59,14 +63,13 @@ export const PuzzleGame = () => {
 		return (
 			<Container
 				py={40}
-				sx={{
+				style={{
 					flexDirection: 'column',
-					backgroundColor:
-						theme.colorScheme === 'dark' ? theme.colors.dark[8] : undefined,
+					backgroundColor: colorScheme === 'dark' ? theme.colors.dark[8] : undefined,
 					textAlign: 'center',
 				}}
 			>
-				<Text sx={{ fontSize: 24, fontWeight: 500 }}>
+				<Text style={{ fontSize: 24, fontWeight: 500 }}>
 					There would be a falling block puzzle game here if your screen was bigger 😔.
 				</Text>
 			</Container>
@@ -76,25 +79,25 @@ export const PuzzleGame = () => {
 		<Center
 			id='tstris-example'
 			py={120}
-			sx={{
+			style={{
 				flexDirection: 'column',
 				minHeight: '100vh',
-				backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[8] : undefined,
+				backgroundColor: colorScheme === 'dark' ? theme.colors.dark[8] : undefined,
 			}}
 		>
 			<Container size='xl'>
-				<Group sx={{ width: '100%' }} align='stretch' spacing={0}>
+				<Group w='100%' align='stretch' gap={0}>
 					<GradientCard
-						sx={{
+						style={{
 							height: '100%',
 							width: 150,
-							color: theme.colorScheme === 'dark' ? 'white' : 'black',
+							color: colorScheme === 'dark' ? 'white' : 'black',
 						}}
 						p='md'
 						mr='xl'
 					>
-						<Stack sx={{ width: '100%' }} align='center'>
-							<Text component='h2' my={0} sx={{ fontSize: 28 }}>
+						<Stack w='100%' align='center'>
+							<Text component='h2' my={0} fz={28}>
 								Hold
 							</Text>
 							{heldPiece ? (
@@ -108,26 +111,26 @@ export const PuzzleGame = () => {
 					</GradientCard>
 					<Board board={boardWPlayer} onKeyDown={moveHandler} status={status} />
 					<GradientCard
-						sx={{
+						style={{
 							borderTopLeftRadius: '0',
 							borderBottomLeftRadius: '0',
 							marginLeft: -8,
 							zIndex: 0,
-							color: theme.colorScheme === 'dark' ? 'white' : 'black',
+							color: colorScheme === 'dark' ? 'white' : 'black',
 						}}
 					>
-						<Stack sx={{ width: 300 }} align='center'>
-							<Text component='h2' my={0} sx={{ fontSize: 28 }}>
+						<Stack w={300} align='center'>
+							<Text component='h2' my={0} fz={28}>
 								Next
 							</Text>
-							<Stack sx={{ width: '100%' }} align='center'>
+							<Stack w='100%' align='center'>
 								{nextQueue
 									? nextQueue.map((piece, i) => (
 											<RenderPiece
 												key={i}
 												shape={DEFAULT_PIECE_TYPES[piece].shape}
 											/>
-									  ))
+										))
 									: Array(3)
 											.fill(0)
 											.map((_, i) => (
@@ -139,13 +142,13 @@ export const PuzzleGame = () => {
 												/>
 											))}
 							</Stack>
-							<Text component='h2' my={0} sx={{ fontSize: 28 }}>
+							<Text component='h2' my={0} fz={28}>
 								Lines: {rowsCleared}
 							</Text>
-							<Text component='h2' my={0} sx={{ fontSize: 28 }}>
+							<Text component='h2' my={0} fz={28}>
 								Level: {level}
 							</Text>
-							<Text component='h2' my={0} sx={{ fontSize: 28 }}>
+							<Text component='h2' my={0} fz={28}>
 								Score: {score}
 							</Text>
 							<Button variant='white' onClick={start}>
@@ -158,8 +161,10 @@ export const PuzzleGame = () => {
 					</GradientCard>
 				</Group>
 			</Container>
-			<Stack sx={{ fontSize: 18, fontWeight: 500 }} align='center' spacing={0}>
-				<Text sx={{ fontSize: 32, fontWeight: 500 }}>How To Play</Text>
+			<Stack fz={18} fw={500} align='center' gap={0}>
+				<Text fz={32} fw={500}>
+					How To Play
+				</Text>
 				<Text>
 					<Kbd>←</Kbd>/<Kbd>→</Kbd>: Move left/right
 				</Text>

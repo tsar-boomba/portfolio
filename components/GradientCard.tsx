@@ -1,4 +1,4 @@
-import { MantineColor, MantineTheme, Paper, PaperProps } from '@mantine/core';
+import { MantineColor, MantineTheme, Paper, PaperProps, useMantineTheme } from '@mantine/core';
 import { ComponentPropsWithoutRef, PropsWithChildren } from 'react';
 
 type GradientReturn = { from?: MantineColor; to?: MantineColor; deg?: number };
@@ -25,14 +25,16 @@ const handleGradient = (theme: MantineTheme, gradient: GradientReturn): string =
 
 const GradientCard: React.FC<
 	PropsWithChildren<Props & PaperProps & ComponentPropsWithoutRef<'div'>>
-> = ({ children, gradient = () => ({}), sx, ...props }) => {
-	if (typeof sx === 'function' || Array.isArray(sx))
+> = ({ children, gradient = () => ({}), style, ...props }) => {
+	if (typeof style === 'function' || Array.isArray(style))
 		throw new Error('sx prop may not be a function or array for this component.');
+
+	const theme = useMantineTheme();
 
 	return (
 		<Paper
 			{...props}
-			sx={(theme) => ({ ...sx, backgroundImage: handleGradient(theme, gradient(theme)) })}
+			style={{ ...style, backgroundImage: handleGradient(theme, gradient(theme)) }}
 		>
 			{children}
 		</Paper>

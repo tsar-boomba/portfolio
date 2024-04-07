@@ -1,25 +1,17 @@
-import { AppContext, AppInitialProps, AppProps } from 'next/app';
-import Head from 'next/head';
-import {
-	ColorScheme,
-	ColorSchemeProvider,
-	DefaultMantineColor,
-	MantineProvider,
-} from '@mantine/core';
+'use client';
+
+import '@mantine/core/styles.css';
+import { ColorSchemeScript, DefaultMantineColor, MantineProvider } from '@mantine/core';
 import { ReactNode } from 'react';
 import { Layout } from '../components/Layout';
 import { setCookie } from 'ez-cookies';
 import { ColorProvider } from '../components/ColorProvider';
-import { useColorScheme, useLocalStorage } from '@mantine/hooks';
+import { useLocalStorage } from '@mantine/hooks';
 import { preload } from 'swr';
 import { FUNCTION_URL } from '@/components/Layout/Spotify';
 import { fetcher } from '@/utils/fetcher';
 import { ModalsProvider } from '@mantine/modals';
-
-interface _App<P = {}> {
-	(props: AppProps & P): ReactNode;
-	getInitialProps?(ctx: AppContext): Promise<AppInitialProps & P>;
-}
+import { theme } from '@/theme';
 
 preload(FUNCTION_URL, fetcher);
 preload(FUNCTION_URL + '/playing', fetcher);
@@ -31,34 +23,22 @@ fetch(
 	},
 );
 
-const MyApp: _App<{ colorScheme: ColorScheme; primaryColor: DefaultMantineColor }> = (props) => {
-	const preferredColorScheme = useColorScheme();
-	const [colorScheme, setColorScheme] = useLocalStorage<ColorScheme>({
-		key: 'colorScheme',
-		defaultValue: preferredColorScheme,
-		getInitialValueInEffect: true,
-	});
+const MyApp = ({ children }: { children?: ReactNode }) => {
 	const [primaryColor, _setPrimaryColor] = useLocalStorage<DefaultMantineColor>({
 		key: 'primaryColor',
 		defaultValue: 'blue',
 		getInitialValueInEffect: true,
 	});
 
-	const toggleColorScheme = (value?: 'dark' | 'light') => {
-		const nextColorScheme = colorScheme === 'dark' ? 'light' : 'dark';
-		setColorScheme(value || nextColorScheme);
-	};
-
 	const setPrimaryColor = (color: DefaultMantineColor) => {
 		_setPrimaryColor(color);
 		setCookie('primaryColor', color, { maxAge: 60 * 60 * 24 * 365 });
 	};
 
-	const { Component, pageProps } = props;
-
 	return (
-		<>
-			<Head>
+		<html>
+			<head>
+				<ColorSchemeScript />
 				<title>Isaiah Gamble - Portfolio</title>
 				<meta name='title' content='Isaiah Gamble - Portfolio' />
 				<meta
@@ -92,29 +72,24 @@ const MyApp: _App<{ colorScheme: ColorScheme; primaryColor: DefaultMantineColor 
 					content='minimum-scale=1, initial-scale=1, width=device-width'
 				/>
 				<style>{'html { scroll-behavior: smooth; }'}</style>
-			</Head>
+			</head>
 
-			<ColorSchemeProvider colorScheme={colorScheme} toggleColorScheme={toggleColorScheme}>
+			<body>
 				<MantineProvider
-					withGlobalStyles
-					withNormalizeCSS
+					defaultColorScheme='light'
 					theme={{
-						/** Put your mantine theme override here */
-						colorScheme,
+						...theme,
 						primaryColor,
-						cursorType: 'pointer',
 					}}
 				>
 					<ColorProvider primaryColor={primaryColor} setPrimaryColor={setPrimaryColor}>
 						<ModalsProvider>
-							<Layout>
-								<Component {...pageProps} />
-							</Layout>
+							<Layout>{children}</Layout>
 						</ModalsProvider>
 					</ColorProvider>
 				</MantineProvider>
-			</ColorSchemeProvider>
-		</>
+			</body>
+		</html>
 	);
 };
 

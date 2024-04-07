@@ -1,6 +1,7 @@
 import React, { ReactNode } from 'react';
-import { Button, createStyles, Tooltip } from '@mantine/core';
+import { Button, Tooltip } from '@mantine/core';
 import { useClipboard } from '@mantine/hooks';
+import { button } from './ContactCard.css';
 
 interface CopyButtonProps {
 	text?: string;
@@ -9,19 +10,9 @@ interface CopyButtonProps {
 	children: ReactNode;
 }
 
-const useStyles = createStyles((theme) => ({
-	button: {
-		backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[8] : theme.white,
-		shadow: theme.shadows.md,
-		border: `1px solid ${
-			theme.colorScheme === 'dark' ? theme.colors.dark[6] : theme.colors.gray[2]
-		}`,
-	},
-}));
-
 const ContactCard: React.FC<CopyButtonProps> = ({ text, children, icon, href }) => {
-	const { classes } = useStyles();
 	const clipboard = useClipboard();
+
 	return (
 		<Tooltip
 			label='Copied to clipboard!'
@@ -36,9 +27,9 @@ const ContactCard: React.FC<CopyButtonProps> = ({ text, children, icon, href }) 
 				download={false}
 				variant='outline'
 				size='xl'
-				className={classes.button}
+				className={button}
 				href={href}
-				leftIcon={icon}
+				leftSection={icon}
 				target='_blank'
 				rel='noopener noreferrer'
 				onClick={text ? () => clipboard.copy(text) : undefined}

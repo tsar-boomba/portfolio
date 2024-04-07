@@ -13,7 +13,7 @@ export const Recent = () => {
 		return (
 			<Stack align='center' justify='center'>
 				<Loader size='xl' color={spotify} />
-				<Text align='center'>Loading my recently played.</Text>
+				<Text ta='center'>Loading my recently played.</Text>
 			</Stack>
 		);
 	}

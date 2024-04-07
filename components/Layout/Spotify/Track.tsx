@@ -5,7 +5,7 @@ import { spotify } from '@/utils/brandColors';
 export const Track = ({ track, imgSize }: { track: TrackType; imgSize?: number }) => {
 	return (
 		<Card withBorder shadow='md' p='xs'>
-			<Group noWrap>
+			<Group wrap='nowrap'>
 				<Anchor href={track.url ?? undefined} target='_blank'>
 					<Image
 						height={imgSize ?? 64}
@@ -14,7 +14,7 @@ export const Track = ({ track, imgSize }: { track: TrackType; imgSize?: number }
 						alt={`${track.name} album cover`}
 					/>
 				</Anchor>
-				<Stack align='start' spacing={0}>
+				<Stack align='start' gap={0}>
 					<Anchor href={track.url ?? undefined} target='_blank'>
 						<Title
 							order={4}

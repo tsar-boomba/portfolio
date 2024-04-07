@@ -1,94 +1,28 @@
-import { createStyles, Container, Text, Group, useMantineTheme } from '@mantine/core';
+import { Container, Text, Group, useMantineTheme } from '@mantine/core';
 import { mySkills } from './mySkills';
 import SkillCard from './SkillCard';
-
-const BREAKPOINT = '@media (max-width: 755px)';
-
-const useStyles = createStyles((theme) => ({
-	wrapper: {
-		position: 'relative',
-		boxSizing: 'border-box',
-		backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[8] : theme.white,
-	},
-
-	inner: {
-		position: 'relative',
-		paddingTop: 100,
-		paddingBottom: 100,
-
-		[BREAKPOINT]: {
-			paddingBottom: 40,
-			paddingTop: 40,
-		},
-	},
-
-	title: {
-		fontFamily: `Greycliff CF, ${theme.fontFamily}`,
-		fontSize: 56,
-		fontWeight: 900,
-		lineHeight: 1.3,
-		margin: 0,
-		padding: 0,
-		color: theme.colorScheme === 'dark' ? theme.white : theme.black,
-
-		[BREAKPOINT]: {
-			fontSize: 36,
-			lineHeight: 1.2,
-		},
-	},
-
-	description: {
-		marginTop: theme.spacing.xl,
-		fontSize: 24,
-
-		[BREAKPOINT]: {
-			fontSize: 18,
-		},
-	},
-
-	controls: {
-		marginTop: `calc(${theme.spacing.xl} * 2)`,
-
-		[BREAKPOINT]: {
-			marginTop: theme.spacing.xl,
-		},
-	},
-
-	control: {
-		height: 54,
-		paddingLeft: 38,
-		paddingRight: 38,
-
-		[BREAKPOINT]: {
-			height: 54,
-			paddingLeft: 18,
-			paddingRight: 18,
-			flex: 1,
-		},
-	},
-}));
+import { evenWrapper, inner, title } from '../Section.css';
 
 const Skills = () => {
-	const { classes } = useStyles();
 	const theme = useMantineTheme();
 
 	return (
-		<div id='skills' className={classes.wrapper}>
-			<Container size={900} className={classes.inner}>
+		<div id='skills' className={evenWrapper}>
+			<Container size={900} className={inner}>
 				<Text
 					component='h1'
 					variant='gradient'
-					className={classes.title}
+					className={title}
 					gradient={{
 						from: theme.colors[theme.primaryColor][7],
 						to: theme.colors[theme.primaryColor][4],
 						deg: 75,
 					}}
-					align='center'
+					ta='center'
 				>
 					Skills
 				</Text>
-				<Group align='start' position='center' mt={24}>
+				<Group align='start' justify='center' mt={24}>
 					{mySkills.map((skill, i) => (
 						<SkillCard key={i} {...skill} />
 					))}

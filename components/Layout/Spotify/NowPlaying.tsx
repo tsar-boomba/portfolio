@@ -104,7 +104,7 @@ export const NowPlaying = () => {
 									p={0}
 								>
 									<Box p='xs' style={{ ...styles }}>
-										<Group spacing='xs' pb={rem(4)} noWrap>
+										<Group gap='xs' pb={rem(4)} wrap='nowrap'>
 											{/* <Anchor
 												href={data.playing.url ?? undefined}
 												target='_blank'
@@ -116,9 +116,9 @@ export const NowPlaying = () => {
 													alt={`${data.playing.name} album cover`}
 												/>
 											</Anchor> */}
-											<Stack spacing={0}>
-												<Group noWrap>
-													<Stack align='start' spacing={0}>
+											<Stack gap={0}>
+												<Group wrap='nowrap'>
+													<Stack align='start' gap={0}>
 														<Anchor
 															href={data.playing.url ?? undefined}
 															target='_blank'
@@ -184,6 +184,7 @@ export const NowPlaying = () => {
 																	data.context.external_urls
 																		.spotify
 																}
+																variant='subtle'
 																target='_blank'
 															>
 																<TbPlaylist size={16} />
@@ -227,9 +228,7 @@ export const NowPlaying = () => {
 											<div style={{ flexGrow: 1 }}>
 												<Progress
 													size='sm'
-													styles={{
-														bar: { backgroundColor: spotify },
-													}}
+													color={spotify}
 													value={
 														(progressSecs / data.playing.duration) * 100
 													}
