@@ -48,6 +48,8 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-pnpm-store-
 
+      - uses: jongwooo/next-cache@v1
+
       - name: Install dependencies
         run: pnpm install
 
