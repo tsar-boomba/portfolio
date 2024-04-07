@@ -11,17 +11,35 @@ import {
 	useComputedColorScheme,
 	useMantineTheme,
 } from '@mantine/core';
-import { useToggle, useClickOutside } from '@mantine/hooks';
+import { useToggle } from '@mantine/hooks';
 import { usePrimaryColor } from '../ColorProvider';
 import { CgDrop, CgCheck } from 'react-icons/cg';
 import { colorButton, menuButton } from './ColorPicker.css';
+import { useEffect, useState } from 'react';
+
+const CLICK_OUT_EVENTS: (keyof DocumentEventMap)[] = ['touchstart', 'mousedown'];
 
 const ColorPicker = () => {
 	const [opened, toggleOpened] = useToggle([false, true]);
-	const ref = useClickOutside(() => toggleOpened(false));
+	const [control, setControl] = useState<HTMLButtonElement | null>(null);
+	const [dropdown, setDropdown] = useState<HTMLDivElement | null>(null);
 	const theme = useMantineTheme();
 	const colorScheme = useComputedColorScheme();
 	const { primaryColor, setPrimaryColor } = usePrimaryColor();
+
+	// Manually implement click outside detection cause mantine's doesn't work
+	useEffect(() => {
+		const handler = () => toggleOpened(false);
+
+		const listener = (e: Event) => {
+			!control?.contains(e.target as Node) &&
+				!dropdown?.contains(e.target as Node) &&
+				handler();
+		};
+
+		CLICK_OUT_EVENTS.forEach((ev) => document.addEventListener(ev, listener));
+		return () => CLICK_OUT_EVENTS.forEach((ev) => document.removeEventListener(ev, listener));
+	}, [control, dropdown]);
 
 	const colors = Object.entries(theme.colors).map(([color, values]) => {
 		const isSelected = primaryColor === color;
@@ -42,17 +60,28 @@ const ColorPicker = () => {
 	});
 
 	return (
-		<div ref={ref}>
-			<Popover opened={opened} position='bottom' withArrow withinPortal={false}>
+		<div>
+			<Popover
+				opened={opened}
+				position='bottom'
+				withArrow
+				withinPortal={false}
+				closeOnClickOutside
+				closeOnEscape
+			>
 				<Popover.Target>
 					<Tooltip withinPortal withArrow label='Change Color'>
-						<ActionIcon className={menuButton} onClick={() => toggleOpened()}>
+						<ActionIcon
+							ref={setControl}
+							className={menuButton}
+							onClick={() => toggleOpened()}
+						>
 							<CgDrop color='white' />
 						</ActionIcon>
 					</Tooltip>
 				</Popover.Target>
 				<Popover.Dropdown>
-					<Box miw={150} maw={300} py={8}>
+					<Box ref={setDropdown} miw={150} maw={300} py={8}>
 						<Stack align='center' onClick={(e) => e.stopPropagation()}>
 							<Text fw={500} ta='center'>
 								Choose a color
