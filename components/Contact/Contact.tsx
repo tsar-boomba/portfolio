@@ -27,17 +27,17 @@ const Contact = () => {
 						icon={<SiGithub size={20} />}
 						href='https://github.com/tsar-boomba'
 					>
-						<Text component='h1' ta='center'>
+						<Text component='h1' fw={700} ta='center'>
 							GitHub
 						</Text>
 					</ContactCard>
 					<ContactCard icon={<SiGmail size={20} />} href='mailto:itg.2048@gmail.com'>
-						<Text component='h1' ta='center'>
+						<Text component='h1' fw={700} ta='center'>
 							E-Mail
 						</Text>
 					</ContactCard>
 					<ContactCard icon={<SiDiscord size={20} />} text='Ibomb#0221'>
-						<Text component='h1' ta='center'>
+						<Text component='h1' fw={700} ta='center'>
 							Discord
 						</Text>
 					</ContactCard>
@@ -45,7 +45,7 @@ const Contact = () => {
 						icon={<SiLinkedin size={20} />}
 						href='https://www.linkedin.com/in/igamble/'
 					>
-						<Text component='h1' ta='center'>
+						<Text component='h1' fw={700} ta='center'>
 							Linkedin
 						</Text>
 					</ContactCard>
@@ -55,7 +55,7 @@ const Contact = () => {
 							'https://docs.google.com/document/d/1WAgMu51cO2KIKjmv9Z4uf-WnF_XtYkld/export?format=pdf&attachment=false'
 						}
 					>
-						<Text component='h1' ta='center'>
+						<Text component='h1' fw={700} ta='center'>
 							Resume
 						</Text>
 					</ContactCard>

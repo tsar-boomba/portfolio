@@ -15,14 +15,14 @@ import { useToggle } from '@mantine/hooks';
 import { usePrimaryColor } from '../ColorProvider';
 import { CgDrop, CgCheck } from 'react-icons/cg';
 import { colorButton, menuButton } from './ColorPicker.css';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef } from 'react';
 
 const CLICK_OUT_EVENTS: (keyof DocumentEventMap)[] = ['touchstart', 'mousedown'];
 
 const ColorPicker = () => {
 	const [opened, toggleOpened] = useToggle([false, true]);
-	const [control, setControl] = useState<HTMLButtonElement | null>(null);
-	const [dropdown, setDropdown] = useState<HTMLDivElement | null>(null);
+	const control = useRef<HTMLButtonElement>(null);
+	const dropdown = useRef<HTMLDivElement>(null);
 	const theme = useMantineTheme();
 	const colorScheme = useComputedColorScheme();
 	const { primaryColor, setPrimaryColor } = usePrimaryColor();
@@ -32,14 +32,14 @@ const ColorPicker = () => {
 		const handler = () => toggleOpened(false);
 
 		const listener = (e: Event) => {
-			!control?.contains(e.target as Node) &&
-				!dropdown?.contains(e.target as Node) &&
+			!control.current?.contains(e.target as Node) &&
+				!dropdown.current?.contains(e.target as Node) &&
 				handler();
 		};
 
 		CLICK_OUT_EVENTS.forEach((ev) => document.addEventListener(ev, listener));
 		return () => CLICK_OUT_EVENTS.forEach((ev) => document.removeEventListener(ev, listener));
-	}, [control, dropdown]);
+	}, []);
 
 	const colors = Object.entries(theme.colors).map(([color, values]) => {
 		const isSelected = primaryColor === color;
@@ -72,7 +72,7 @@ const ColorPicker = () => {
 				<Popover.Target>
 					<Tooltip withinPortal withArrow label='Change Color'>
 						<ActionIcon
-							ref={setControl}
+							ref={control}
 							className={menuButton}
 							onClick={() => toggleOpened()}
 						>
@@ -81,7 +81,7 @@ const ColorPicker = () => {
 					</Tooltip>
 				</Popover.Target>
 				<Popover.Dropdown>
-					<Box ref={setDropdown} miw={150} maw={300} py={8}>
+					<Box ref={dropdown} miw={150} maw={300} py={8}>
 						<Stack align='center' onClick={(e) => e.stopPropagation()}>
 							<Text fw={500} ta='center'>
 								Choose a color
