@@ -8,6 +8,7 @@ export const wrapper = style({
 	position: 'relative',
 	boxSizing: 'border-box',
 	backgroundColor: vars.colors.white,
+
 	selectors: {
 		[vars.darkSelector]: {
 			backgroundColor: vars.colors.dark[8],
