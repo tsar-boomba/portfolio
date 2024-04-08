@@ -1,7 +1,6 @@
 import React, { ReactNode } from 'react';
 import { Button, Tooltip } from '@mantine/core';
 import { useClipboard } from '@mantine/hooks';
-import { button } from './ContactCard.css';
 
 interface CopyButtonProps {
 	text?: string;
@@ -27,7 +26,6 @@ const ContactCard: React.FC<CopyButtonProps> = ({ text, children, icon, href }) 
 				download={false}
 				variant='outline'
 				size='xl'
-				className={button}
 				href={href}
 				leftSection={icon}
 				target='_blank'
