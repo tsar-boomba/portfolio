@@ -36,7 +36,7 @@ const Contact = () => {
 							E-Mail
 						</Text>
 					</ContactCard>
-					<ContactCard icon={<SiDiscord size={20} />} text='Ibomb#0221'>
+					<ContactCard icon={<SiDiscord size={20} />} text='iboomb'>
 						<Text component='h1' fw={700} ta='center'>
 							Discord
 						</Text>
