@@ -40,6 +40,83 @@ const githubUrl = (repo: string, owner = 'tsar-boomba') => `https://github.com/$
 
 export const myProjects: ProjectCardProps[] = [
 	{
+		title: 'ESP Spotify Display',
+		mainTech: 'Rust',
+		repo: githubUrl('esp-display'),
+		images: ['/esp-display/demo.jpg'],
+		description: (
+			<Text size='sm' mt='sm'>
+				A small embedded project that shows what I'm listening to on Spotify by using{' '}
+				<Anchor href='https://github.com/tsar-boomba/spotify-me' target='_blank'>
+					my Spotify service
+				</Anchor>
+				.
+				<List size='sm'>
+					<List.Item>ESP32-S3 board, written in Rust</List.Item>
+					<List.Item>Uses the SPI peripheral to communicate with the screen</List.Item>
+					<List.Item>Uses ESP-IDF's HTTP/S client to connect with my server</List.Item>
+					<List.Item>Uses WPA2(Personal / Enterprise) for Wifi authentication</List.Item>
+					<List.Item>
+						Uses FreeRTOS's tasks/threads to achieve non-blocking updates to UI
+					</List.Item>
+				</List>
+			</Text>
+		),
+		technologies: [
+			{
+				icon: <SiRust size={16} color={rust} />,
+				name: 'Rust',
+			},
+			{
+				icon: <SiEspressif size={16} color={esprissif} />,
+				name: 'Espressif',
+			},
+			{
+				icon: <TbTool size={16} />,
+				name: 'Embedded',
+			},
+		],
+	},
+	{
+		title: 'Oxide',
+		mainTech: 'Rust',
+		images: ['/oxide/picture.JPG'],
+		repo: githubUrl('oxide'),
+		description: (
+			<Text size='sm' mt='sm'>
+				Custom frontend for the Miyoo Mini family of tiny, powerful, and portable emulators.
+				<List size='sm'>
+					<List.Item>
+						Custom Retro Arch frontend allows access to all RA emulators
+					</List.Item>
+					<List.Item>Optimized sleep mode & fast start-up</List.Item>
+					<List.Item>Cross-compiling build pipeline with Docker</List.Item>
+					<List.Item>
+						Interacts with low-level Linux APIs such as ioctl and <Code>/dev</Code>
+					</List.Item>
+				</List>
+			</Text>
+		),
+		technologies: [
+			{
+				icon: <SiRust size={16} color={rust} />,
+				name: 'Rust',
+			},
+			{
+				icon: <SiLinux size={16} />,
+				name: 'Linux',
+			},
+			{
+				icon: <SiDocker size={16} color={docker} />,
+				name: 'Docker',
+			},
+			{
+				icon: <TbTool size={16} />,
+				name: 'Embedded',
+			},
+		],
+	},
+	{
 		title: 'Yeti Scouting',
 		mainTech: 'React',
 		repo: githubUrl('2022-scouting-real', 'Yeti-Robotics'),
@@ -236,45 +313,6 @@ export const myProjects: ProjectCardProps[] = [
 		],
 	},
 	{
-		title: 'Oxide',
-		mainTech: 'Rust',
-		images: ['/oxide/picture.JPG'],
-		repo: githubUrl('oxide'),
-		description: (
-			<Text size='sm' mt='sm'>
-				Custom frontend for the Miyoo Mini family of tiny, powerful, and portable emulators.
-				<List size='sm'>
-					<List.Item>
-						Custom Retro Arch frontend allows access to all RA emulators
-					</List.Item>
-					<List.Item>Optimized sleep mode & fast start-up</List.Item>
-					<List.Item>Cross-compiling build pipeline with Docker</List.Item>
-					<List.Item>
-						Interacts with low-level Linux APIs such as ioctl and <Code>/dev</Code>
-					</List.Item>
-				</List>
-			</Text>
-		),
-		technologies: [
-			{
-				icon: <SiRust size={16} color={rust} />,
-				name: 'Rust',
-			},
-			{
-				icon: <SiLinux size={16} />,
-				name: 'Linux',
-			},
-			{
-				icon: <SiDocker size={16} color={docker} />,
-				name: 'Docker',
-			},
-			{
-				icon: <TbTool size={16} />,
-				name: 'Embedded',
-			},
-		],
-	},
-	{
 		title: 'Tstris',
 		mainTech: 'TypeScript',
 		images: ['/tstris/demo.png'],
@@ -388,44 +426,6 @@ export const myProjects: ProjectCardProps[] = [
 			{
 				icon: <SiVercel size={16} />,
 				name: 'Vercel',
-			},
-		],
-	},
-	{
-		title: 'ESP Spotify Display',
-		mainTech: 'Rust',
-		repo: githubUrl('esp-display'),
-		images: ['/esp-display/demo.jpg'],
-		description: (
-			<Text size='sm' mt='sm'>
-				A small embedded project that shows what I'm listening to on Spotify by using{' '}
-				<Anchor href='https://github.com/tsar-boomba/spotify-me' target='_blank'>
-					my Spotify service
-				</Anchor>
-				.
-				<List size='sm'>
-					<List.Item>ESP32-S3 board, written in Rust</List.Item>
-					<List.Item>Uses the SPI peripheral to communicate with the screen</List.Item>
-					<List.Item>Uses ESP-IDF's HTTP/S client to connect with my server</List.Item>
-					<List.Item>Uses WPA2(Personal / Enterprise) for Wifi authentication</List.Item>
-					<List.Item>
-						Uses FreeRTOS's tasks/threads to achieve non-blocking updates to UI
-					</List.Item>
-				</List>
-			</Text>
-		),
-		technologies: [
-			{
-				icon: <SiRust size={16} color={rust} />,
-				name: 'Rust',
-			},
-			{
-				icon: <SiEspressif size={16} color={esprissif} />,
-				name: 'Espressif',
-			},
-			{
-				icon: <TbTool size={16} />,
-				name: 'Embedded',
 			},
 		],
 	},
