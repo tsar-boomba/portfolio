@@ -51,9 +51,7 @@ const Contact = () => {
 					</ContactCard>
 					<ContactCard
 						icon={<TbFile size={20} />}
-						href={
-							'https://docs.google.com/document/d/1WAgMu51cO2KIKjmv9Z4uf-WnF_XtYkld/export?format=pdf&attachment=false'
-						}
+						href={'https://tsar-boomba.github.io/resume/resume.pdf'}
 					>
 						<Text component='h1' fw={700} ta='center'>
 							Resume
