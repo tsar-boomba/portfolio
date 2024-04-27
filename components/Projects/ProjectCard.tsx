@@ -1,15 +1,5 @@
 import React, { ReactNode } from 'react';
-import {
-	Card,
-	Text,
-	Group,
-	Badge,
-	Button,
-	Image,
-	useMantineTheme,
-	ActionIcon,
-	Tooltip,
-} from '@mantine/core';
+import { Card, Text, Group, Badge, Button, Image, useMantineTheme } from '@mantine/core';
 import { SiGithub } from 'react-icons/si';
 import { badge, card, githubButton, label, section } from './ProjectCard.css';
 import { TbPhoto } from 'react-icons/tb';
@@ -34,7 +24,6 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
 	description,
 	technologies,
 	repo,
-	mainTech,
 	deployed,
 }) => {
 	const theme = useMantineTheme();
@@ -48,17 +37,20 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
 	return (
 		<Card withBorder shadow='sm' p='md' className={card}>
 			<Card.Section className={section} pt='md'>
-				<Group justify='space-apart'>
+				<Group wrap='nowrap'>
 					<Text size='lg' fw={500}>
 						{title}
 					</Text>
-					{mainTech && <Badge size='sm'>{mainTech}</Badge>}
 					{images && (
 						<Group justify='flex-end' flex={1}>
 							<Button
-								variant='filled'
+								variant='gradient'
 								size='xs'
 								leftSection={<TbPhoto size={16} strokeWidth={2.2} />}
+								gradient={{
+									from: theme.colors[theme.primaryColor][7],
+									to: theme.colors[theme.primaryColor][5],
+								}}
 								onClick={() =>
 									openModal({
 										title: `${title} Gallery`,
@@ -94,9 +86,9 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
 						rel='noopener noreferrer'
 						href={repo}
 						className={githubButton}
-						leftSection={<SiGithub size={24} />}
+						leftSection={<SiGithub size={20} />}
 					>
-						GitHub
+						Repository
 					</Button>
 				) : (
 					<Button
@@ -106,7 +98,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
 						rel='noopener noreferrer'
 						href='https://github.com/tsar-boomba'
 						className={githubButton}
-						leftSection={<SiGithub size={24} />}
+						leftSection={<SiGithub size={20} />}
 						disabled
 					>
 						No/Private Repository
@@ -123,7 +115,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
 							to: theme.colors[theme.primaryColor][5],
 						}}
 						href={deployed}
-						style={{ flex: 1 }}
+						flex={1}
 					>
 						Visit
 					</Button>
