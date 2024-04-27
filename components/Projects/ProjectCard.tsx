@@ -1,7 +1,19 @@
 import React, { ReactNode } from 'react';
-import { Card, Text, Group, Badge, Button, Image, useMantineTheme } from '@mantine/core';
+import {
+	Card,
+	Text,
+	Group,
+	Badge,
+	Button,
+	Image,
+	useMantineTheme,
+	ActionIcon,
+	Tooltip,
+} from '@mantine/core';
 import { SiGithub } from 'react-icons/si';
 import { badge, card, githubButton, label, section } from './ProjectCard.css';
+import { TbPhoto } from 'react-icons/tb';
+import { openModal } from '@mantine/modals';
 
 export interface ProjectCardProps {
 	images?: string[];
@@ -35,18 +47,30 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
 
 	return (
 		<Card withBorder shadow='sm' p='md' className={card}>
-			{images && (
-				<Card.Section>
-					<Image src={images[0]} alt={title} />
-				</Card.Section>
-			)}
-
-			<Card.Section className={section} style={{ paddingTop: 16 }}>
+			<Card.Section className={section} pt='md'>
 				<Group justify='space-apart'>
 					<Text size='lg' fw={500}>
 						{title}
 					</Text>
 					{mainTech && <Badge size='sm'>{mainTech}</Badge>}
+					{images && (
+						<Group justify='flex-end' flex={1}>
+							<Button
+								variant='filled'
+								size='xs'
+								leftSection={<TbPhoto size={16} strokeWidth={2.2} />}
+								onClick={() =>
+									openModal({
+										title: `${title} Gallery`,
+										size: 'auto',
+										children: <Image src={images[0]} alt={`${title} demo`} />,
+									})
+								}
+							>
+								Gallery
+							</Button>
+						</Group>
+					)}
 				</Group>
 
 				{description}
