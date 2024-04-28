@@ -4,7 +4,6 @@ import '@mantine/core/styles.css';
 import { ColorSchemeScript, DefaultMantineColor, MantineProvider } from '@mantine/core';
 import { ReactNode } from 'react';
 import { Layout } from '../components/Layout';
-import { setCookie } from 'ez-cookies';
 import { ColorProvider } from '../components/ColorProvider';
 import { useLocalStorage } from '@mantine/hooks';
 import { preload } from 'swr';
@@ -24,16 +23,11 @@ fetch(
 );
 
 const MyApp = ({ children }: { children?: ReactNode }) => {
-	const [primaryColor, _setPrimaryColor] = useLocalStorage<DefaultMantineColor>({
+	const [primaryColor, setPrimaryColor] = useLocalStorage<DefaultMantineColor>({
 		key: 'primaryColor',
 		defaultValue: 'blue',
 		getInitialValueInEffect: true,
 	});
-
-	const setPrimaryColor = (color: DefaultMantineColor) => {
-		_setPrimaryColor(color);
-		setCookie('primaryColor', color, { maxAge: 60 * 60 * 24 * 365 });
-	};
 
 	return (
 		<html>

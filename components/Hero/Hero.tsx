@@ -21,8 +21,7 @@ const Hero = () => {
 						Isaiah Gamble
 					</Text>
 					<Text className={description} c='dimmed'>
-						Full-stack developer and Rust lover 🧡 with aspirations in embedded
-						programming.
+						Full-stack engineer with aspirations in embedded programming
 					</Text>
 					<Button
 						component='a'

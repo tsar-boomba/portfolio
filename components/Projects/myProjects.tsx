@@ -45,12 +45,14 @@ export const myProjects: ProjectCardProps[] = [
 		repo: githubUrl('esp-display'),
 		images: ['/esp-display/demo.jpg'],
 		description: (
-			<Text size='sm' mt='sm'>
-				A small embedded project that shows what I'm listening to on Spotify by using{' '}
-				<Anchor href='https://github.com/tsar-boomba/spotify-me' target='_blank'>
-					my Spotify service
-				</Anchor>
-				.
+			<>
+				<Text size='sm' mt='sm'>
+					A small embedded project that shows what I'm listening to on Spotify by using{' '}
+					<Anchor href='https://github.com/tsar-boomba/spotify-me' target='_blank'>
+						my Spotify service
+					</Anchor>
+					.
+				</Text>
 				<List size='sm'>
 					<List.Item>ESP32-S3 board, written in Rust</List.Item>
 					<List.Item>Uses the SPI peripheral to communicate with the screen</List.Item>
@@ -60,7 +62,7 @@ export const myProjects: ProjectCardProps[] = [
 						Uses FreeRTOS's tasks/threads to achieve non-blocking updates to UI
 					</List.Item>
 				</List>
-			</Text>
+			</>
 		),
 		technologies: [
 			{
@@ -83,8 +85,11 @@ export const myProjects: ProjectCardProps[] = [
 		images: ['/oxide/picture.JPG'],
 		repo: githubUrl('oxide'),
 		description: (
-			<Text size='sm' mt='sm'>
-				Custom frontend for the Miyoo Mini family of tiny, powerful, and portable emulators.
+			<>
+				<Text size='sm' mt='sm'>
+					Custom frontend for the Miyoo Mini family of tiny, powerful, and portable
+					emulators.
+				</Text>
 				<List size='sm'>
 					<List.Item>
 						Custom Retro Arch frontend allows access to all RA emulators
@@ -95,7 +100,7 @@ export const myProjects: ProjectCardProps[] = [
 						Interacts with low-level Linux APIs such as ioctl and <Code>/dev</Code>
 					</List.Item>
 				</List>
-			</Text>
+			</>
 		),
 		technologies: [
 			{
@@ -123,9 +128,11 @@ export const myProjects: ProjectCardProps[] = [
 		deployed: 'https://scouting.yetirobotics.org',
 		images: ['/scouting/stand-form.png'],
 		description: (
-			<Text size='sm' mt='sm'>
-				An operation critical web application used by my robotics team to collect data at
-				competitions.
+			<>
+				<Text size='sm' mt='sm'>
+					An operation critical web application used by my robotics team to collect data
+					at competitions.
+				</Text>
 				<List size='sm'>
 					<List.Item>
 						Used mongodb for data persistence and Node.js for the backend
@@ -134,7 +141,7 @@ export const myProjects: ProjectCardProps[] = [
 					<List.Item>Data visualization with graphs and charts</List.Item>
 					<List.Item>Complimentary Discord bot made with Rust</List.Item>
 				</List>
-			</Text>
+			</>
 		),
 		technologies: [
 			{
@@ -178,9 +185,11 @@ export const myProjects: ProjectCardProps[] = [
 		deployed: 'https://milkyweb.app',
 		images: ['/milky-web/example.png'],
 		description: (
-			<Text size='sm' mt='sm'>
-				Milky Web is a MVP for a business idea I had in 2022. It was about providing easy
-				access to web infrastructure for anyone.
+			<>
+				<Text size='sm' mt='sm'>
+					Milky Web is a MVP for a business idea I had in 2022. It was about providing
+					easy access to web infrastructure for anyone.
+				</Text>
 				<List size='sm'>
 					<List.Item>Robust authentication with JWT</List.Item>
 					<List.Item>Subscriptions with Stripe</List.Item>
@@ -189,7 +198,7 @@ export const myProjects: ProjectCardProps[] = [
 					<List.Item>Provisions DNS records</List.Item>
 					<List.Item>AWS Lambda to handle instance deployment</List.Item>
 				</List>
-			</Text>
+			</>
 		),
 		technologies: [
 			{
@@ -232,9 +241,11 @@ export const myProjects: ProjectCardProps[] = [
 		repo: githubUrl('genius-dashboard', 'Yeti-Robotics'),
 		images: ['/genius-dashboard/demo.png'],
 		description: (
-			<Text size='sm' mt='sm'>
-				A desktop application created with Tauri, which allows performant, hassle-free robot
-				tuning and information display.
+			<>
+				<Text size='sm' mt='sm'>
+					A desktop application created with Tauri, which allows performant, hassle-free
+					robot tuning and information display.
+				</Text>
 				<List size='sm'>
 					<List.Item>Used a publisher/subscriber protocol for comms.</List.Item>
 					<List.Item>
@@ -242,7 +253,7 @@ export const myProjects: ProjectCardProps[] = [
 					</List.Item>
 					<List.Item>Used drag and drop to allow for custom layouts.</List.Item>
 				</List>
-			</Text>
+			</>
 		),
 		technologies: [
 			{
@@ -274,24 +285,27 @@ export const myProjects: ProjectCardProps[] = [
 		deployed: 'https://img-convert.igamble.dev',
 		images: ['/img-convert/example.gif'],
 		description: (
-			<Text size='sm' mt='sm'>
-				First of all, I would like to dedicate this site to my good friend,{' '}
-				<Anchor
-					size='sm'
-					target='_blank'
-					rel='noopener noreferrer'
-					href='https://github.com/hmagan'
-				>
-					Hank Magan
-				</Anchor>
-				, who inspired me to make this after I saw his success in python. I wanted to bring
-				the ability to convert images to amoguses to every device that can run a browser.
+			<>
+				<Text size='sm' mt='sm'>
+					First of all, I would like to dedicate this site to my good friend,{' '}
+					<Anchor
+						size='sm'
+						target='_blank'
+						rel='noopener noreferrer'
+						href='https://github.com/hmagan'
+					>
+						Hank Magan
+					</Anchor>
+					, who inspired me to make this after I saw his success in python. I wanted to
+					bring the ability to convert images to amoguses to every device that can run a
+					browser.
+				</Text>
 				<List size='sm'>
 					<List.Item>Uses input and Blob browser apis</List.Item>
 					<List.Item>Pixel manipulation on raw image buffers</List.Item>
 					<List.Item>Encodes final image into GIF format for downloading</List.Item>
 				</List>
-			</Text>
+			</>
 		),
 		technologies: [
 			{
@@ -319,14 +333,17 @@ export const myProjects: ProjectCardProps[] = [
 		repo: 'https://github.com/tstris/tstris',
 		deployed: 'https://www.npmjs.com/package/@tstris/core',
 		description: (
-			<Text size='sm' mt='sm'>
-				A low-level implementation a falling block puzzle game similar to Tetris.
+			<>
+				<Text size='sm' mt='sm'>
+					A low-level implementation a falling block puzzle game similar to Tetris.
+				</Text>
 				<List size='sm'>
 					<List.Item>Runtime agnostic implementation</List.Item>
 					<List.Item>Proper rotation and sliding</List.Item>
-					<List.Item>Hold and next piece</List.Item>
+					<List.Item>Hold and next piece queue</List.Item>
+					<List.Item>Tests for core and react packages with with Jest</List.Item>
 				</List>
-			</Text>
+			</>
 		),
 		technologies: [
 			{
@@ -354,15 +371,17 @@ export const myProjects: ProjectCardProps[] = [
 		deployed: 'https://tsar-os.vercel.app/os',
 		images: ['/tsar-os/desktop.png'],
 		description: (
-			<Text size='sm' mt='sm'>
-				A mock desktop made with React
+			<>
+				<Text size='sm' mt='sm'>
+					A mock desktop made with React
+				</Text>
 				<List size='sm'>
 					<List.Item>From scratch drag-n-drop</List.Item>
 					<List.Item>Minimizing, full-screening, and closing windows</List.Item>
 					<List.Item>Accurate time and date display</List.Item>
 					<List.Item>Uses SCSS as a CSS preprocessor</List.Item>
 				</List>
-			</Text>
+			</>
 		),
 		technologies: [
 			{
@@ -394,8 +413,10 @@ export const myProjects: ProjectCardProps[] = [
 		deployed: 'https://yeti-robotics-site.vercel.app',
 		images: ['/yeti-site/home.png'],
 		description: (
-			<Text size='sm' mt='sm'>
-				A landing page website for my robotics team
+			<>
+				<Text size='sm' mt='sm'>
+					A landing page website for my robotics team
+				</Text>
 				<List size='sm'>
 					<List.Item>Uses MDX for content</List.Item>
 					<List.Item>Custom image slideshow on home page</List.Item>
@@ -404,7 +425,7 @@ export const myProjects: ProjectCardProps[] = [
 						<i>Cool</i> icicles hanging off the header
 					</List.Item>
 				</List>
-			</Text>
+			</>
 		),
 		technologies: [
 			{
