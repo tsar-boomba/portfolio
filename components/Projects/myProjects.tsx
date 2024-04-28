@@ -341,7 +341,7 @@ export const myProjects: ProjectCardProps[] = [
 					<List.Item>Runtime agnostic implementation</List.Item>
 					<List.Item>Proper rotation and sliding</List.Item>
 					<List.Item>Hold and next piece queue</List.Item>
-					<List.Item>Tests for core and react packages with with Jest</List.Item>
+					<List.Item>Tests for core and react packages with Jest</List.Item>
 				</List>
 			</>
 		),
