@@ -1,6 +1,6 @@
 import { Container, Text, Group, useMantineTheme } from '@mantine/core';
 import { SiDiscord, SiGithub, SiGmail, SiLinkedin } from 'react-icons/si';
-import ContactCard from './ContactCard';
+import { ContactButton } from './ContactButton';
 import { TbFile } from 'react-icons/tb';
 import { inner, oddWrapper, title } from '../Section.css';
 
@@ -23,40 +23,40 @@ const Contact = () => {
 					Contact
 				</Text>
 				<Group align='start' justify='center' style={{ marginTop: 24 }}>
-					<ContactCard
-						icon={<SiGithub size={20} />}
+					<ContactButton
+						icon={<SiGithub size={24} />}
 						href='https://github.com/tsar-boomba'
 					>
 						<Text component='h1' fw={700} ta='center'>
 							GitHub
 						</Text>
-					</ContactCard>
-					<ContactCard icon={<SiGmail size={20} />} href='mailto:itg.2048@gmail.com'>
+					</ContactButton>
+					<ContactButton icon={<SiGmail size={24} />} href='mailto:itg.2048@gmail.com'>
 						<Text component='h1' fw={700} ta='center'>
 							E-Mail
 						</Text>
-					</ContactCard>
-					<ContactCard icon={<SiDiscord size={20} />} text='iboomb'>
+					</ContactButton>
+					<ContactButton icon={<SiDiscord size={24} />} text='iboomb'>
 						<Text component='h1' fw={700} ta='center'>
 							Discord
 						</Text>
-					</ContactCard>
-					<ContactCard
-						icon={<SiLinkedin size={20} />}
+					</ContactButton>
+					<ContactButton
+						icon={<SiLinkedin size={24} />}
 						href='https://www.linkedin.com/in/igamble/'
 					>
 						<Text component='h1' fw={700} ta='center'>
 							Linkedin
 						</Text>
-					</ContactCard>
-					<ContactCard
-						icon={<TbFile size={20} />}
+					</ContactButton>
+					<ContactButton
+						icon={<TbFile size={24} />}
 						href={'https://tsar-boomba.github.io/resume/resume.pdf'}
 					>
 						<Text component='h1' fw={700} ta='center'>
 							Resume
 						</Text>
-					</ContactCard>
+					</ContactButton>
 				</Group>
 			</Container>
 		</div>
