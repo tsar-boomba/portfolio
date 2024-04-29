@@ -25,16 +25,12 @@ fetch(
 const MyApp = ({ children }: { children?: ReactNode }) => {
 	const [primaryColor, setPrimaryColor] = useLocalStorage<DefaultMantineColor>({
 		key: 'primaryColor',
-		defaultValue: 'blue',
+		defaultValue: 'orange',
 		getInitialValueInEffect: true,
 	});
 
 	useIsomorphicEffect(() => {
-		if (location.hash) {
-			document.querySelector(location.hash)?.scrollIntoView({
-				behavior: 'instant',
-			});
-		}
+		document.querySelector(location.hash)?.scrollIntoView({ behavior: 'instant' });
 		document.documentElement.style.scrollBehavior = 'smooth';
 	}, []);
 
