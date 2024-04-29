@@ -37,7 +37,9 @@ const ColorPicker = () => {
 				handler();
 		};
 
-		CLICK_OUT_EVENTS.forEach((ev) => document.addEventListener(ev, listener));
+		CLICK_OUT_EVENTS.forEach((ev) =>
+			document.addEventListener(ev, listener, { passive: true }),
+		);
 		return () => CLICK_OUT_EVENTS.forEach((ev) => document.removeEventListener(ev, listener));
 	}, []);
 
