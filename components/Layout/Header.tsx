@@ -89,7 +89,7 @@ const Header: React.FC<HeaderSimpleProps> = ({ links }) => {
 					}}
 					ta='center'
 				>
-					Isaiah G.
+					<a href='#hero'>Isaiah G.</a>
 				</Text>
 				<Group gap={5} className={desktopOnly}>
 					{items}

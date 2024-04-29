@@ -1,4 +1,4 @@
-import { Text } from '@mantine/core';
+import { List } from '@mantine/core';
 import { Experience } from './ExperienceCard';
 import { SiMongodb } from 'react-icons/si';
 import { mongodb } from '@/utils/brandColors';
@@ -11,7 +11,13 @@ export const myExperiences: Experience[] = [
 		timeRange: 'June 2024 - August 2024',
 		location: 'New York, NY',
 		icon: <SiMongodb size={28} color={mongodb} />,
-		description: <Text></Text>,
+		description: (
+			<List>
+				<List.Item styles={{ itemWrapper: { display: 'inline' } }}>
+					Working with the Billing and Payments Team under Atlas Core Engineering
+				</List.Item>
+			</List>
+		),
 		future: true,
 	},
 	{
@@ -20,7 +26,22 @@ export const myExperiences: Experience[] = [
 		timeRange: 'June 2023 - Present',
 		location: 'Fort Mill, SC / Remote',
 		icon: <img src='/spi-logo.png' alt='SPI Logo' width={28} height={28} />,
-		description: <Text></Text>,
+		description: (
+			<List>
+				<List.Item styles={{ itemWrapper: { display: 'inline' } }}>
+					Created two internal tools with Rust, React.js, and TypeScript which increased
+					productivity by reverse engineering proprietary solutions for our workflow
+				</List.Item>
+				<List.Item styles={{ itemWrapper: { display: 'inline' } }}>
+					Programmed a microcontroller, using C and Rust, which uses Modbus to extract
+					data from a monitoring device
+				</List.Item>
+				<List.Item styles={{ itemWrapper: { display: 'inline' } }}>
+					Interfaced with a 4G LTE modem to send collected data to a dashbaord for
+					customer viewing
+				</List.Item>
+			</List>
+		),
 	},
 	{
 		name: 'Freelance',
@@ -28,6 +49,18 @@ export const myExperiences: Experience[] = [
 		timeRange: 'December 2021 - July 2022',
 		location: 'Remote',
 		icon: <TbFeather size={28} />,
-		description: <Text></Text>,
+		description: (
+			<List>
+				<List.Item styles={{ itemWrapper: { display: 'inline' } }}>
+					Architected and implemented full-stack web applications using Node.js, React.js,
+					Docker, and AWS
+				</List.Item>
+				<List.Item styles={{ itemWrapper: { display: 'inline' } }}>
+					Created a web application for a trucking company using React.js, Next.js,
+					Nest.js, Nginx, and PostgreSQL. Stored information for thousands of complex
+					loads and is critical to their operations
+				</List.Item>
+			</List>
+		),
 	},
 ];

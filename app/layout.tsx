@@ -5,7 +5,7 @@ import { ColorSchemeScript, DefaultMantineColor, MantineProvider } from '@mantin
 import { ReactNode } from 'react';
 import { Layout } from '../components/Layout';
 import { ColorProvider } from '../components/ColorProvider';
-import { useLocalStorage } from '@mantine/hooks';
+import { useIsomorphicEffect, useLocalStorage } from '@mantine/hooks';
 import { preload } from 'swr';
 import { FUNCTION_URL } from '@/components/Layout/Spotify';
 import { fetcher } from '@/utils/fetcher';
@@ -28,6 +28,10 @@ const MyApp = ({ children }: { children?: ReactNode }) => {
 		defaultValue: 'blue',
 		getInitialValueInEffect: true,
 	});
+
+	useIsomorphicEffect(() => {
+		document.documentElement.style.scrollBehavior = 'smooth';
+	}, []);
 
 	return (
 		<html>
@@ -65,7 +69,6 @@ const MyApp = ({ children }: { children?: ReactNode }) => {
 					name='viewport'
 					content='minimum-scale=1, initial-scale=1, width=device-width'
 				/>
-				<style>{'html { scroll-behavior: smooth; }'}</style>
 			</head>
 
 			<body>

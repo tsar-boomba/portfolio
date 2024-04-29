@@ -1,12 +1,14 @@
-import { Box, Card, Group, Stack, Text, Title, rem } from '@mantine/core';
+import { ActionIcon, Card, Collapse, Group, Stack, Text, Title, rem } from '@mantine/core';
+import { useDisclosure } from '@mantine/hooks';
 import { ReactNode } from 'react';
+import { TbArrowUp, TbInfoCircle } from 'react-icons/tb';
 
 export type Experience = {
 	name: string;
 	position: string;
 	timeRange: string;
 	location: string;
-	description: ReactNode;
+	description?: ReactNode;
 	icon: ReactNode;
 	future?: boolean;
 };
@@ -19,12 +21,23 @@ export const ExperienceCard = ({
 	position,
 	timeRange,
 }: Experience) => {
+	const [opened, { toggle }] = useDisclosure(false);
+
 	return (
-		<Card miw={240} withBorder shadow='md'>
+		<Card maw={308.89} withBorder shadow='md'>
 			<Group wrap='nowrap' align='start'>
-				<Box lh='1' p={rem(4)}>
+				<Stack lh='1' p={rem(4)}>
 					{icon}
-				</Box>
+					{description && (
+						<ActionIcon variant='light'>
+							{!opened ? (
+								<TbInfoCircle size={20} onClick={toggle} />
+							) : (
+								<TbArrowUp size={20} onClick={toggle} />
+							)}
+						</ActionIcon>
+					)}
+				</Stack>
 				<Stack gap={rem(4)}>
 					<div>
 						<Title order={2}>{name}</Title>
@@ -32,9 +45,11 @@ export const ExperienceCard = ({
 						<Text>{location}</Text>
 						<Text c='dimmed'>{timeRange}</Text>
 					</div>
-					<Box maw={300}>{description}</Box>
 				</Stack>
 			</Group>
+			<Collapse in={opened}>
+				<div>{description}</div>
+			</Collapse>
 		</Card>
 	);
 };

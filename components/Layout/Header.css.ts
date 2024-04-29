@@ -49,7 +49,7 @@ const BREAKPOINT = 650;
 
 export const mobileOnly = style({
 	'@media': {
-		[vars.largerThan(BREAKPOINT)]: {
+		[vars.largerThan(BREAKPOINT + 1)]: {
 			display: 'none',
 		},
 	},
