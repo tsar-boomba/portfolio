@@ -11,7 +11,7 @@ import {
 	Title,
 	Tooltip,
 } from '@mantine/core';
-import { useToggle } from '@mantine/hooks';
+import { useIsomorphicEffect, useToggle } from '@mantine/hooks';
 import ThemeToggle from './ThemeToggle';
 import ColorPicker from './ColorPicker';
 import { SiSpotify } from 'react-icons/si';
@@ -40,8 +40,12 @@ const Header: React.FC<HeaderSimpleProps> = ({ links }) => {
 	const [opened, toggleOpened] = useToggle([false, true]);
 	const buttonRef = useRef<HTMLButtonElement>(null);
 	const menuRef = useRef<HTMLDivElement>(null);
-	const [active, setActive] = useState(links[0].link);
+	const [active, setActive] = useState<string | undefined>(undefined);
 	const theme = useMantineTheme();
+
+	useIsomorphicEffect(() => {
+		setActive(links.find((link) => link.link === location.hash)?.link);
+	}, []);
 
 	useEffect(() => {
 		const handler = () => toggleOpened(false);

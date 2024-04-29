@@ -30,6 +30,11 @@ const MyApp = ({ children }: { children?: ReactNode }) => {
 	});
 
 	useIsomorphicEffect(() => {
+		if (location.hash) {
+			document.querySelector(location.hash)?.scrollIntoView({
+				behavior: 'instant',
+			});
+		}
 		document.documentElement.style.scrollBehavior = 'smooth';
 	}, []);
 
