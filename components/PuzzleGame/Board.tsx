@@ -23,6 +23,8 @@ export const Board = ({
 				zIndex: 1,
 				boxShadow: '0px 0px 24px 0px #00000080',
 				clipPath: 'inset(0px -24px 0px 0px)',
+				borderTopLeftRadius: 0,
+				borderBottomLeftRadius: 0,
 				backgroundColor: colorScheme === 'dark' ? undefined : theme.colors.gray[0],
 			}}
 			p='xl'

@@ -1,5 +1,5 @@
 import React, { ReactNode } from 'react';
-import { Card, Text, Group, Badge, Button, Image, useMantineTheme } from '@mantine/core';
+import { Card, Group, Badge, Button, Image, useMantineTheme, Title } from '@mantine/core';
 import { SiGithub } from 'react-icons/si';
 import { badge, card, githubButton, label, section } from './ProjectCard.css';
 import { TbPhoto } from 'react-icons/tb';
@@ -29,7 +29,13 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
 	const theme = useMantineTheme();
 
 	const builtWith = technologies.map((tech) => (
-		<Badge variant='light' size='lg' className={badge} key={tech.name} leftSection={tech.icon}>
+		<Badge
+			variant='default'
+			size='lg'
+			className={badge}
+			key={tech.name}
+			leftSection={tech.icon}
+		>
 			{tech.name}
 		</Badge>
 	));
@@ -38,9 +44,9 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
 		<Card withBorder shadow='sm' p='md' className={card}>
 			<Card.Section className={section} pt='md'>
 				<Group wrap='nowrap'>
-					<Text size='lg' fw={500}>
+					<Title order={1} size='xl' fw={600}>
 						{title}
-					</Text>
+					</Title>
 					{images && (
 						<Group justify='flex-end' flex={1}>
 							<Button
@@ -69,9 +75,9 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
 			</Card.Section>
 
 			<Card.Section className={section}>
-				<Text mt='md' className={label} c='dimmed'>
+				<Title order={2} size='xs' mt='md' className={label} c='dimmed'>
 					Technologies:
-				</Text>
+				</Title>
 				<Group gap={7} mt={5}>
 					{builtWith}
 				</Group>

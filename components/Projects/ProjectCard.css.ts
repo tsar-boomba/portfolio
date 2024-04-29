@@ -19,6 +19,7 @@ export const section = style({
 });
 
 export const badge = style({
+	color: vars.colors.primaryColors[5],
 	selectors: {
 		[vars.darkSelector]: {},
 	},
@@ -26,7 +27,7 @@ export const badge = style({
 
 export const label = style({
 	textTransform: 'uppercase',
-	fontSize: vars.fontSizes.xs,
+	fontSize: vars.fontSizes.sm,
 	fontWeight: 700,
 });
 
