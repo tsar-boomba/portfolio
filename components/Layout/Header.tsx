@@ -43,9 +43,11 @@ const Header: React.FC<HeaderSimpleProps> = ({ links }) => {
 	const [active, setActive] = useState<string | undefined>(undefined);
 	const theme = useMantineTheme();
 
-	useIsomorphicEffect(() => {
-		setActive(links.find((link) => link.link === location.hash)?.link);
-	}, []);
+	const updateLinkActive = () => {
+		setTimeout(() => setActive(links.find((link) => link.link === location.hash)?.link), 0);
+	};
+
+	useIsomorphicEffect(updateLinkActive, []);
 
 	useEffect(() => {
 		const handler = () => toggleOpened(false);
@@ -68,11 +70,9 @@ const Header: React.FC<HeaderSimpleProps> = ({ links }) => {
 			target={link.link.startsWith('http') ? '_blank' : undefined}
 			rel={link.link.startsWith('http') ? 'norefrerer' : undefined}
 			className={`${linkClass} ${link.link === active ? linkActive : ''}`}
-			onClick={(e) => {
-				e.preventDefault();
-				setActive(link.link);
+			onClick={() => {
 				toggleOpened(false);
-				location.href = link.link;
+				updateLinkActive();
 			}}
 		>
 			{link.label} {link.label === 'Blog' && <TbExternalLink />}
@@ -93,7 +93,14 @@ const Header: React.FC<HeaderSimpleProps> = ({ links }) => {
 					}}
 					ta='center'
 				>
-					<a href='#hero'>Isaiah G.</a>
+					<a
+						href='#hero'
+						onClick={() => {
+							updateLinkActive();
+						}}
+					>
+						Isaiah G.
+					</a>
 				</Text>
 				<Group gap={5} className={desktopOnly}>
 					{items}
