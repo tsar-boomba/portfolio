@@ -182,7 +182,6 @@ export const myProjects: ProjectCardProps[] = [
 		title: 'Milky Web',
 		mainTech: 'Rust',
 		repo: githubUrl('central'),
-		deployed: 'https://milkyweb.app',
 		images: ['/milky-web/example.png'],
 		description: (
 			<>
