@@ -11,6 +11,7 @@ import {
 	SiNextdotjs,
 	SiNodedotjs,
 	SiNpm,
+	SiOnnx,
 	SiPostgresql,
 	SiReact,
 	SiRust,
@@ -118,6 +119,46 @@ export const myProjects: ProjectCardProps[] = [
 			{
 				icon: <TbTool size={16} />,
 				name: 'Embedded',
+			},
+		],
+	},
+	{
+		title: 'Gaze Estimation',
+		mainTech: 'Rust',
+		repo: githubUrl('tom-gaze'),
+		deployed: 'https://gaze.igamble.dev',
+		images: ['/gaze/demo.png'],
+		description: (
+			<>
+				<Text size='sm' mt='sm'>
+					Demo of using Onnx Runtime to run a gaze estimation model. The web version is
+					linked below, but there is a native Rust version available in the repository as
+					well.
+				</Text>
+				<List size='sm'>
+					<List.Item>
+						Used Web APIs for camera access as well as image manipulation.
+					</List.Item>
+					<List.Item>Used OpenCV for image processing in the native version.</List.Item>
+					<List.Item>
+						Used basic tensor operations and Non-Maximum Suppression to pre-process
+						inputs as well as post-process out puts.
+					</List.Item>
+				</List>
+			</>
+		),
+		technologies: [
+			{
+				icon: <SiRust size={16} color={rust} />,
+				name: 'Rust',
+			},
+			{
+				icon: <SiTypescript size={16} color={typescript} />,
+				name: 'TypeScript',
+			},
+			{
+				icon: <SiOnnx size={16} />,
+				name: 'Onnx',
 			},
 		],
 	},
