@@ -4,7 +4,6 @@ import {
 	SiDocker,
 	SiEspressif,
 	SiGatsby,
-	SiGithub,
 	SiJest,
 	SiLinux,
 	SiMongodb,
@@ -231,12 +230,11 @@ export const myProjects: ProjectCardProps[] = [
 					easy access to web infrastructure for anyone.
 				</Text>
 				<List size='sm'>
-					<List.Item>Robust authentication with JWT</List.Item>
+					<List.Item>Robust authentication using JWT</List.Item>
 					<List.Item>Subscriptions with Stripe</List.Item>
-					<List.Item>Microservice architecture</List.Item>
-					<List.Item>Deploy instances to AWS</List.Item>
-					<List.Item>Provisions DNS records</List.Item>
-					<List.Item>AWS Lambda to handle instance deployment</List.Item>
+					<List.Item>
+						Uses AWS EC2, Route52, and Lambda to handle infrastructure
+					</List.Item>
 				</List>
 			</>
 		),
@@ -264,10 +262,6 @@ export const myProjects: ProjectCardProps[] = [
 			{
 				icon: <SiAmazonaws size={16} color={aws} />,
 				name: 'AWS',
-			},
-			{
-				icon: <SiGithub size={16} />,
-				name: 'GitHub',
 			},
 			{
 				icon: <TbTool size={16} />,
@@ -375,7 +369,8 @@ export const myProjects: ProjectCardProps[] = [
 		description: (
 			<>
 				<Text size='sm' mt='sm'>
-					A low-level implementation a falling block puzzle game similar to Tetris.
+					A low-level implementation a falling block puzzle game similar to Tetris. There
+					is a demo created using the library at the bottom of this page.
 				</Text>
 				<List size='sm'>
 					<List.Item>Runtime agnostic implementation</List.Item>

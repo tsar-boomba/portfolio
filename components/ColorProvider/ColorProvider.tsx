@@ -5,7 +5,7 @@ const ColorContext = createContext<{
 	primaryColor: DefaultMantineColor;
 	setPrimaryColor: (color: DefaultMantineColor) => void;
 }>({
-	primaryColor: 'orange',
+	primaryColor: 'violet',
 	setPrimaryColor: () => {},
 });
 

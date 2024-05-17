@@ -42,7 +42,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
 
 	return (
 		<Card withBorder shadow='sm' p='md' className={card}>
-			<Card.Section className={section} pt='md'>
+			<Card.Section className={section} pt='md' flex={1}>
 				<Group wrap='nowrap'>
 					<Title order={1} size='xl' fw={600}>
 						{title}

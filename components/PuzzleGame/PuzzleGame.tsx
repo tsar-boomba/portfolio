@@ -79,7 +79,8 @@ export const PuzzleGame = () => {
 			style={{
 				flexDirection: 'column',
 				minHeight: '100vh',
-				backgroundColor: colorScheme === 'dark' ? theme.colors.dark[8] : undefined,
+				backgroundColor:
+					colorScheme === 'dark' ? theme.colors.dark[8] : theme.colors.gray[1],
 			}}
 		>
 			<Container size='xl'>

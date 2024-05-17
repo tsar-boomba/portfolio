@@ -21,7 +21,7 @@ const Projects = () => {
 				>
 					Projects
 				</Text>
-				<Group align='start' justify='center' style={{ marginTop: 24 }}>
+				<Group align='stretch' justify='center' style={{ marginTop: 24 }}>
 					{myProjects.map((project, i) => (
 						<ProjectCard key={i} {...project} />
 					))}

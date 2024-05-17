@@ -6,7 +6,7 @@ const BREAKPOINT = '(max-width: 755px)';
 export const wrapper = style({
 	position: 'relative',
 	boxSizing: 'border-box',
-	backgroundColor: vars.colors.white,
+	backgroundColor: vars.colors.gray[1],
 
 	selectors: {
 		[vars.darkSelector]: {
