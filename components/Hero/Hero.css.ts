@@ -1,5 +1,4 @@
 import { vars } from '@/theme';
-import { rem } from '@mantine/core';
 import { style } from '@vanilla-extract/css';
 
 const BREAKPOINT = '(max-width: 755px)';
@@ -75,15 +74,29 @@ export const control = style({
 	},
 });
 
-export const s = style({
-	paddingLeft: 38,
-	paddingRight: 38,
+export const background = style({
+	position: 'absolute',
+	display: 'flex',
+	alignItems: 'flex-end',
+	top: 60,
+	left: 0,
+	right: 0,
+	bottom: 0,
+	//background: '#000',
+});
 
-	'@media': {
-		[BREAKPOINT]: {
-			fontSize: rem(20),
-			paddingLeft: 18,
-			paddingRight: 18,
+export const aurora = style({
+	position: 'absolute',
+	top: 0,
+	left: 0,
+	right: 0,
+	bottom: 0,
+	opacity: 0.35,
+	selectors: {
+		[vars.darkSelector]: {
+			opacity: 0.25,
 		},
 	},
+	//background:
+	//	'linear-gradient(182deg, rgba(63,94,251,0.5) 0%, rgba(171,82,254,0.5) 9%, rgba(1,190,255,0.5) 18%, rgba(3,249,240,0.5) 28%, rgba(70,252,176,0.4) 37%, rgba(70,252,176,0.1) 80%)',
 });
