@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 'use client';
 
 import {
@@ -19,8 +20,16 @@ import GradientCard from '../GradientCard';
 import { Board } from './Board';
 import { Cell } from './Cell';
 import { useEffect, useRef } from 'react';
+import {
+	TbArrowDown,
+	TbArrowDownBar,
+	TbArrowLeft,
+	TbArrowRight,
+	TbInbox,
+	TbRotateClockwise,
+} from 'react-icons/tb';
 
-const RenderPiece = ({ shape }: { shape: ('' | DefaultPieceTypes)[][] }) => {
+const RenderPiece = ({ shape, size }: { shape: ('' | DefaultPieceTypes)[][]; size: number }) => {
 	return (
 		<Grid gutter={0} columns={shape.length}>
 			{shape.map((row, y) => (
@@ -28,7 +37,7 @@ const RenderPiece = ({ shape }: { shape: ('' | DefaultPieceTypes)[][] }) => {
 					{row.map((_, x) => {
 						const piece = shape[x][y];
 
-						return <Cell key={x} piece={piece} size={30} noBorder />;
+						return <Cell key={x} piece={piece} size={size} noBorder />;
 					})}
 				</Grid.Col>
 			))}
@@ -59,21 +68,8 @@ export const PuzzleGame = () => {
 		firstRender.current = false;
 	}, []);
 
-	if (firstRender.current || (screen.width !== 0 && screen.width <= 1000))
-		return (
-			<Container
-				py={40}
-				style={{
-					flexDirection: 'column',
-					backgroundColor: colorScheme === 'dark' ? theme.colors.dark[8] : undefined,
-					textAlign: 'center',
-				}}
-			>
-				<Text style={{ fontSize: 24, fontWeight: 500 }}>
-					There would be a falling block puzzle game here if your screen was bigger 😔.
-				</Text>
-			</Container>
-		);
+	const screenIsSmall = firstRender.current || (screen.width !== 0 && screen.width <= 1000);
+	const cellSize = screenIsSmall ? 15 : 30;
 
 	return (
 		<Center
@@ -90,37 +86,50 @@ export const PuzzleGame = () => {
 					<GradientCard
 						style={{
 							height: '100%',
-							width: 150,
+							width: screenIsSmall ? undefined : 150,
 							color: colorScheme === 'dark' ? 'white' : 'black',
 						}}
-						p='md'
-						mr='xl'
+						p={screenIsSmall ? 'xs' : 'md'}
+						mr={screenIsSmall ? '0' : 'xl'}
 					>
 						<Stack w='100%' align='center'>
-							<Text component='h2' my={0} fz={28}>
+							<Text component='h2' my={0} fz={screenIsSmall ? 18 : 28}>
 								Hold
 							</Text>
 							{heldPiece ? (
-								<RenderPiece shape={DEFAULT_PIECE_TYPES[heldPiece].shape} />
+								<RenderPiece
+									shape={DEFAULT_PIECE_TYPES[heldPiece].shape}
+									size={cellSize}
+								/>
 							) : (
 								<RenderPiece
 									shape={Array.from(Array(3), () => new Array(3).fill(''))}
+									size={cellSize}
 								/>
 							)}
 						</Stack>
 					</GradientCard>
-					<Board board={boardWPlayer} onKeyDown={moveHandler} status={status} />
+					<Board
+						board={boardWPlayer}
+						onKeyDown={moveHandler}
+						status={status}
+						size={cellSize}
+					/>
 					<GradientCard
 						style={{
 							borderTopLeftRadius: '0',
 							borderBottomLeftRadius: '0',
-							marginLeft: -8,
 							zIndex: 0,
 							color: colorScheme === 'dark' ? 'white' : 'black',
 						}}
 					>
-						<Stack w={300} align='center'>
-							<Text component='h2' my={0} fz={28}>
+						<Stack
+							w={screenIsSmall ? undefined : 300}
+							align='center'
+							gap={screenIsSmall ? 'xs' : 'md'}
+							py={screenIsSmall ? 'xs' : 'sm'}
+						>
+							<Text component='h2' my={0} fz={screenIsSmall ? 18 : 28}>
 								Next
 							</Text>
 							<Stack w='100%' align='center'>
@@ -129,6 +138,7 @@ export const PuzzleGame = () => {
 											<RenderPiece
 												key={i}
 												shape={DEFAULT_PIECE_TYPES[piece].shape}
+												size={cellSize - 5}
 											/>
 										))
 									: Array(3)
@@ -139,51 +149,92 @@ export const PuzzleGame = () => {
 													shape={Array.from(Array(3), () =>
 														new Array(3).fill(''),
 													)}
+													size={cellSize - 5}
 												/>
 											))}
 							</Stack>
-							<Text component='h2' my={0} fz={28}>
+							<Text component='h2' my={0} fz={screenIsSmall ? 18 : 28}>
 								Lines: {rowsCleared}
 							</Text>
-							<Text component='h2' my={0} fz={28}>
+							<Text component='h2' my={0} fz={screenIsSmall ? 18 : 28}>
 								Level: {level}
 							</Text>
-							<Text component='h2' my={0} fz={28}>
+							<Text component='h2' my={0} fz={screenIsSmall ? 18 : 28}>
 								Score: {score}
 							</Text>
-							<Button variant='white' onClick={start}>
+							<Button
+								variant='white'
+								size={screenIsSmall ? 'xs' : 'md'}
+								onClick={start}
+							>
 								Start
 							</Button>
-							<Button variant='white' onClick={restart}>
+							<Button
+								variant='white'
+								size={screenIsSmall ? 'xs' : 'md'}
+								onClick={restart}
+							>
 								Restart
 							</Button>
 						</Stack>
 					</GradientCard>
 				</Group>
 			</Container>
-			<Stack fz={18} fw={500} align='center' gap={0}>
-				<Text fz={32} fw={500}>
-					How To Play
-				</Text>
-				<Text>
-					<Kbd>←</Kbd>/<Kbd>→</Kbd>: Move left/right
-				</Text>
-				<Text>
-					<Kbd>↑</Kbd>: Rotate right
-				</Text>
-				<Text>
-					<Kbd>↓</Kbd>: Soft drop
-				</Text>
-				<Text>
-					<Kbd>Z</Kbd>: Rotate left
-				</Text>
-				<Text>
-					<Kbd>X</Kbd>: Rotate right
-				</Text>
-				<Text>
-					<Kbd>C</Kbd>: Hold
-				</Text>
-			</Stack>
+			{screenIsSmall && (
+				<Stack p='sm' gap='xs' w='100%'>
+					<Group gap='xs'>
+						<Button flex={1} onMouseDown={() => moveHandler({ keyCode: 67 } as any)}>
+							<TbInbox />
+						</Button>
+						<Button flex={1} onMouseDown={() => moveHandler({ keyCode: 38 } as any)}>
+							<TbRotateClockwise />
+						</Button>
+					</Group>
+					<Group gap='xs'>
+						<Button flex={1} onMouseDown={() => moveHandler({ keyCode: 37 } as any)}>
+							<TbArrowLeft />
+						</Button>
+						<Button flex={1} onMouseDown={() => moveHandler({ keyCode: 39 } as any)}>
+							<TbArrowRight />
+						</Button>
+					</Group>
+					<Group gap='xs'>
+						<Button flex={1}>
+							<TbArrowDown onMouseDown={() => moveHandler({ keyCode: 40 } as any)} />
+						</Button>
+						<Button flex={1}>
+							<TbArrowDownBar
+								onMouseDown={() => moveHandler({ keyCode: 32 } as any)}
+							/>
+						</Button>
+					</Group>
+				</Stack>
+			)}
+			{!screenIsSmall && (
+				<Stack fz={18} fw={500} align='center' gap={0}>
+					<Text fz={32} fw={500}>
+						How To Play
+					</Text>
+					<Text>
+						<Kbd>←</Kbd>/<Kbd>→</Kbd>: Move left/right
+					</Text>
+					<Text>
+						<Kbd>↑</Kbd>: Rotate right
+					</Text>
+					<Text>
+						<Kbd>↓</Kbd>: Soft drop
+					</Text>
+					<Text>
+						<Kbd>Z</Kbd>: Rotate left
+					</Text>
+					<Text>
+						<Kbd>X</Kbd>: Rotate right
+					</Text>
+					<Text>
+						<Kbd>C</Kbd>: Hold
+					</Text>
+				</Stack>
+			)}
 		</Center>
 	);
 };

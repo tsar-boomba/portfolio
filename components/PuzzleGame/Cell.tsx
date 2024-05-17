@@ -1,4 +1,4 @@
-import { Box, lighten, useComputedColorScheme } from '@mantine/core';
+import { Box, lighten } from '@mantine/core';
 import { DefaultPieceTypes } from '@tstris/core';
 import { memo } from 'react';
 
@@ -34,17 +34,12 @@ export const Cell = memo(
 		size: number;
 		noBorder?: boolean;
 	}) => {
-		const colorScheme = useComputedColorScheme();
 		const color = getPieceColor(piece);
 
 		return (
 			<Box
 				style={{
-					border: !noBorder
-						? colorScheme === 'dark'
-							? `1px solid white`
-							: `1px solid black`
-						: undefined,
+					border: !noBorder ? '0.5px solid grey' : undefined,
 					margin: 0,
 					width: size,
 					height: size,
@@ -52,8 +47,6 @@ export const Cell = memo(
 			>
 				<Box
 					style={{
-						border:
-							color !== 'transparent' ? `${size / 5}px outset ${color}` : undefined,
 						borderTopColor: color !== 'transparent' ? lighten(color, 0.2) : undefined,
 						borderLeftColor: color !== 'transparent' ? lighten(color, 0.2) : undefined,
 						backgroundColor: getPieceColor(piece),

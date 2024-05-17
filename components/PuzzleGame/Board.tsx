@@ -8,10 +8,12 @@ export const Board = ({
 	board,
 	onKeyDown,
 	status,
+	size,
 }: {
 	board: DefaultPieceTypes[][];
 	onKeyDown: KeyboardEventHandler;
 	status: Tstris['status'];
+	size: number;
 }) => {
 	const theme = useMantineTheme();
 	const colorScheme = useComputedColorScheme('light');
@@ -27,7 +29,7 @@ export const Board = ({
 				borderBottomLeftRadius: 0,
 				backgroundColor: colorScheme === 'dark' ? undefined : theme.colors.gray[0],
 			}}
-			p='xl'
+			p={size}
 		>
 			<SimpleGrid
 				tabIndex={0}
@@ -46,7 +48,7 @@ export const Board = ({
 				{board
 					.flatMap((piece) => piece)
 					.map((piece, i) => (
-						<Cell key={i} piece={piece} size={30} />
+						<Cell key={i} piece={piece} size={size} />
 					))}
 			</SimpleGrid>
 		</Paper>
