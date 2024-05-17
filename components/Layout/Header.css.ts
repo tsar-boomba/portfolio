@@ -8,6 +8,7 @@ export const root = style({
 	top: 0,
 	left: 0,
 	zIndex: 2,
+	borderRadius: 0,
 });
 
 export const header = style({
@@ -72,6 +73,8 @@ export const mobileMenu = style({
 	left: 0,
 	zIndex: 1,
 	backgroundColor: vars.colors.white,
+	borderTopLeftRadius: 0,
+	borderTopRightRadius: 0,
 
 	selectors: {
 		[vars.darkSelector]: {

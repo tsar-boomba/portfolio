@@ -25,7 +25,7 @@ fetch(
 const MyApp = ({ children }: { children?: ReactNode }) => {
 	const [primaryColor, setPrimaryColor] = useLocalStorage<DefaultMantineColor>({
 		key: 'primaryColor',
-		defaultValue: 'orange',
+		defaultValue: 'violet',
 		getInitialValueInEffect: true,
 	});
 
