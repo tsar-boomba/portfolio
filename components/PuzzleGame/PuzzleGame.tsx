@@ -9,6 +9,7 @@ import {
 	Kbd,
 	Stack,
 	Text,
+	rem,
 	useComputedColorScheme,
 	useMantineTheme,
 } from '@mantine/core';
@@ -83,32 +84,57 @@ export const PuzzleGame = () => {
 		>
 			<Container size='xl'>
 				<Group w='100%' align='stretch' gap={0}>
-					<GradientCard
-						style={{
-							height: '100%',
-							width: screenIsSmall ? undefined : 150,
-							color: colorScheme === 'dark' ? 'white' : 'black',
-						}}
-						p={screenIsSmall ? 'xs' : 'md'}
-						mr={screenIsSmall ? '0' : 'xl'}
-					>
-						<Stack w='100%' align='center'>
-							<Text component='h2' my={0} fz={screenIsSmall ? 18 : 28}>
-								Hold
-							</Text>
-							{heldPiece ? (
-								<RenderPiece
-									shape={DEFAULT_PIECE_TYPES[heldPiece].shape}
-									size={cellSize}
-								/>
-							) : (
-								<RenderPiece
-									shape={Array.from(Array(3), () => new Array(3).fill(''))}
-									size={cellSize}
-								/>
-							)}
-						</Stack>
-					</GradientCard>
+					<Stack align='center' mr={screenIsSmall ? '0' : 'xl'}>
+						<GradientCard
+							style={{
+								width: screenIsSmall ? undefined : 150,
+								color: colorScheme === 'dark' ? 'white' : 'black',
+							}}
+							p={screenIsSmall ? 'xs' : 'md'}
+						>
+							<Stack w='100%' align='center'>
+								<Text component='h2' my={0} fz={screenIsSmall ? 18 : 28}>
+									Hold
+								</Text>
+								{heldPiece ? (
+									<RenderPiece
+										shape={DEFAULT_PIECE_TYPES[heldPiece].shape}
+										size={cellSize}
+									/>
+								) : (
+									<RenderPiece
+										shape={Array.from(Array(3), () => new Array(3).fill(''))}
+										size={cellSize}
+									/>
+								)}
+							</Stack>
+						</GradientCard>
+						{!screenIsSmall && (
+							<Stack fz={18} fw={500} align='center' gap={0}>
+								<Text fz={32} fw={500}>
+									How To Play
+								</Text>
+								<Text>
+									<Kbd>←</Kbd>/<Kbd>→</Kbd>: Move left/right
+								</Text>
+								<Text>
+									<Kbd>↑</Kbd>: Rotate right
+								</Text>
+								<Text>
+									<Kbd>↓</Kbd>: Soft drop
+								</Text>
+								<Text>
+									<Kbd>Z</Kbd>: Rotate left
+								</Text>
+								<Text>
+									<Kbd>X</Kbd>: Rotate right
+								</Text>
+								<Text>
+									<Kbd>C</Kbd>: Hold
+								</Text>
+							</Stack>
+						)}
+					</Stack>
 					<Board
 						board={boardWPlayer}
 						onKeyDown={moveHandler}
@@ -185,6 +211,7 @@ export const PuzzleGame = () => {
 					<Group gap='xs'>
 						<Button
 							flex={1}
+							h={rem(60)}
 							onMouseDown={() => {
 								if (tstris.status === 'playing') tstris.hold();
 							}}
@@ -193,6 +220,7 @@ export const PuzzleGame = () => {
 						</Button>
 						<Button
 							flex={1}
+							h={rem(60)}
 							onMouseDown={() => {
 								if (tstris.status === 'playing') tstris.rotateRight();
 							}}
@@ -203,6 +231,7 @@ export const PuzzleGame = () => {
 					<Group gap='xs'>
 						<Button
 							flex={1}
+							h={rem(60)}
 							onMouseDown={() => {
 								if (tstris.status === 'playing') tstris.moveLeft();
 							}}
@@ -211,6 +240,7 @@ export const PuzzleGame = () => {
 						</Button>
 						<Button
 							flex={1}
+							h={rem(60)}
 							onMouseDown={() => {
 								if (tstris.status === 'playing') tstris.moveRight();
 							}}
@@ -221,6 +251,7 @@ export const PuzzleGame = () => {
 					<Group gap='xs'>
 						<Button
 							flex={1}
+							h={rem(60)}
 							onMouseDown={() => {
 								if (tstris.status === 'playing') tstris.softDrop();
 							}}
@@ -229,6 +260,7 @@ export const PuzzleGame = () => {
 						</Button>
 						<Button
 							flex={1}
+							h={rem(60)}
 							onMouseDown={() => {
 								if (tstris.status === 'playing') tstris.hardDrop();
 							}}
@@ -236,31 +268,6 @@ export const PuzzleGame = () => {
 							<TbArrowDownBar />
 						</Button>
 					</Group>
-				</Stack>
-			)}
-			{!screenIsSmall && (
-				<Stack fz={18} fw={500} align='center' gap={0}>
-					<Text fz={32} fw={500}>
-						How To Play
-					</Text>
-					<Text>
-						<Kbd>←</Kbd>/<Kbd>→</Kbd>: Move left/right
-					</Text>
-					<Text>
-						<Kbd>↑</Kbd>: Rotate right
-					</Text>
-					<Text>
-						<Kbd>↓</Kbd>: Soft drop
-					</Text>
-					<Text>
-						<Kbd>Z</Kbd>: Rotate left
-					</Text>
-					<Text>
-						<Kbd>X</Kbd>: Rotate right
-					</Text>
-					<Text>
-						<Kbd>C</Kbd>: Hold
-					</Text>
 				</Stack>
 			)}
 		</Center>
