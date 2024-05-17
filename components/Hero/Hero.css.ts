@@ -6,11 +6,11 @@ const BREAKPOINT = '(max-width: 755px)';
 export const wrapper = style({
 	position: 'relative',
 	boxSizing: 'border-box',
-	backgroundColor: vars.colors.gray[1],
+	backgroundColor: vars.colors.white,
 
 	selectors: {
 		[vars.darkSelector]: {
-			backgroundColor: vars.colors.dark[8],
+			backgroundColor: vars.colors.black,
 		},
 	},
 });
