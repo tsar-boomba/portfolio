@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 'use client';
 
 import {
@@ -57,6 +56,7 @@ export const PuzzleGame = () => {
 		restart,
 		heldPiece,
 		status,
+		tstris,
 	} = useTstris();
 	const theme = useMantineTheme();
 	const colorScheme = useComputedColorScheme('light');
@@ -183,29 +183,57 @@ export const PuzzleGame = () => {
 			{screenIsSmall && (
 				<Stack p='sm' gap='xs' w='100%'>
 					<Group gap='xs'>
-						<Button flex={1} onMouseDown={() => moveHandler({ keyCode: 67 } as any)}>
+						<Button
+							flex={1}
+							onMouseDown={() => {
+								if (tstris.status === 'playing') tstris.hold();
+							}}
+						>
 							<TbInbox />
 						</Button>
-						<Button flex={1} onMouseDown={() => moveHandler({ keyCode: 38 } as any)}>
+						<Button
+							flex={1}
+							onMouseDown={() => {
+								if (tstris.status === 'playing') tstris.rotateRight();
+							}}
+						>
 							<TbRotateClockwise />
 						</Button>
 					</Group>
 					<Group gap='xs'>
-						<Button flex={1} onMouseDown={() => moveHandler({ keyCode: 37 } as any)}>
+						<Button
+							flex={1}
+							onMouseDown={() => {
+								if (tstris.status === 'playing') tstris.moveLeft();
+							}}
+						>
 							<TbArrowLeft />
 						</Button>
-						<Button flex={1} onMouseDown={() => moveHandler({ keyCode: 39 } as any)}>
+						<Button
+							flex={1}
+							onMouseDown={() => {
+								if (tstris.status === 'playing') tstris.moveRight();
+							}}
+						>
 							<TbArrowRight />
 						</Button>
 					</Group>
 					<Group gap='xs'>
-						<Button flex={1}>
-							<TbArrowDown onMouseDown={() => moveHandler({ keyCode: 40 } as any)} />
+						<Button
+							flex={1}
+							onMouseDown={() => {
+								if (tstris.status === 'playing') tstris.softDrop();
+							}}
+						>
+							<TbArrowDown />
 						</Button>
-						<Button flex={1}>
-							<TbArrowDownBar
-								onMouseDown={() => moveHandler({ keyCode: 32 } as any)}
-							/>
+						<Button
+							flex={1}
+							onMouseDown={() => {
+								if (tstris.status === 'playing') tstris.hardDrop();
+							}}
+						>
+							<TbArrowDownBar />
 						</Button>
 					</Group>
 				</Stack>
