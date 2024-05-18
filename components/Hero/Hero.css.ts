@@ -10,7 +10,7 @@ export const wrapper = style({
 
 	selectors: {
 		[vars.darkSelector]: {
-			backgroundColor: vars.colors.black,
+			backgroundColor: vars.colors.dark[9],
 		},
 	},
 });
