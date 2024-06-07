@@ -18,7 +18,6 @@ export const myExperiences: Experience[] = [
 				</List.Item>
 			</List>
 		),
-		future: true,
 	},
 	{
 		name: 'SPI',

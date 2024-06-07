@@ -22,7 +22,14 @@ export const Experience = () => {
 					Experience
 				</Text>
 				<Group justify='center' mt={24}>
-					<Timeline active={1} reverseActive>
+					<Timeline
+						active={
+							myExperiences[0].future
+								? myExperiences.length - 2
+								: myExperiences.length - 1
+						}
+						reverseActive
+					>
 						{myExperiences.map((exp, i) => (
 							<TimelineItem key={i} lineVariant={exp.future ? 'dashed' : undefined}>
 								<ExperienceCard {...exp} />
