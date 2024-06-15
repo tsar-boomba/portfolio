@@ -7,7 +7,7 @@ export const lines = style({
 	fontWeight: 1000,
 	margin: 0,
 	lineHeight: 1,
-	textShadow: '0px 0px 16px rgba(0, 0, 0, 0.1)',
+	textShadow: '0px 0px 24px rgba(0, 0, 0, 0.2)',
 	selectors: {
 		[vars.darkSelector]: {
 			textShadow: '0px 0px 16px rgba(255, 255, 255, 0.2)',
