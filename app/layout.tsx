@@ -11,9 +11,12 @@ import { FUNCTION_URL } from '@/components/Layout/Spotify';
 import { fetcher } from '@/utils/fetcher';
 import { ModalsProvider } from '@mantine/modals';
 import { theme } from '@/theme';
+import { GITHUB_FUNCTION_URL } from '@/components/Code';
 
 preload(FUNCTION_URL, fetcher);
 preload(FUNCTION_URL + '/playing', fetcher);
+preload(GITHUB_FUNCTION_URL + '/total', fetcher);
+preload(GITHUB_FUNCTION_URL + '/per-repo', fetcher);
 fetch(
 	'https://docs.google.com/document/d/1WAgMu51cO2KIKjmv9Z4uf-WnF_XtYkld/export?format=pdf&attachment=false',
 	{

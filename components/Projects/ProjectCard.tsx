@@ -1,9 +1,23 @@
 import React, { ReactNode } from 'react';
-import { Card, Group, Badge, Button, Image, useMantineTheme, Title } from '@mantine/core';
+import {
+	Card,
+	Group,
+	Badge,
+	Button,
+	Image,
+	useMantineTheme,
+	Title,
+	Stack,
+	Text,
+} from '@mantine/core';
 import { SiGithub } from 'react-icons/si';
 import { badge, card, githubButton, label, section } from './ProjectCard.css';
 import { TbPhoto } from 'react-icons/tb';
 import { openModal } from '@mantine/modals';
+import useSWRImmutable from 'swr/immutable';
+import { RepoStats } from '../Code/types';
+import { GITHUB_FUNCTION_URL } from '../Code';
+import { fetcher } from '@/utils/fetcher';
 
 export interface ProjectCardProps {
 	images?: string[];
@@ -27,7 +41,12 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
 	deployed,
 }) => {
 	const theme = useMantineTheme();
+	const { data: perRepo } = useSWRImmutable<RepoStats[]>(
+		GITHUB_FUNCTION_URL + '/per-repo',
+		fetcher,
+	);
 
+	const repoStats = perRepo?.find((r) => r.href === repo);
 	const builtWith = technologies.map((tech) => (
 		<Badge
 			variant='default'
@@ -44,9 +63,17 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
 		<Card withBorder shadow='sm' p='md' className={card}>
 			<Card.Section className={section} pt='md' flex={1}>
 				<Group wrap='nowrap'>
-					<Title order={1} size='xl' fw={600}>
-						{title}
-					</Title>
+					<Stack gap={0}>
+						<Title order={1} size='xl' fw={600}>
+							{title}
+						</Title>
+						{repoStats && (
+							<Text>
+								Lines Of Code:{' '}
+								{repoStats.languages.reduce((acc, lang) => acc + lang.code, 0)}
+							</Text>
+						)}
+					</Stack>
 					{images && (
 						<Group justify='flex-end' flex={1}>
 							<Button

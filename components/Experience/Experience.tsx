@@ -1,7 +1,8 @@
-import { Container, Text, useMantineTheme, Timeline, TimelineItem, Group } from '@mantine/core';
+import { Container, Text, useMantineTheme, Timeline, TimelineItem, Group, Stack } from '@mantine/core';
 import { myExperiences } from './myExperiences';
 import { ExperienceCard } from './ExperienceCard';
 import { inner, oddWrapper, title } from '../Section.css';
+import { Code } from '../Code';
 
 export const Experience = () => {
 	const theme = useMantineTheme();
@@ -37,6 +38,23 @@ export const Experience = () => {
 						))}
 					</Timeline>
 				</Group>
+				<Stack>
+					<Text
+						component='h2'
+						variant='gradient'
+						className={title}
+						mt='md'
+						style={{ fontSize: 48 }}
+						gradient={{
+							from: theme.colors[theme.primaryColor][7],
+							to: theme.colors[theme.primaryColor][4],
+							deg: 75,
+						}}
+					>
+						Code Stats
+					</Text>
+					<Code />
+				</Stack>
 			</Container>
 		</div>
 	);
