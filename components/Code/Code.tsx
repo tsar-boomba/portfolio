@@ -1,7 +1,7 @@
 import useSWRImmutable from 'swr/immutable';
 import { GITHUB_FUNCTION_URL } from '.';
 import { fetcher } from '@/utils/fetcher';
-import { Language, RepoStats } from './types';
+import { Language } from './types';
 import {
 	Anchor,
 	Box,
@@ -101,19 +101,20 @@ export const Code = () => {
 	return (
 		<Stack maw={800} align='center' style={{ alignSelf: 'center' }}>
 			<Group ref={ref} justify='center' align='center' gap={0}>
-				<Transition
-					mounted={(entry?.isIntersecting ?? false) || hasTransitioned}
-					transition='fade-up'
-					keepMounted
-					onEntered={() => setHasTransitioned(true)}
-					duration={500}
-				>
-					{(style) => (
-						<Stack style={style} align='flex-start' gap={0}>
+				<Stack align='flex-start' gap={0}>
+					<Transition
+						mounted={(entry?.isIntersecting ?? false) || hasTransitioned}
+						transition='fade-down'
+						keepMounted
+						onEnter={() => setHasTransitioned(true)}
+						duration={500}
+					>
+						{(style) => (
 							<Text
 								component='h1'
 								variant='gradient'
 								className={lines}
+								style={style}
 								gradient={{
 									from: theme.colors[theme.primaryColor][9],
 									to: theme.colors[theme.primaryColor][3],
@@ -125,10 +126,10 @@ export const Code = () => {
 									k
 								</Box>
 							</Text>
-							<Text>lines of code since June 2021</Text>
-						</Stack>
-					)}
-				</Transition>
+						)}
+					</Transition>
+					<Text>lines of code since June 2021</Text>
+				</Stack>
 				<Stack>
 					<RingProgress
 						size={240}
@@ -173,6 +174,7 @@ export const Code = () => {
 																	: undefined;
 															return (
 																<Card
+																	key={name}
 																	shadow='sm'
 																	p='sm'
 																	bg={bgColor}
