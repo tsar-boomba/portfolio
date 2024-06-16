@@ -47,7 +47,7 @@ const MyApp = ({ children }: { children?: ReactNode }) => {
 				<meta name='title' content='Isaiah Gamble - Portfolio' />
 				<meta
 					name='description'
-					content='A Full-stack developer with real world experience'
+					content='A Full-stack developer with aspirations in embedded programming'
 				/>
 				<link
 					rel='icon'
@@ -59,7 +59,7 @@ const MyApp = ({ children }: { children?: ReactNode }) => {
 				<meta property='og:title' content='Isaiah Gamble - Portfolio' />
 				<meta
 					property='og:description'
-					content='Full-stack developer with real world experience'
+					content='A Full-stack developer with aspirations in embedded programming'
 				/>
 				<meta property='og:image' content='/img-convert/example.gif' />
 
