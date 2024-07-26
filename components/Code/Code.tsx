@@ -82,7 +82,20 @@ export const Code = () => {
 	});
 	const [hasTransitioned, setHasTransitioned] = useState(false);
 	const theme = useMantineTheme();
-	const { data: total } = useSWRImmutable<Language[]>(GITHUB_FUNCTION_URL + '/total', fetcher);
+	const { data: total, error } = useSWRImmutable<Language[]>(
+		GITHUB_FUNCTION_URL + '/total',
+		fetcher,
+	);
+
+	if (error) {
+		console.error(error);
+		return (
+			<Center>
+				Couldn't get the stats. sowwy bout that (<strong>{'>.<'}</strong>) Maybe try
+				disabling adblock! ☝️🤓
+			</Center>
+		);
+	}
 
 	if (!total) {
 		return (
