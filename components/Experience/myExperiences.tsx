@@ -14,7 +14,17 @@ export const myExperiences: Experience[] = [
 		description: (
 			<List>
 				<List.Item styles={{ itemWrapper: { display: 'inline' } }}>
-					Working with the Billing and Payments Team under Atlas Core Engineering
+					Worked with the Cloud Payments Team to ensure the consistency of payment data by
+					automating Jira issue creation for job failures to improve engineer response
+					times using Java
+				</List.Item>
+				<List.Item styles={{ itemWrapper: { display: 'inline' } }}>
+					Developed API endpoint to run specific jobs, expediting post-fix testing and
+					automating Jira issue resolution
+				</List.Item>
+				<List.Item styles={{ itemWrapper: { display: 'inline' } }}>
+					Wrote Unit Tests, Integration Tests, and Third-Party Tests that interface with
+					Jira with JUnit
 				</List.Item>
 			</List>
 		),

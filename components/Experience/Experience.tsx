@@ -1,4 +1,12 @@
-import { Container, Text, useMantineTheme, Timeline, TimelineItem, Group, Stack } from '@mantine/core';
+import {
+	Container,
+	Text,
+	useMantineTheme,
+	Timeline,
+	TimelineItem,
+	Group,
+	Stack,
+} from '@mantine/core';
 import { myExperiences } from './myExperiences';
 import { ExperienceCard } from './ExperienceCard';
 import { inner, oddWrapper, title } from '../Section.css';
