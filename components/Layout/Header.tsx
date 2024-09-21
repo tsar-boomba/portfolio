@@ -96,7 +96,7 @@ const Header: React.FC<HeaderSimpleProps> = ({ links }) => {
 					ta='center'
 				>
 					<a
-						href='#hero'
+						href='/#hero'
 						onClick={() => {
 							updateLinkActive();
 						}}

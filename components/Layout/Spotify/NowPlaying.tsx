@@ -53,7 +53,6 @@ export const NowPlaying = () => {
 				prev >= currentPlaying.current.playing.duration + 2
 			) {
 				// Song ended, check API for new song
-				console.log('song ended locally');
 				progressInterval.stop();
 				triedRefresh.current = true;
 				mutate(FUNCTION_URL + '/playing').then(() => {
