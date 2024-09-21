@@ -6,13 +6,16 @@ import { useEffect, useState } from 'react';
 import { TbCopy } from 'react-icons/tb';
 
 const MarkdownRenderer = () => {
-	const query = new URL(location.href).searchParams;
-	const hasMd = query.has('md');
+	const [mdPresent, setMdPresent] = useState(true);
 	const [html, setHtml] = useState<TrustedHTML | null>(null);
 	const [inputMd, setInputMd] = useState('');
 	const [error, setError] = useState<string | null>(null);
 
 	useEffect(() => {
+		const query = new URL(location.href).searchParams;
+		const hasMd = query.has('md');
+		setMdPresent(hasMd);
+
 		if (hasMd) {
 			const md = decodeURIComponent(query.get('md')!);
 			setTimeout(async () => {
@@ -40,7 +43,7 @@ const MarkdownRenderer = () => {
 		}
 	}, []);
 
-	if (hasMd && html === null) {
+	if (mdPresent && html === null) {
 		return (
 			<Center pt={128} mx='xl' mb={64}>
 				<Stack w='100%'>
@@ -61,7 +64,7 @@ const MarkdownRenderer = () => {
 		</Center>;
 	}
 
-	if (hasMd && html !== null) {
+	if (mdPresent && html !== null) {
 		return (
 			<Stack w='100%' align='center' mb={64}>
 				<Card withBorder shadow='sm' mt={128} mx='md' px='md'>
