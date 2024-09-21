@@ -46,7 +46,7 @@ const MarkdownRenderer = () => {
 	if (mdPresent && html === null) {
 		return (
 			<Center pt={128} mx='xl' mb={64}>
-				<Stack w='100%'>
+				<Stack w='100%' align='center'>
 					<Loader size='xl' />
 					<Text size='xl' ta='center'>
 						Parsing MarkDown...
