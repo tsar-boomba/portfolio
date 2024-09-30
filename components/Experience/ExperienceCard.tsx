@@ -11,6 +11,7 @@ export type Experience = {
 	description?: ReactNode;
 	icon: ReactNode;
 	future?: boolean;
+	link?: string;
 };
 
 export const ExperienceCard = ({
@@ -20,6 +21,7 @@ export const ExperienceCard = ({
 	icon,
 	position,
 	timeRange,
+	link,
 }: Experience) => {
 	const [opened, { toggle }] = useDisclosure(false);
 
@@ -27,7 +29,7 @@ export const ExperienceCard = ({
 		<Card maw={308.89} withBorder shadow='md'>
 			<Group wrap='nowrap' align='start'>
 				<Stack lh='1' p={rem(4)}>
-					{icon}
+					{link ? <a href={link}>{icon}</a> : icon}
 					{description && (
 						<ActionIcon variant='light'>
 							{!opened ? (

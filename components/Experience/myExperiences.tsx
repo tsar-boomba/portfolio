@@ -6,11 +6,36 @@ import { TbFeather } from 'react-icons/tb';
 
 export const myExperiences: Experience[] = [
 	{
+		name: 'Hack4Impact GT: Bits of Good',
+		position: 'Developer',
+		timeRange: 'August 2024 - Present',
+		location: 'Atlanta, GA',
+		icon: <img src='/bog.png' alt='SPI Logo' width={28} height={28} />,
+		link: 'https://bitsofgood.org',
+		description: (
+			<List>
+				<List.Item styles={{ itemWrapper: { display: 'inline' } }}>
+					Working on an Agile team to create an application for Atlanta 501(c)(3)
+					Motherhood Beyond Bars
+				</List.Item>
+				<List.Item styles={{ itemWrapper: { display: 'inline' } }}>
+					Translating Figma designs from an experienced designer into fully functional
+					React components
+				</List.Item>
+				<List.Item styles={{ itemWrapper: { display: 'inline' } }}>
+					Creating backend functionality using Node.js, and employed Server-Side Rendering
+					for optimal user experience
+				</List.Item>
+			</List>
+		),
+	},
+	{
 		name: 'MongoDB',
 		position: 'Software Engineering Intern',
 		timeRange: 'June 2024 - August 2024',
 		location: 'New York, NY',
 		icon: <SiMongodb size={28} color={mongodb} />,
+		link: 'https://www.mongodb.com/',
 		description: (
 			<List>
 				<List.Item styles={{ itemWrapper: { display: 'inline' } }}>
@@ -35,6 +60,7 @@ export const myExperiences: Experience[] = [
 		timeRange: 'June 2023 - Present',
 		location: 'Fort Mill, SC / Remote',
 		icon: <img src='/spi-logo.png' alt='SPI Logo' width={28} height={28} />,
+		link: 'https://sp-i4.com',
 		description: (
 			<List>
 				<List.Item styles={{ itemWrapper: { display: 'inline' } }}>
