@@ -12,6 +12,8 @@ import { ExperienceCard } from './ExperienceCard';
 import { inner, oddWrapper, title } from '../Section.css';
 import { Code } from '../Code';
 
+const lastFutureIdx = myExperiences.findLastIndex((exp) => exp.future);
+
 export const Experience = () => {
 	const theme = useMantineTheme();
 
@@ -31,14 +33,7 @@ export const Experience = () => {
 					Experience
 				</Text>
 				<Group justify='center' mt={24}>
-					<Timeline
-						active={
-							myExperiences[0].future
-								? myExperiences.length - 2
-								: myExperiences.length - 1
-						}
-						reverseActive
-					>
+					<Timeline active={myExperiences.length - lastFutureIdx - 2} reverseActive>
 						{myExperiences.map((exp, i) => (
 							<TimelineItem key={i} lineVariant={exp.future ? 'dashed' : undefined}>
 								<ExperienceCard {...exp} />

@@ -4,7 +4,25 @@ import { SiMongodb } from 'react-icons/si';
 import { mongodb } from '@/utils/brandColors';
 import { TbFeather } from 'react-icons/tb';
 
-export const myExperiences: Experience[] = [
+export const myExperiences: readonly Experience[] = [
+	{
+		name: 'MongoDB',
+		position: 'Software Engineer Intern',
+		timeRange: 'June 2025 - August 2025',
+		location: 'New York, NY',
+		icon: <SiMongodb size={28} color={mongodb} />,
+		link: 'https://www.mongodb.com/',
+		future: true,
+	},
+	{
+		name: 'Verkada',
+		position: 'Software Engineer Intern',
+		timeRange: 'January 2025 - April 2025',
+		location: 'San Mateo, CA',
+		icon: <img src='/verkada.png' alt='Verkada Logo' width={28} height={28} />,
+		link: 'https://verkada.com',
+		future: true,
+	},
 	{
 		name: 'Hack4Impact GT: Bits of Good',
 		position: 'Developer',
@@ -31,7 +49,7 @@ export const myExperiences: Experience[] = [
 	},
 	{
 		name: 'MongoDB',
-		position: 'Software Engineering Intern',
+		position: 'Software Engineer Intern',
 		timeRange: 'June 2024 - August 2024',
 		location: 'New York, NY',
 		icon: <SiMongodb size={28} color={mongodb} />,
@@ -98,4 +116,4 @@ export const myExperiences: Experience[] = [
 			</List>
 		),
 	},
-];
+] as const;
