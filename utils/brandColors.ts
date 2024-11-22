@@ -3,6 +3,7 @@ export const css = '#264de4';
 export const react = '#61dbfb';
 export const typescript = '#007acc';
 export const mongodb = '#4db33d';
+export const nvidia = '#76B900';
 export const postgres = '#008bb9';
 export const java = '#ed8b00';
 export const nestjs = '#E0234E';

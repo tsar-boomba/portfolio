@@ -1,19 +1,19 @@
 import { List } from '@mantine/core';
 import { Experience } from './ExperienceCard';
-import { SiMongodb } from 'react-icons/si';
-import { mongodb } from '@/utils/brandColors';
+import { SiMongodb, SiNvidia } from 'react-icons/si';
+import { mongodb, nvidia } from '@/utils/brandColors';
 import { TbFeather } from 'react-icons/tb';
 
 export const myExperiences: readonly Experience[] = [
-	// {
-	// 	name: 'MongoDB',
-	// 	position: 'Software Engineer Intern',
-	// 	timeRange: 'June 2025 - August 2025',
-	// 	location: 'New York, NY',
-	// 	icon: <SiMongodb size={28} color={mongodb} />,
-	// 	link: 'https://www.mongodb.com/',
-	// 	future: true,
-	// },
+	{
+		name: 'NVIDIA',
+		position: 'Embedded Software Engineer Intern',
+		timeRange: 'June 2025 - August 2025',
+		location: 'Santa Clara, CA',
+		icon: <SiNvidia size={28} color={nvidia} />,
+		link: 'https://www.nvidia.com/',
+		future: true,
+	},
 	{
 		name: 'Verkada',
 		position: 'Software Engineer Intern',
