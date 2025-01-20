@@ -21,7 +21,6 @@ export const myExperiences: readonly Experience[] = [
 		location: 'San Mateo, CA',
 		icon: <img src='/verkada.png' alt='Verkada Logo' width={28} height={28} />,
 		link: 'https://verkada.com',
-		future: true,
 	},
 	{
 		name: 'Hack4Impact GT: Bits of Good',
