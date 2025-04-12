@@ -2,6 +2,7 @@ import { SkillCardProps } from './SkillCard';
 import {
 	SiC,
 	SiCss3,
+	SiGo,
 	SiMongodb,
 	SiNextdotjs,
 	SiNodedotjs,
@@ -14,6 +15,7 @@ import { Text } from '@mantine/core';
 import {
 	c,
 	css,
+	go,
 	mongodb,
 	nodeJs,
 	postgres,
@@ -79,16 +81,9 @@ export const mySkills: SkillCardProps[] = [
 		),
 	},
 	{
-		name: <Text component='h1'>MongoDB</Text>,
-		icon: <SiMongodb size={18} color={mongodb} />,
-		description: (
-			<Text>
-				MongoDB is a document based Database which I have become very familiar with, using
-				it in my second largest project and some smaller ones. I have experience using it
-				through their package and mongoose, a library to allow for creating models and
-				enforcing schema on collections.
-			</Text>
-		),
+		name: <Text component='h1'>Go</Text>,
+		icon: <SiGo size={18} color={go} />,
+		description: null,
 	},
 	{
 		name: <Text component='h1'>PostgreSQL</Text>,

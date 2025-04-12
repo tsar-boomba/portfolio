@@ -29,3 +29,4 @@ export const svelte = '#FF3E00';
 export const yaml = '#454545';
 export const markdown = '#000000';
 export const cmake = '#cdcdce';
+export const go = '#00ADD8';

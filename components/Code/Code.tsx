@@ -26,6 +26,7 @@ import {
 	cpp,
 	css,
 	docker,
+	go,
 	html,
 	java,
 	javascript,
@@ -61,6 +62,7 @@ const nameToColor = (name: string) => {
 	if (name === 'Sass') return scss;
 	if (name === 'Markdown') return markdown;
 	if (name === 'CMake') return cmake;
+	if (name === 'Go') return go;
 };
 
 const isDarkColor = (color: string) => {

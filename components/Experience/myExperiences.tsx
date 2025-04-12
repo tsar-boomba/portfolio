@@ -8,7 +8,7 @@ export const myExperiences: readonly Experience[] = [
 	{
 		name: 'NVIDIA',
 		position: 'Embedded Software Engineer Intern',
-		timeRange: 'June 2025 - August 2025',
+		timeRange: 'May 2025 - August 2025',
 		location: 'Santa Clara, CA',
 		icon: <SiNvidia size={28} color={nvidia} />,
 		link: 'https://www.nvidia.com/',
@@ -21,6 +21,21 @@ export const myExperiences: readonly Experience[] = [
 		location: 'San Mateo, CA',
 		icon: <img src='/verkada.png' alt='Verkada Logo' width={28} height={28} />,
 		link: 'https://verkada.com',
+		description: (
+			<List>
+				<List.Item styles={{ itemWrapper: { display: 'inline' } }}>
+					Developed features using TypeScript and Go throughout the entire tech stack,
+					from frontend to firmware
+				</List.Item>
+				<List.Item styles={{ itemWrapper: { display: 'inline' } }}>
+					Used React to implement core features on the frontend of an in-development product
+				</List.Item>
+				<List.Item styles={{ itemWrapper: { display: 'inline' } }}>
+					Improved developer experience by implementing caching where possible speeding up
+					build and start up times
+				</List.Item>
+			</List>
+		),
 	},
 	{
 		name: 'Hack4Impact GT: Bits of Good',

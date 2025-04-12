@@ -1,6 +1,6 @@
 import { Anchor, Code, List, Text } from '@mantine/core';
 import {
-	SiAmazonaws,
+	SiAmazonwebservices,
 	SiDocker,
 	SiEspressif,
 	SiGatsby,
@@ -39,6 +39,120 @@ import { ProjectCardProps } from './ProjectCard';
 const githubUrl = (repo: string, owner = 'tsar-boomba') => `https://github.com/${owner}/${repo}`;
 
 export const myProjects: ProjectCardProps[] = [
+	{
+		title: 'Motorx',
+		mainTech: 'Rust',
+		repo: githubUrl('motorx'),
+		description: (
+			<>
+				<Text size='sm' mt='sm'>
+					My reverse-proxy made in 100% safe rust!
+				</Text>
+				<List size='sm'>
+					<List.Item>Supports http/1.1, http/2, and http/3!</List.Item>
+					<List.Item>http/1.1 or http/2 cleartext for upstreams</List.Item>
+					<List.Item>Simple JSON configuration</List.Item>
+					<List.Item>Written with async Rust for CPU efficiency</List.Item>
+					<List.Item>
+						TLS termination through provided certs or{' '}
+						<Anchor
+							size='sm'
+							href='https://en.wikipedia.org/wiki/Automatic_Certificate_Management_Environment'
+							rel='noopener noreferer'
+						>
+							ACME
+						</Anchor>{' '}
+						for automatic certs
+					</List.Item>
+				</List>
+			</>
+		),
+		technologies: [
+			{
+				icon: <SiRust size={16} color={rust} />,
+				name: 'Rust',
+			},
+		],
+	},
+	{
+		title: 'My Music',
+		mainTech: 'Rust',
+		repo: githubUrl('my-music'),
+		description: (
+			<>
+				<Text size='sm' mt='sm'>
+					A self-hostable music manager and player
+				</Text>
+				<List size='sm'>
+					<List.Item>
+						Web client with a native-like experience through the{' '}
+						<Anchor href='https://developer.mozilla.org/en-US/docs/Web/API/MediaSession'>
+							MediaSession API
+						</Anchor>
+					</List.Item>
+					<List.Item>
+						Supports multiple storage backends through{' '}
+						<Anchor href='https://opendal.apache.org/'>OpenDAL</Anchor>
+					</List.Item>
+					<List.Item>Extracts album covers from song metadata</List.Item>
+					<List.Item>
+						Leverages presigned URLs where possible to reduce bandwidth costs
+					</List.Item>
+					<List.Item>
+						Mobile app created with{' '}
+						<Anchor href='https://reactnative.dev/'>React Native</Anchor> in development
+					</List.Item>
+				</List>
+			</>
+		),
+		technologies: [
+			{
+				icon: <SiRust size={16} color={rust} />,
+				name: 'Rust',
+			},
+			{
+				icon: <SiReact size={16} color={react} />,
+				name: 'React',
+			},
+			{
+				icon: <SiTypescript size={16} color={typescript} />,
+				name: 'TypeScript',
+			},
+		],
+	},
+	{
+		title: 'My Feed',
+		mainTech: 'Rust',
+		repo: githubUrl('my-feed'),
+		images: ['/my-feed.png'],
+		deployed: 'https://my.igamble.dev',
+		description: (
+			<>
+				<Text size='sm' mt='sm'>
+					A self-hostable RSS feed aggregator
+				</Text>
+				<List size='sm'>
+					<List.Item>Scrapes thumbnail images for articles</List.Item>
+					<List.Item>Preview articles from feed before adding to poll list</List.Item>
+					<List.Item>Extremely light on CPU and memory usage</List.Item>
+				</List>
+			</>
+		),
+		technologies: [
+			{
+				icon: <SiRust size={16} color={rust} />,
+				name: 'Rust',
+			},
+			{
+				icon: <SiReact size={16} color={react} />,
+				name: 'React',
+			},
+			{
+				icon: <SiTypescript size={16} color={typescript} />,
+				name: 'TypeScript',
+			},
+		],
+	},
 	{
 		title: 'ESP Spotify Display',
 		mainTech: 'Rust',
@@ -260,7 +374,7 @@ export const myProjects: ProjectCardProps[] = [
 				name: 'PostgreSQL',
 			},
 			{
-				icon: <SiAmazonaws size={16} color={aws} />,
+				icon: <SiAmazonwebservices size={16} color={aws} />,
 				name: 'AWS',
 			},
 			{
