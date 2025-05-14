@@ -12,7 +12,6 @@ export const myExperiences: readonly Experience[] = [
 		location: 'Santa Clara, CA',
 		icon: <SiNvidia size={28} color={nvidia} />,
 		link: 'https://www.nvidia.com/',
-		future: true,
 	},
 	{
 		name: 'Verkada',
