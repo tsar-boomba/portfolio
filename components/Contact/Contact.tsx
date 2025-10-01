@@ -42,14 +42,6 @@ const Contact = () => {
 						</Text>
 					</ContactButton>
 					<ContactButton
-						icon={<SiLinkedin size={24} />}
-						href='https://www.linkedin.com/in/igamble/'
-					>
-						<Text component='h1' fw={700} ta='center'>
-							Linkedin
-						</Text>
-					</ContactButton>
-					<ContactButton
 						icon={<TbFile size={24} />}
 						href={'https://tsar-boomba.github.io/resume/resume.pdf'}
 					>
