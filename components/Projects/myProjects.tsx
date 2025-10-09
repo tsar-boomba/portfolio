@@ -64,6 +64,13 @@ export const myProjects: ProjectCardProps[] = [
 						</Anchor>{' '}
 						for automatic certs
 					</List.Item>
+					<List.Item>
+						TLS Server Name Indication (SNI) based routing for hosting multiple sites on
+						a single IP address
+					</List.Item>
+					<List.Item>
+						All of these features are used in production to host some of my sites
+					</List.Item>
 				</List>
 			</>
 		),
