@@ -1,4 +1,4 @@
-import { ActionIcon, Card, Collapse, Group, Stack, Text, Title, rem } from '@mantine/core';
+import { ActionIcon, Anchor, Card, Collapse, Group, Stack, Text, Title, rem } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import { ReactNode } from 'react';
 import { TbArrowUp, TbInfoCircle } from 'react-icons/tb';
@@ -42,7 +42,9 @@ export const ExperienceCard = ({
 				</Stack>
 				<Stack gap={rem(4)}>
 					<div>
-						<Title order={2}>{name}</Title>
+						<Anchor variant='text' href={link}>
+							<Title order={2}>{name}</Title>
+						</Anchor>
 						<Text fw={800}>{position}</Text>
 						<Text>{location}</Text>
 						<Text c='dimmed'>{timeRange}</Text>

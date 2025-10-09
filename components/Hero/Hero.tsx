@@ -61,8 +61,10 @@ const Hero = () => {
 					>
 						Isaiah Gamble
 					</Text>
-					<Text className={description} c='dimmed'>
-						Full-stack engineer with aspirations in embedded programming
+					<Text className={description}>
+						<span>Full-stack, Embedded Engineer that</span>
+						<span>🧡</span>
+						<span>Rust</span>
 					</Text>
 					<Button
 						component='a'

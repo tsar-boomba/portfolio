@@ -17,13 +17,6 @@ preload(FUNCTION_URL, fetcher);
 preload(FUNCTION_URL + '/playing', fetcher);
 preload(GITHUB_FUNCTION_URL + '/total', fetcher);
 preload(GITHUB_FUNCTION_URL + '/per-repo', fetcher);
-fetch(
-	'https://docs.google.com/document/d/1WAgMu51cO2KIKjmv9Z4uf-WnF_XtYkld/export?format=pdf&attachment=false',
-	{
-		mode: 'no-cors',
-		cache: 'reload',
-	},
-);
 
 const MyApp = ({ children }: { children?: ReactNode }) => {
 	const [primaryColor, setPrimaryColor] = useLocalStorage<DefaultMantineColor>({
@@ -45,10 +38,7 @@ const MyApp = ({ children }: { children?: ReactNode }) => {
 				<ColorSchemeScript />
 				<title>Isaiah Gamble - Portfolio</title>
 				<meta name='title' content='Isaiah Gamble - Portfolio' />
-				<meta
-					name='description'
-					content='A Full-stack developer with aspirations in embedded programming'
-				/>
+				<meta name='description' content='Full-stack and embedded engineer that 🧡 Rust' />
 				<link
 					rel='icon'
 					href='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💣</text></svg>'
@@ -59,7 +49,7 @@ const MyApp = ({ children }: { children?: ReactNode }) => {
 				<meta property='og:title' content='Isaiah Gamble - Portfolio' />
 				<meta
 					property='og:description'
-					content='A Full-stack developer with aspirations in embedded programming'
+					content='Full-stack and embedded engineer that 🧡 Rust'
 				/>
 				<meta property='og:image' content='/img-convert/example.gif' />
 
@@ -68,7 +58,7 @@ const MyApp = ({ children }: { children?: ReactNode }) => {
 				<meta property='twitter:title' content='Isaiah Gamble - Portfolio' />
 				<meta
 					property='twitter:description'
-					content='Full-stack developer with real world experience'
+					content='Full-stack and embedded engineer that 🧡 Rust'
 				/>
 				<meta property='twitter:image' content='/img-convert/example.gif' />
 				<meta

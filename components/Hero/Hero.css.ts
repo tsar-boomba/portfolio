@@ -53,13 +53,17 @@ export const title = style({
 });
 
 export const description = style({
+	display: 'flex',
+	alignItems: 'center',
+	flexWrap: 'nowrap',
 	textAlign: 'center',
-	marginTop: vars.spacing.xl,
-	fontSize: 24,
+	gap: 6,
+	fontSize: 26,
 
 	'@media': {
 		[BREAKPOINT]: {
 			fontSize: 18,
+			gap: 4,
 		},
 	},
 });
