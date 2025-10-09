@@ -33,20 +33,19 @@ export const myExperiences: readonly Experience[] = [
 					<Anchor href='https://www.verkada.com/blog/introducing-operator-view/'>
 						Operator View
 					</Anchor>{' '}
-					feature for release.
+					feature for release using TypeScript, React, and Go.
 				</Item>
 				<Item>
-					Added rich text support for ticket comments, and Standard Operating Procedures.
+					Added rich text support through markdown for ticket comments, and Standard
+					Operating Procedures.
 				</Item>
 				<Item>
-					Implemented ticket tagging support on the frontend.
+					Implemented tag creation, searching, and attachment to tickets on the frontend
 				</Item>
 				<Item>
 					Designed and implemented asynchronous CSV export of ticket and their statuses.
 				</Item>
-				<Item>
-					Designed image upload for ticket comments.
-				</Item>
+				<Item>Designed image upload for ticket comments.</Item>
 			</List>
 		),
 	},
