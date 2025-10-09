@@ -29,7 +29,13 @@ export const ExperienceCard = ({
 		<Card maw={308.89} withBorder shadow='md'>
 			<Group wrap='nowrap' align='start'>
 				<Stack lh='1' p={rem(4)}>
-					{link ? <a href={link}>{icon}</a> : icon}
+					{link ? (
+						<a target='_blank' href={link}>
+							{icon}
+						</a>
+					) : (
+						icon
+					)}
 					{description && (
 						<ActionIcon variant='light'>
 							{!opened ? (
@@ -42,7 +48,7 @@ export const ExperienceCard = ({
 				</Stack>
 				<Stack gap={rem(4)}>
 					<div>
-						<Anchor variant='text' href={link}>
+						<Anchor variant='text' target='_blank' href={link}>
 							<Title order={2}>{name}</Title>
 						</Anchor>
 						<Text fw={800}>{position}</Text>

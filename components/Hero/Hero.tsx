@@ -62,7 +62,7 @@ const Hero = () => {
 						Isaiah Gamble
 					</Text>
 					<Text className={description}>
-						<span>Full-stack, Embedded Engineer that</span>
+						<span>Full-stack, Embedded Engineer who</span>
 						<span>🧡</span>
 						<span>Rust</span>
 					</Text>

@@ -1,5 +1,6 @@
 import bundleAnalyzer from '@next/bundle-analyzer';
 import { createVanillaExtractPlugin } from '@vanilla-extract/next-plugin';
+import { type NextConfig } from 'next/types';
 
 // const isProd = process.env.NODE_ENV === 'production';
 const withBundleAnalyzer = bundleAnalyzer({
@@ -8,11 +9,12 @@ const withBundleAnalyzer = bundleAnalyzer({
 
 const withVanillaExtract = createVanillaExtractPlugin();
 
-/** @type import('next').NextConfig */
-const config = {
+const config: NextConfig = {
 	reactStrictMode: true,
 	output: 'export',
-	swcMinify: true,
+	experimental: {
+		reactCompiler: true,
+	},
 	eslint: {
 		ignoreDuringBuilds: true,
 	},

@@ -1,49 +1,57 @@
 {
-	"name": "portfolio",
-	"version": "0.1.0",
-	"private": true,
-	"scripts": {
-		"dev": "next dev",
-		"build": "next build",
-		"export": "next export",
-		"start": "next start",
-		"lint": "next lint",
-		"analyze": "cross-env ANALYZE=true npm run build"
-	},
-	"dependencies": {
-		"@mantine/core": "7.17.4",
-		"@mantine/hooks": "7.17.4",
-		"@mantine/modals": "7.17.4",
-		"@mantine/vanilla-extract": "7.17.4",
-		"@tstris/core": "0.2.1",
-		"@tstris/react": "0.2.1",
-		"marked": "^14.1.2",
-		"next": "14.2.4",
-		"react": "18.3.1",
-		"react-dom": "18.3.1",
-		"react-icons": "5.5.0",
-		"swr": "2.3.3"
-	},
-	"devDependencies": {
-		"@next/bundle-analyzer": "14.2.4",
-		"@types/dompurify": "^3.0.5",
-		"@types/node": "22.14.0",
-		"@types/react": "18.3.3",
-		"@typescript-eslint/eslint-plugin": "8.29.1",
-		"@typescript-eslint/parser": "8.29.1",
-		"@vanilla-extract/css": "1.17.1",
-		"@vanilla-extract/next-plugin": "2.4.10",
-		"cross-env": "7.0.3",
-		"dompurify": "^3.2.5",
-		"eslint": "9.24.0",
-		"eslint-config-next": "14.2.4",
-		"eslint-config-prettier": "10.1.1",
-		"eslint-plugin-prettier": "5.2.6",
-		"postcss": "8.5.3",
-		"postcss-preset-mantine": "1.17.0",
-		"postcss-simple-vars": "7.0.1",
-		"prettier": "3.5.3",
-		"typescript": "5.8.3"
-	},
-	"packageManager": "pnpm@10.18.0+sha512.e804f889f1cecc40d572db084eec3e4881739f8dec69c0ff10d2d1beff9a4e309383ba27b5b750059d7f4c149535b6cd0d2cb1ed3aeb739239a4284a68f40cfa"
+  "name": "portfolio",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "export": "next export",
+    "start": "next start",
+    "lint": "next lint",
+    "analyze": "cross-env ANALYZE=true npm run build"
+  },
+  "dependencies": {
+    "@mantine/core": "8.3.4",
+    "@mantine/hooks": "8.3.4",
+    "@mantine/modals": "8.3.4",
+    "@mantine/vanilla-extract": "8.3.4",
+    "@tstris/core": "0.2.1",
+    "@tstris/react": "0.2.1",
+    "marked": "16.4.0",
+    "next": "15.5.4",
+    "react": "19.2.0",
+    "react-dom": "19.2.0",
+    "react-icons": "5.5.0",
+    "swr": "2.3.6"
+  },
+  "devDependencies": {
+    "@next/bundle-analyzer": "15.5.4",
+    "@types/node": "22.18.9",
+    "@types/react": "19.2.2",
+    "@typescript-eslint/eslint-plugin": "8.46.0",
+    "@typescript-eslint/parser": "8.46.0",
+    "@vanilla-extract/css": "1.17.4",
+    "@vanilla-extract/next-plugin": "2.4.14",
+    "babel-plugin-react-compiler": "1.0.0",
+    "cross-env": "10.1.0",
+    "dompurify": "3.2.7",
+    "eslint": "9.37.0",
+    "eslint-config-next": "15.5.4",
+    "eslint-config-prettier": "10.1.1",
+    "eslint-plugin-prettier": "5.5.4",
+    "postcss": "8.5.6",
+    "postcss-preset-mantine": "1.17.0",
+    "postcss-simple-vars": "7.0.1",
+    "prettier": "3.6.2",
+    "typescript": "5.9.3"
+  },
+  "packageManager": "pnpm@10.18.0",
+  "pnpm": {
+    "overrides": {
+      "@types/react": "19.2.2"
+    },
+    "onlyBuiltDependencies": [
+      "sharp"
+    ]
+  }
 }

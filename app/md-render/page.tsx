@@ -12,7 +12,7 @@ const bytesToB64 = (b: Uint8Array): string => {
 	return btoa(binString);
 };
 
-const base64ToBytes = (base64: string): Uint8Array => {
+const base64ToBytes = (base64: string): Uint8Array<ArrayBuffer> => {
 	const binString = atob(base64);
 	return new Uint8Array(Array.from(binString, (m) => m.codePointAt(0)!));
 };
