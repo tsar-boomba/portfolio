@@ -66,10 +66,6 @@ export const myExperiences: readonly Experience[] = [
 					Added a feature to the Python GPIO library that ensures the correct
 					configuration of pin mux registers through the <Code>/dev/mem</Code> node
 				</Item>
-				<Item>
-					I terminated my internship early due to the lack of intellectual and technical
-					stimulation
-				</Item>
 			</List>
 		),
 	},
