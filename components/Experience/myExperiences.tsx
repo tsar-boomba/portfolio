@@ -10,15 +10,15 @@ const Item = ({ children }: { children?: ReactNode }) => (
 );
 
 export const myExperiences: readonly Experience[] = [
-	{
-		name: 'Verkada',
-		future: true,
-		position: 'Senior Software Engineer Intern',
-		timeRange: 'June 2026 - August 2026',
-		location: 'San Mateo, CA',
-		icon: <img src='/verkada.png' alt='Verkada Logo' width={28} height={28} />,
-		link: 'https://verkada.com',
-	},
+	// {
+	// 	name: 'Verkada',
+	// 	future: true,
+	// 	position: 'Senior Software Engineer Intern',
+	// 	timeRange: 'June 2026 - August 2026',
+	// 	location: 'San Mateo, CA',
+	// 	icon: <img src='/verkada.png' alt='Verkada Logo' width={28} height={28} />,
+	// 	link: 'https://verkada.com',
+	// },
 	{
 		name: 'Verkada',
 		position: 'Software Engineer Intern',
