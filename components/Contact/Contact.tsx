@@ -31,6 +31,14 @@ const Contact = () => {
 							GitHub
 						</Text>
 					</ContactButton>
+					<ContactButton
+						icon={<SiLinkedin size={24} />}
+						href={'https://linkedin.com/in/igamble'}
+					>
+						<Text component='h1' fw={700} ta='center'>
+							Linkedin
+						</Text>
+					</ContactButton>
 					<ContactButton icon={<SiGmail size={24} />} href='mailto:itg.2048@gmail.com'>
 						<Text component='h1' fw={700} ta='center'>
 							E-Mail
