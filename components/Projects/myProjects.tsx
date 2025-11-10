@@ -93,13 +93,18 @@ export const myProjects: ProjectCardProps[] = [
 				<List size='sm'>
 					<List.Item>
 						Web client with a native-like experience through the{' '}
-						<Anchor href='https://developer.mozilla.org/en-US/docs/Web/API/MediaSession'>
+						<Anchor
+							size='sm'
+							href='https://developer.mozilla.org/en-US/docs/Web/API/MediaSession'
+						>
 							MediaSession API
 						</Anchor>
 					</List.Item>
 					<List.Item>
 						Supports multiple storage backends through{' '}
-						<Anchor href='https://opendal.apache.org/'>OpenDAL</Anchor>
+						<Anchor size='sm' href='https://opendal.apache.org/'>
+							OpenDAL
+						</Anchor>
 					</List.Item>
 					<List.Item>Extracts album covers from song metadata</List.Item>
 					<List.Item>
@@ -107,7 +112,10 @@ export const myProjects: ProjectCardProps[] = [
 					</List.Item>
 					<List.Item>
 						Mobile app created with{' '}
-						<Anchor href='https://reactnative.dev/'>React Native</Anchor> in development
+						<Anchor size='sm' href='https://reactnative.dev/'>
+							React Native
+						</Anchor>{' '}
+						in development
 					</List.Item>
 				</List>
 			</>
