@@ -3,6 +3,7 @@ import { style } from '@vanilla-extract/css';
 
 export const card = style({
 	maxWidth: 500,
+	flexGrow: 1,
 });
 
 export const section = style({
