@@ -125,7 +125,7 @@ const Header: React.FC<HeaderSimpleProps> = ({ links }) => {
 							style={{ backgroundColor: spotify }}
 							onClick={() =>
 								openModal({
-									title: <Title style={{ color: spotify }}>Top Tracks</Title>,
+									title: <Title component='span' style={{ color: spotify }}>Top Tracks</Title>,
 									children: <SpotifyModal />,
 									lockScroll: true,
 								})

@@ -5,6 +5,7 @@ import {
 	Box,
 	Card,
 	Group,
+	Image,
 	Progress,
 	Stack,
 	Title,
@@ -30,6 +31,7 @@ import {
 	TbRepeat,
 	TbRepeatOnce,
 } from 'react-icons/tb';
+import { AlbumCover } from './AlbumCover';
 
 export const NowPlaying = () => {
 	const [progressSecs, setProgressSecs] = useState(0);
@@ -104,17 +106,11 @@ export const NowPlaying = () => {
 								>
 									<Box p='xs' style={{ ...styles }}>
 										<Group gap='xs' pb={rem(4)} wrap='nowrap'>
-											{/* <Anchor
-												href={data.playing.url ?? undefined}
-												target='_blank'
-											>
-												<Image
-													height={rem(52)}
-													width={rem(52)}
-													src={data.playing.imageUrl ?? undefined}
-													alt={`${data.playing.name} album cover`}
-												/>
-											</Anchor> */}
+											<AlbumCover
+												albumName={data.playing.name}
+												songLink={data.playing.url}
+												src={data.playing.imageUrl}
+											/>
 											<Stack gap={0}>
 												<Group wrap='nowrap'>
 													<Stack align='start' gap={0}>
