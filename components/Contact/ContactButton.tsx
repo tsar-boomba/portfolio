@@ -29,7 +29,7 @@ export const ContactButton: React.FC<CopyButtonProps> = ({ text, children, icon,
 				href={href}
 				leftSection={icon}
 				target='_blank'
-				rel='noopener noreferrer'
+				rel={`noopener noreferrer${href?.includes('mastodon') ? ' me' : ''}`}
 				style={{ borderWidth: 2 }}
 				onClick={text ? () => clipboard.copy(text) : undefined}
 			>

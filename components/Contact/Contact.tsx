@@ -1,5 +1,5 @@
 import { Container, Text, Group, useMantineTheme } from '@mantine/core';
-import { SiDiscord, SiGithub, SiGmail, SiLinkedin } from 'react-icons/si';
+import { SiBluesky, SiDiscord, SiGithub, SiGmail, SiLinkedin, SiMastodon } from 'react-icons/si';
 import { ContactButton } from './ContactButton';
 import { TbFile } from 'react-icons/tb';
 import { inner, oddWrapper, title } from '../Section.css';
@@ -29,6 +29,22 @@ const Contact = () => {
 					>
 						<Text component='h1' fw={700} ta='center'>
 							GitHub
+						</Text>
+					</ContactButton>
+					<ContactButton
+						icon={<SiBluesky size={24} />}
+						href='https://bsky.app/profile/igamble.dev'
+					>
+						<Text component='h1' fw={700} ta='center'>
+							BlueSky
+						</Text>
+					</ContactButton>
+					<ContactButton
+						icon={<SiMastodon size={24} />}
+						href='https://mastodon.social/@igamble'
+					>
+						<Text component='h1' fw={700} ta='center'>
+							Mastodon
 						</Text>
 					</ContactButton>
 					<ContactButton
