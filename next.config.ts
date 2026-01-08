@@ -7,17 +7,14 @@ const withBundleAnalyzer = bundleAnalyzer({
 	enabled: process.env.ANALYZE === 'true',
 });
 
-const withVanillaExtract = createVanillaExtractPlugin();
+const withVanillaExtract = createVanillaExtractPlugin({
+	turbopackMode: 'auto',
+});
 
 const config: NextConfig = {
 	reactStrictMode: true,
 	output: 'export',
-	experimental: {
-		reactCompiler: true,
-	},
-	eslint: {
-		ignoreDuringBuilds: true,
-	},
+	reactCompiler: true,
 	// assetPrefix: isProd ? '/portfolio/' : ''
 };
 

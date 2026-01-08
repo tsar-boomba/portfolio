@@ -63,7 +63,7 @@ jobs:
         uses: actions/configure-pages@v4
 
       - name: Build project
-        run: pnpm build
+        run: pnpm check && pnpm build
 
       - name: Upload production-ready build files
         uses: actions/upload-pages-artifact@v3
