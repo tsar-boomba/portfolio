@@ -11,9 +11,6 @@ importers:
       astro:
         specifier: ^5.16.11
         version: 5.16.11(rollup@4.55.1)(sass@1.97.2)(typescript@5.9.3)
-      sass:
-        specifier: ^1.97.2
-        version: 1.97.2
       simple-icons-astro:
         specifier: github:tsar-boomba/simple-icons-astro#main
         version: https://codeload.github.com/tsar-boomba/simple-icons-astro/tar.gz/f52342e856d52e7c4706c3d7166a9847a08ff071(astro@5.16.11(rollup@4.55.1)(sass@1.97.2)(typescript@5.9.3))
@@ -21,6 +18,9 @@ importers:
       '@biomejs/biome':
         specifier: 2.3.11
         version: 2.3.11
+      sass:
+        specifier: ^1.97.2
+        version: 1.97.2
       sharp:
         specifier: ^0.34.5
         version: 0.34.5
