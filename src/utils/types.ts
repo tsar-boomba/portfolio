@@ -1,14 +1,3 @@
-export type PostFrontmatter = {
-	title: string;
-	summary: string;
-	author: string;
-	publishDate: string;
-	tags: string[];
-	editDate?: string;
-	published?: false;
-	noCode?: true;
-};
-
 export type PrimaryShades =
 	| 100
 	| 200
