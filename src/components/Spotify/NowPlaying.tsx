@@ -155,11 +155,10 @@ const NowPlayingInner: Component<{
 						class={styles.title}
 						classList={{ [styles['is-scrolling']]: isOverflowing() }}
 						href={props.playing.playing.url ?? undefined}
+						title={props.playing.playing.name}
 						target='_blank'
 					>
-						<span class={styles['scroll-text']}>
-							{props.playing.playing.name}
-						</span>
+						<span class={styles['scroll-text']}>{props.playing.playing.name}</span>
 						{/* Only show the second span if we are actually scrolling */}
 						<Show when={isOverflowing()}>
 							<span class={styles['scroll-text']} aria-hidden='true'>
