@@ -6,9 +6,9 @@ technologies: [TypeScript, React, Next.js, SASS/SCSS]
 addDate: Tue Jan 20 2026 19:25:11
 ---
 
-A low-level implementation a falling block puzzle game similar to Tetris. There is a demo created using the library at the bottom of this page.
+A mock desktop made with React
 
-- Runtime agnostic implementation
-- Proper rotation and sliding
-- Hold and next piece queue
-- Tests for core and react packages with Jest
+- From scratch drag & drop
+- Minimizing, full-screening, and closing windows
+- Accurate time and date display
+- Uses SCSS as a CSS preprocessor
