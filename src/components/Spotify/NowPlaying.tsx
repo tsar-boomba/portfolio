@@ -79,7 +79,9 @@ const Artists: Component<{ playing: Playing }> = (props) => {
 };
 
 const TICK_MS = 250;
-const Progress: Component<{ playing: Playing; update: () => Promise<void> }> = (props) => {
+const Progress: Component<{ playing: Playing; update: () => Promise<void> }> = (
+	props,
+) => {
 	let displayProgress = 0;
 	let ref: HTMLDivElement | undefined;
 	let progressInterval: number;
@@ -117,7 +119,10 @@ const Progress: Component<{ playing: Playing; update: () => Promise<void> }> = (
 	);
 };
 
-const NowPlayingInner: Component<{ playing: Playing; update: () => Promise<void> }> = (props) => {
+const NowPlayingInner: Component<{
+	playing: Playing;
+	update: () => Promise<void>;
+}> = (props) => {
 	let titleRef: HTMLAnchorElement | undefined;
 	const [isOverflowing, setIsOverflowing] = createSignal(false);
 
@@ -152,7 +157,9 @@ const NowPlayingInner: Component<{ playing: Playing; update: () => Promise<void>
 						href={props.playing.playing.url ?? undefined}
 						target='_blank'
 					>
-						<span class={styles['scroll-text']}>{props.playing.playing.name}</span>
+						<span class={styles['scroll-text']}>
+							{props.playing.playing.name}
+						</span>
 						{/* Only show the second span if we are actually scrolling */}
 						<Show when={isOverflowing()}>
 							<span class={styles['scroll-text']} aria-hidden='true'>
@@ -167,4 +174,4 @@ const NowPlayingInner: Component<{ playing: Playing; update: () => Promise<void>
 			<Progress playing={props.playing} update={props.update} />
 		</div>
 	);
-};;
+};

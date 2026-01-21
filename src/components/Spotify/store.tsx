@@ -25,7 +25,7 @@ export const NowPlayingProvider: ParentComponent = (props) => {
 	const update = async () => {
 		const now = Date.now();
 		if (now - lastUpdateAtMs < MIN_UPDATE_INTERVAL_MS) return;
-		
+
 		const res = await fetch(`${FUNCTION_URL}/playing`);
 		if (res.ok && !unmounted) {
 			setStore('playing', reconcile(await res.json()));
