@@ -1,10 +1,13 @@
 ---
+import ExternalLink from '@/assets/external-link.svg';
+
 export interface Props {
 	href: string;
 	label: string;
 }
 
 const { href, label } = Astro.props as Props;
+const external = href.startsWith('http') && href.includes('://');
 const isActive =
 	(href !== '/' && Astro.url.pathname.startsWith(href)) ||
 	(href === '/' && Astro.url.pathname === '/');
@@ -12,6 +15,9 @@ const isActive =
 
 <style lang='scss'>
 	.root {
+		display: flex;
+		flex-flow: nowrap;
+		align-items: center;
 		padding: var(--spacing-md) var(--spacing-xl);
 		font-weight: 500;
 		color: var(--text-color);
@@ -27,4 +33,12 @@ const isActive =
 		}
 	}
 </style>
-<a data-active={isActive || undefined} href={href} class='root'>{label}</a>
+<a data-active={isActive || undefined} href={href} class='root'
+	>{label}{
+		external && (
+			<>
+				{'  '}<ExternalLink width={18} height={18} stroke='currentColor' stroke-width="2.5px" style={{ ['margin-left']: '0.25rem' }} />
+			</>
+		)
+	}</a
+>

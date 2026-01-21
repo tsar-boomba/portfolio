@@ -1,4 +1,5 @@
-export const FUNCTION_URL =
+export const IS_BROWSER: boolean = typeof document !== 'undefined';
+export const FUNCTION_URL: string =
 	'https://6q7btxffqgoyulwyg4jktyayzu0kvcyf.lambda-url.us-east-1.on.aws';
 
 export type Artist = {

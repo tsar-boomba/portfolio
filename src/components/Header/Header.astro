@@ -4,7 +4,8 @@ import NavLink from './NavLink.astro';
 ---
 
 <style lang='scss'>
-	$breakpoint: 768px;
+	$breakpoint: 880px;
+	$smaller-breakpoint: 795px;
 
 	.root {
 		display: flex;
@@ -46,7 +47,7 @@ import NavLink from './NavLink.astro';
 		content: 'Isaiah Gamble';
 	}
 
-	@media only screen and (max-width: $breakpoint) {
+	@media only screen and (max-width: $smaller-breakpoint) {
 		.nav {
 			display: none;
 			flex-direction: column;
@@ -75,7 +76,9 @@ import NavLink from './NavLink.astro';
 			background-color: transparent;
 			cursor: pointer;
 		}
+	}
 
+	@media only screen and (max-width: $breakpoint) {
 		.name::before {
 			content: 'Isaiah G';
 		}
@@ -96,6 +99,7 @@ import NavLink from './NavLink.astro';
 		<NavLink href='/#Skills' label='Skills' />
 		<NavLink href='/#Projects' label='Projects' />
 		<NavLink href='/#Contact' label='Contact' />
+		<NavLink href='https://blog.igamble.dev' label='Blog' />
 	</nav>
 	<ThemeSwitch transition:persist />
 </header>
