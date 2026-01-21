@@ -1,0 +1,24 @@
+$size: 4rem;
+
+.container {
+	position: relative;
+	@media only screen and (max-width: 768px) {
+		display: none;
+	}
+}
+
+.noImage {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border-radius: var(--radius);
+	height: $size;
+	width: $size;
+	background-color: var(--bg-color-dark);
+}
+
+.image {
+	border-radius: var(--radius);
+	height: $size;
+	width: $size;
+}
