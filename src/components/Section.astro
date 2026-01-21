@@ -1,0 +1,14 @@
+---
+import type { HTMLTag, Polymorphic } from 'astro/types';
+import { handleStyleProps, type StyleProps } from '@/utils/handleStyleProps';
+import Box from './Box.astro';
+
+type Props<Tag extends HTMLTag> = Polymorphic<{ as: Tag }> & StyleProps;
+
+const { class: className, style: ogStyle, ...props } = Astro.props;
+const styles = { ...ogStyle, ...handleStyleProps(props) };
+---
+
+<Box {...props} style={styles} class={props.class} as={props.as || 'section'}>
+	<slot />
+</Box>

@@ -1,0 +1,49 @@
+---
+import Card from '@/components/Card.astro';
+import Flex from '@/components/Flex.astro';
+
+type Props = {
+	company: string;
+	title: string;
+	dateRange: string;
+};
+
+const { company, title, dateRange } = Astro.props as Props;
+---
+
+<style>
+	.logo-container {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.company {
+		font-size: 1.5rem;
+		line-height: 1;
+		font-weight: 800;
+		margin: 0;
+	}
+
+	.title {
+		margin: 0;
+		font-weight: 700;
+		line-height: 1.5;
+		margin-top: var(--spacing-sm);
+	}
+
+	.date-range {
+		margin: 0;
+		line-height: 1.5;
+	}
+</style>
+<Card border dark>
+	<Flex align='center' gap='0.5rem'>
+		<div class='logo-container'>
+			<slot name='logo' />
+		</div>
+		<h2 class='company'>{company}</h2>
+	</Flex>
+	<p class='title'>{title}</p>
+	<p class='date-range'>{dateRange}</p>
+</Card>

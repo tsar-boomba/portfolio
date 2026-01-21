@@ -1,0 +1,159 @@
+---
+import Github from 'simple-icons-astro/Github';
+import Button from '@/components/Button.astro';
+import Card from '@/components/Card.astro';
+import Flex from '@/components/Flex.astro';
+import TechIcon from './TechIcon.astro';
+
+type Props = {
+	name: string;
+	repo?: string;
+	link?: string;
+	technologies: string[];
+};
+
+const { name, repo, link, technologies } = Astro.props;
+---
+
+<style>
+	.proj-card {
+		max-width: 500px;
+		flex-grow: 1;
+		padding: 0;
+		display: flex;
+		flex-flow: column nowrap;
+
+		ul {
+			margin: 0;
+			padding-inline-start: 1.25rem;
+			line-height: 1.4;
+		}
+
+		p {
+			margin: 0;
+			line-height: 1.4;
+		}
+	}
+
+	.proj-name {
+		padding: 1rem 1rem 0 1rem;
+		font-size: 1.75rem;
+		margin: 0;
+		line-height: 1;
+	}
+
+	.description-container {
+		margin-top: var(--spacing-md);
+		padding: 0 1rem 1rem 1rem;
+		border-bottom: 0.0625rem solid var(--card-border-color);
+		flex: 1;
+	}
+
+	.technologies-container {
+		padding: 1rem;
+
+		& > h3 {
+			font-size: 1rem;
+			text-transform: uppercase;
+			font-weight: 700;
+			margin: 0 0 0.5rem 0;
+			color: var(--dimmed-text-color);
+		}
+
+		&[data-links] {
+			border-bottom: 0.0625rem solid var(--card-border-color);
+		}
+	}
+
+	.tech-pill {
+		padding: 0 var(--spacing-lg);
+		gap: var(--spacing-sm);
+		border-radius: 100px;
+		border: 0.0625rem solid var(--card-border-color);
+		display: flex;
+		align-items: center;
+		flex-flow: nowrap;
+		font-size: 0.9rem;
+		line-height: 1.5rem;
+		font-weight: 600;
+		color: var(--link-color);
+
+		& > span {
+			margin-top: -0.0625rem;
+		}
+	}
+
+	.links-container {
+		display: flex;
+		flex-wrap: wrap;
+		padding: 1rem;
+		gap: 1rem;
+	}
+
+	.repo-link {
+		padding: 0.5rem 1rem;
+		gap: 0.5rem;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex: 1;
+		border: 2px solid var(--link-color);
+		border-radius: var(--radius);
+		color: var(--link-color);
+		font-weight: 600;
+		text-decoration: none;
+		line-height: 1;
+
+		&:hover {
+			background-color: color-mix(in srgb, var(--link-color), transparent 92%);
+		}
+
+		&:active {
+			transform: translateY(0.0625rem);
+		}
+	}
+
+	.visit-link {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		padding: 0.5rem 1rem;
+		flex: 1;
+		line-height: 1;
+	}
+</style>
+<Card class='proj-card' border>
+	<h2 class='proj-name'>{name}</h2>
+	<div class='description-container'>
+		<slot name='description' />
+	</div>
+	<div class='technologies-container' data-links={link || repo}>
+		<h3>Technologies</h3>
+		<Flex gap="0.5rem">
+			{
+				technologies.map((tech) => (
+					<div class='tech-pill'>
+						<TechIcon {tech} size={18} /> <span>{tech}</span>
+					</div>
+				))
+			}
+		</Flex>
+	</div>
+	{
+		(link || repo) && (
+			<div class='links-container'>
+				{repo && (
+					<a class='repo-link' href={repo} target='_blank'>
+						<Github size={20} fill='currentColor' />
+						<span>Repository</span>
+					</a>
+				)}
+				{link && (
+					<Button as='a' class='visit-link' href={link} target='_blank'>
+						Visit
+					</Button>
+				)}
+			</div>
+		)
+	}
+</Card>

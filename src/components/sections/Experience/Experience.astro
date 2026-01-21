@@ -1,0 +1,49 @@
+---
+import { Image } from 'astro:assets';
+import MongoDB from 'simple-icons-astro/Mongodb';
+import Nvidia from 'simple-icons-astro/Nvidia';
+import verkadaLogo from '@/assets/verkada.png';
+import TimelineItem from '@/components/TimelineItem.astro';
+import { mongodb, nvidia } from '@/utils/brandColors';
+import Section from '../Section.astro';
+import ExperienceCard from './ExperienceCard.astro';
+---
+
+<Section title='Experience'>
+	<TimelineItem>
+		<ExperienceCard
+			company='Verkada'
+			title='Software Engineer Intern'
+			dateRange='June 2025 - August 2025'
+		>
+			<Image slot='logo' src={verkadaLogo} alt='Verkada logo' width={28} height={28} />
+		</ExperienceCard>
+	</TimelineItem>
+	<TimelineItem>
+		<ExperienceCard
+			company='NVIDIA'
+			title='Embedded Software Engineer Intern'
+			dateRange='May 2025 - June 2025'
+		>
+			<Nvidia slot='logo' size={28} fill={nvidia} />
+		</ExperienceCard>
+	</TimelineItem>
+	<TimelineItem>
+		<ExperienceCard
+			company='Verkada'
+			title='Software Engineer Intern'
+			dateRange='January 2025 - April 2025'
+		>
+			<Image slot='logo' src={verkadaLogo} alt='Verkada logo' width={28} height={28} />
+		</ExperienceCard>
+	</TimelineItem>
+	<TimelineItem>
+		<ExperienceCard
+			company='MongoDB'
+			title='Software Engineer Intern'
+			dateRange='June 2024 - August 2024'
+		>
+			<MongoDB slot='logo' size={28} fill={mongodb} />
+		</ExperienceCard>
+	</TimelineItem>
+</Section>

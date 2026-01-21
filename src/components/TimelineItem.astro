@@ -1,0 +1,59 @@
+---
+
+---
+
+<style lang='scss'>
+	:root {
+		--tl-line-width: var(--spacing-sm);
+	}
+
+	.tl-root {
+		position: relative;
+		padding-inline-start: var(--spacing-lg);
+
+		&:where(:not(:first-of-type)) {
+			margin-top: var(--spacing-xl);
+		}
+
+		&:where(:last-of-type)::before {
+			display: none;
+		}
+
+		// This is the like connecting line on the left
+		&::before {
+			content: '';
+			position: absolute;
+			pointer-events: none;
+			border-inline-start: var(--tl-line-width) solid rgb(var(--primary-400));
+			top: 0;
+			left: calc(var(--tl-line-width) * -1);
+			right: auto;
+			bottom: calc(var(--spacing-xl) * -1);
+		}
+	}
+
+	.tl-bullet {
+		--tl-bullet-size: 20px;
+		position: absolute;
+		left: calc((var(--tl-bullet-size) / 2 + var(--tl-line-width) / 2) * -1);
+		top: 0;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: var(--tl-bullet-size);
+		height: var(--tl-bullet-size);
+		background-color: white;
+		border: calc(var(--tl-bullet-size) / 5) solid rgb(var(--primary-400));
+		border-radius: 100px;
+	}
+
+	.tl-content {
+		padding-inline-start: var(--spacing-lg);
+	}
+</style>
+<div class='tl-root'>
+	<div class='tl-bullet'></div>
+	<div class='tl-content'>
+		<slot />
+	</div>
+</div>

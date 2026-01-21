@@ -1,0 +1,36 @@
+---
+import { Image } from 'astro:assets';
+import C from 'simple-icons-astro/C';
+import Go from 'simple-icons-astro/Go';
+import Rust from 'simple-icons-astro/Rust';
+import TypeScript from 'simple-icons-astro/Typescript';
+import Flex from '@/components/Flex.astro';
+import { c, go, rust, typescript } from '@/utils/brandColors';
+import Section from '../Section.astro';
+import SkillCard from './SkillCard.astro';
+---
+
+<Section title='Skills' maw='1600px' dark>
+	<Flex justify='center' gap='0.5rem'>
+		<SkillCard skill='Rust'>
+			<Rust slot='logo' size={20} fill={rust} />
+		</SkillCard>
+		<SkillCard skill='TypeScript'>
+			<TypeScript slot='logo' size={20} fill={typescript} />
+		</SkillCard>
+		<SkillCard skill='Go'>
+			<Go slot='logo' size={20} fill={go} />
+		</SkillCard>
+		<SkillCard skill='C'>
+			<C slot='logo' size={20} fill={c} />
+		</SkillCard>
+		<SkillCard skill='Java'>
+			<img
+				slot='logo'
+				src='https://www.vectorlogo.zone/logos/java/java-icon.svg'
+				height={20}
+				width={20}
+			/>
+		</SkillCard>
+	</Flex>
+</Section>

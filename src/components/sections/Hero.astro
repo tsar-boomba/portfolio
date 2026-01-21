@@ -1,0 +1,87 @@
+---
+import Button from '../Button.astro';
+import Stack from '../Stack.astro';
+---
+
+<style lang='scss'>
+	.root {
+		display: flex;
+		justify-content: center;
+		background-color: var(--bg-color-dark);
+	}
+
+	.inner {
+		max-width: 700px;
+		padding-top: calc(220px - 4rem);
+		padding-bottom: 120px;
+
+		@media only screen and (max-width: 768px) {
+			padding-top: calc(80px - 4rem);
+			padding-bottom: 40px;
+		}
+	}
+
+	.title {
+		font-size: 4rem;
+		font-weight: 900;
+		line-height: 1;
+		margin: 0;
+		padding: 0;
+		text-align: center;
+		color: black;
+
+		:root[data-theme='dark'] & {
+			color: white;
+		}
+
+		@media only screen and (max-width: 768px) {
+			font-size: 2.75rem;
+		}
+	}
+
+	.description {
+		display: flex;
+		align-items: center;
+		flex-wrap: nowrap;
+		text-align: center;
+		gap: 0.375rem;
+		font-size: 1.5rem;
+		margin-top: var(--spacing-md);
+
+		@media only screen and (max-width: 768px) {
+			font-size: 1rem;
+		}
+	}
+
+	.resume-button {
+		padding: 0.75rem 1.5rem;
+		font-size: 1.5rem;
+		margin-top: calc(var(--spacing-xl) * 2);
+
+		@media only screen and (max-width: 768px) {
+			padding: 0.5rem 1rem;
+			font-size: 1.5rem;
+			margin-top: var(--spacing-xl);
+		}
+	}
+</style>
+<div id='Hero' class='root'>
+	<div class='inner'>
+		<Stack align='center' justify='center'>
+			<h1 class='title'>Isaiah Gamble</h1>
+			<span class='description'>
+				<span>Full-stack, Embedded Engineer who</span>
+				<span>🧡</span>
+				<span>Rust</span>
+			</span>
+			<Button
+				as='a'
+				class='resume-button'
+				target='_blank'
+				href='https://tsar-boomba.github.io/resume/resume.pdf'
+			>
+				Resume
+			</Button>
+		</Stack>
+	</div>
+</div>

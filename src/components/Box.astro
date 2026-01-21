@@ -1,0 +1,13 @@
+---
+import type { HTMLTag, Polymorphic } from 'astro/types';
+import { handleStyleProps, type StyleProps } from '@/utils/handleStyleProps';
+
+type Props<Tag extends HTMLTag> = Polymorphic<{ as: Tag }> & StyleProps;
+
+const { as: Tag = 'div', style: ogStyle, ...props } = Astro.props;
+const styles = { ...ogStyle, ...handleStyleProps(props) };
+---
+
+<Tag {...props} style={styles}>
+	<slot />
+</Tag>

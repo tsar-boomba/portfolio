@@ -1,0 +1,45 @@
+---
+import Card from '@/components/Card.astro';
+import Flex from '@/components/Flex.astro';
+
+type Props = {
+	skill: string;
+};
+
+const { skill } = Astro.props as Props;
+---
+
+<style lang="scss">
+	.sc-root {
+		padding: var(--spacing-md);
+		width: 10.5rem;
+	}
+
+	.logo-container {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		background-color: var(--bg-color-dark);
+		padding: var(--spacing-md);
+		border-radius: var(--radius);
+
+		:root[data-theme='light'] & {
+			background-color: #f8f8f8;
+		}
+	}
+
+	.skill {
+		font-size: 1rem;
+		font-weight: 700;
+		margin: 0;
+		line-height: 1;
+	}
+</style>
+<Card class="sc-root" border>
+	<Flex align='center' gap='0.5rem'>
+		<div class="logo-container">
+			<slot name='logo' />
+		</div>
+		<h2 class='skill'>{skill}</h2>
+	</Flex>
+</Card>

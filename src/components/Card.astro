@@ -1,0 +1,61 @@
+---
+import type { HTMLTag, Polymorphic } from 'astro/types';
+import { handleStyleProps, type StyleProps } from '@/utils/handleStyleProps';
+
+type Props<Tag extends HTMLTag> = Polymorphic<{ as: Tag }> & {
+	dark?: boolean;
+	border?: boolean;
+} & StyleProps;
+
+const {
+	as: Tag = 'div',
+	class: className,
+	style: ogStyles,
+	dark,
+	border,
+	...props
+} = Astro.props;
+const styles = {
+	...ogStyles,
+	...handleStyleProps(props),
+};
+---
+
+<style lang='scss'>
+	.card-root {
+		--bg-light-light: #fff;
+		--bg-light-dark: #f7fbff;
+		--bg-dark-light: #2e2e2e;
+		--bg-dark-dark: #1f1f1f;
+
+		background-color: var(--bg-light-light);
+		border-radius: var(--radius);
+		color: var(--text-color);
+		padding: var(--spacing-xl);
+
+		:root[data-theme='dark'] & {
+			background-color: var(--bg-dark-light);
+		}
+
+		&[data-dark] {
+			background-color: var(--bg-light-dark);
+
+			:root[data-theme='dark'] & {
+				background-color: var(--bg-dark-dark);
+			}
+		}
+
+		&[data-border] {
+			border: 0.0625rem solid var(--card-border-color);
+		}
+	}
+</style>
+<Tag
+	{...props}
+	style={styles}
+	class:list={['card-root', className]}
+	data-dark={dark}
+	data-border={border}
+>
+	<slot />
+</Tag>

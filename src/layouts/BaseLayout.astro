@@ -1,0 +1,110 @@
+---
+import '@/styles/global.scss';
+import '@/styles/theme.scss';
+import { ClientRouter } from 'astro:transitions';
+import Footer from '@/components/Footer/Footer.astro';
+import Header from '@/components/Header/Header.astro';
+
+export interface Props {
+	title?: string;
+	description: string;
+	noHeader?: boolean;
+	noFooter?: boolean;
+	metas?: { name: string; content: string }[];
+}
+
+const { title, description, noHeader, noFooter } = Astro.props as Props;
+---
+
+<html data-theme='dark' data-indentSize='4' lang='en'>
+	<head>
+		<ClientRouter fallback='swap' />
+		<meta charset='utf-8' />
+		<meta name='generator' content={Astro.generator} />
+		<link
+			rel='icon'
+			href='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 256 256%22><text y=%22203%22 font-size=%22224%22>💣</text></svg>'
+		/>
+		<title>{title || 'Isaiah Gamble - Portfolio'}</title>
+		<meta name='description' content={description} />
+		<meta name='viewport' content='width=device-width, initial-scale=1' />
+
+		{Astro.props.metas?.map((meta) => <meta {...meta} />)}
+
+		<script is:inline>
+			// this exists to stop theme from flashing by setting it before css is evaluated
+			(function () {
+				var html = document.querySelector('html');
+				var indentSize = localStorage.getItem('indentSize');
+				var theme = localStorage.getItem('theme');
+
+				if (!theme) {
+					theme = matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+				}
+
+				if (!indentSize) {
+					indentSize = '4';
+				}
+
+				html.style.tabSize = indentSize;
+				html.dataset.indentsize = indentSize;
+				html.dataset.theme = theme;
+			})();
+		</script>
+		<script>
+			// setup mutation observer to fire event whenever theme changes
+			const observer = new MutationObserver((list) => {
+				const mutation = list[0];
+				if (mutation.type === 'attributes') {
+					if (mutation.attributeName === 'data-theme') {
+						window.dispatchEvent(
+							new CustomEvent('themeChange', {
+								detail: {
+									newTheme: (mutation.target as HTMLHtmlElement).dataset.theme,
+								},
+							}),
+						);
+					} else if (mutation.attributeName === 'data-indentsize') {
+						window.dispatchEvent(
+							new CustomEvent('indentChange', {
+								detail: {
+									newIndent: (mutation.target as HTMLHtmlElement).dataset[
+										'indent-size'
+									],
+								},
+							}),
+						);
+					}
+				}
+			});
+			observer.observe(document.querySelector('html')!, {
+				childList: false,
+				attributes: true,
+				subtree: false,
+			});
+
+			document.addEventListener('astro:before-swap', (event) => {
+				event.newDocument.documentElement.dataset.theme =
+					document.documentElement.dataset.theme;
+				event.newDocument.documentElement.dataset.indentsize =
+					document.documentElement.dataset.indentsize;
+			});
+		</script>
+		<style lang='scss'>
+			.main {
+				display: flex;
+				flex-direction: column;
+				align-items: stretch;
+				flex-grow: 1;
+				padding-top: 4rem;
+			}
+		</style>
+	</head>
+	<body>
+		{!noHeader && <Header />}
+		<main class='main'>
+			<slot />
+		</main>
+		{!noFooter && <Footer />}
+	</body>
+</html>

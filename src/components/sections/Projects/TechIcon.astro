@@ -1,0 +1,77 @@
+---
+import Docker from 'simple-icons-astro/Docker';
+import Espressif from 'simple-icons-astro/Espressif';
+import Gatsby from 'simple-icons-astro/Gatsby';
+import Jest from 'simple-icons-astro/Jest';
+import Linux from 'simple-icons-astro/Linux';
+import MongoDb from 'simple-icons-astro/Mongodb';
+import NextJs from 'simple-icons-astro/Nextdotjs';
+import NodeJs from 'simple-icons-astro/Nodedotjs';
+import Npm from 'simple-icons-astro/Npm';
+import Onnx from 'simple-icons-astro/Onnx';
+import Postgresql from 'simple-icons-astro/Postgresql';
+import React from 'simple-icons-astro/React';
+import Rust from 'simple-icons-astro/Rust';
+import Sass from 'simple-icons-astro/Sass';
+import Typescript from 'simple-icons-astro/Typescript';
+import Vercel from 'simple-icons-astro/Vercel';
+import Aws from '@/assets/aws.svg';
+import Wrench from '@/assets/wrench.svg';
+import { aws, rust } from '@/utils/brandColors';
+
+type Props = { tech: string; size: number };
+
+const { tech: rawTach, size } = Astro.props;
+const tech = rawTach.toLowerCase();
+---
+
+{
+	(() => {
+		switch (tech) {
+			case 'rust':
+				return <Rust {size} fill={rust} />;
+			case 'typescript':
+				return <Typescript {size} />;
+			case 'react':
+				return <React {size} />;
+			case 'next.js':
+				return <NextJs {size} fill='currentColor' />;
+			case 'node.js':
+				return <NodeJs {size} />;
+			case 'mongodb':
+				return <MongoDb {size} />;
+			case 'postgresql':
+				return <Postgresql {size} />;
+			case 'espressif':
+				return <Espressif {size} />;
+			case 'embedded':
+				return <Wrench width={size} height={size} stroke='currentColor' />;
+			case 'docker':
+				return <Docker {size} />;
+			case 'linux':
+				return <Linux {size} fill='currentColor' />;
+			case 'onnx':
+				return <Onnx {size} fill='currentColor' />;
+			case 'emotion':
+				return <Rust {size} />; // TODO
+			case 'vercel':
+				return <Vercel {size} fill='currentColor' />;
+			case 'aws':
+				return <Aws width={size} height={size} fill={aws} />;
+			case 'microservices':
+				return <Wrench width={size} height={size} stroke='currentColor' />;
+			case 'jest':
+				return <Jest {size} />;
+			case 'npm':
+				return <Npm {size} />;
+			case 'sass/scss':
+				return <Sass {size} />;
+			case 'gatsby':
+				return <Gatsby {size} />;
+			case 'styled components':
+				return <Rust {size} />; // TODO
+			default:
+				throw new Error(`No icon for technology: ${tech}, add one in TechIcon.astro`);
+		}
+	})()
+}

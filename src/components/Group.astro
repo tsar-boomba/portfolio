@@ -1,0 +1,19 @@
+---
+import type { HTMLTag, Polymorphic } from 'astro/types';
+import type { StyleProps } from '@/utils/handleStyleProps';
+import Flex from './Flex.astro';
+
+type Props<Tag extends HTMLTag> = Polymorphic<{ as: Tag }> & {
+	align?: 'center' | 'flex-start' | 'flex-end';
+	justify?: 'center' | 'flex-start' | 'flex-end';
+	gap?: string | number;
+	component?: keyof HTMLElementTagNameMap;
+	noWrap?: boolean;
+} & StyleProps;
+
+const props = Astro.props;
+---
+
+<Flex {...props} direction='row'>
+	<slot />
+</Flex>

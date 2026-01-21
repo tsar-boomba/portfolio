@@ -1,0 +1,58 @@
+---
+import type { HTMLTag, Polymorphic } from 'astro/types';
+import {
+	handleStyleProps,
+	resolveUnit,
+	type StyleProps,
+} from '@/utils/handleStyleProps';
+
+type Props<Tag extends HTMLTag> = Polymorphic<{ as: Tag }> & {
+	align?: 'center' | 'flex-start' | 'flex-end';
+	justify?: 'center' | 'flex-start' | 'flex-end';
+	gap?: string | number;
+	component?: keyof HTMLElementTagNameMap;
+	direction?: 'row' | 'column';
+	noWrap?: boolean;
+} & StyleProps;
+
+const {
+	as: Tag = 'div',
+	class: className,
+	style: ogStyle,
+	...props
+} = Astro.props;
+const styles = { ...ogStyle, ...handleStyleProps(props) };
+const classes = ['root'];
+
+if (props.align) {
+	styles.alignItems = props.align;
+}
+
+if (props.justify) {
+	styles.justifyContent = props.justify;
+}
+
+if (props.direction) {
+	styles.flexDirection = props.direction;
+}
+
+if (props.noWrap) {
+	classes.push('nowrap');
+}
+
+if (props.gap) {
+	styles.gap = resolveUnit(props.gap);
+}
+---
+
+<style lang='scss'>
+	.root {
+		display: flex;
+		flex-flow: wrap;
+	}
+
+	.nowrap {
+		flex-wrap: nowrap;
+	}
+</style>
+<Tag {...props} style={styles} class:list={[...classes, className]}><slot /></Tag>
