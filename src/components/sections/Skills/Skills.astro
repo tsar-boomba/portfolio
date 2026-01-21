@@ -1,9 +1,9 @@
 ---
-import { Image } from 'astro:assets';
 import C from 'simple-icons-astro/C';
 import Go from 'simple-icons-astro/Go';
 import Rust from 'simple-icons-astro/Rust';
 import TypeScript from 'simple-icons-astro/Typescript';
+import Java from '@/assets/java.svg';
 import Flex from '@/components/Flex.astro';
 import { c, go, rust, typescript } from '@/utils/brandColors';
 import Section from '../Section.astro';
@@ -25,12 +25,7 @@ import SkillCard from './SkillCard.astro';
 			<C slot='logo' size={20} fill={c} />
 		</SkillCard>
 		<SkillCard skill='Java'>
-			<img
-				slot='logo'
-				src='https://www.vectorlogo.zone/logos/java/java-icon.svg'
-				height={20}
-				width={20}
-			/>
+			<Java slot='logo' height={20} width={20} />
 		</SkillCard>
 	</Flex>
 </Section>
