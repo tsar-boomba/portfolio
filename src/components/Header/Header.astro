@@ -125,6 +125,11 @@ import NavLink from './NavLink.astro';
 			for (const link of links) {
 				link.addEventListener('click', (e) => {
 					const href = link.href;
+
+					// Close menu
+					delete nav.dataset.opened;
+					header.style.boxShadow = '';
+
 					if (!href.startsWith('#')) {
 						// Only specially handle links to elements on this page
 						return;
@@ -140,14 +145,6 @@ import NavLink from './NavLink.astro';
 							behavior: 'smooth',
 							block: 'center',
 						});
-					}
-
-					if (nav.dataset.opened) {
-						delete nav.dataset.opened;
-						header.style.boxShadow = '';
-					} else {
-						nav.dataset.opened = 'true';
-						header.style.boxShadow = 'none';
 					}
 				});
 			}
