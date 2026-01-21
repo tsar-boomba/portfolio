@@ -2,7 +2,7 @@
 
 export type StyleProps = {
 	class?: string;
-	style?: Record<string, any>;
+	style?: Record<string, string>;
 	p?: string | number;
 	pt?: string | number;
 	pb?: string | number;

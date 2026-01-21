@@ -70,7 +70,7 @@ const Artists: Component<{ playing: Playing }> = (props) => {
 						<a href={artist().url ?? ''} target='_blank'>
 							{artist().name}
 						</a>
-						{i === linkableArtists().length - 1 ? <></> : <>, </>}
+						{i === linkableArtists().length - 1 ? null : <>, </>}
 					</>
 				)}
 			</Index>
@@ -158,7 +158,9 @@ const NowPlayingInner: Component<{
 						title={props.playing.playing.name}
 						target='_blank'
 					>
-						<span class={styles['scroll-text']}>{props.playing.playing.name}</span>
+						<span class={styles['scroll-text']}>
+							{props.playing.playing.name}
+						</span>
 						{/* Only show the second span if we are actually scrolling */}
 						<Show when={isOverflowing()}>
 							<span class={styles['scroll-text']} aria-hidden='true'>
