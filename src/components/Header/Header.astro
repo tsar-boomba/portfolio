@@ -124,6 +124,12 @@ import NavLink from './NavLink.astro';
 			const links = nav.querySelectorAll('a');
 			for (const link of links) {
 				link.addEventListener('click', (e) => {
+					const href = link.href;
+					if (!href.startsWith('#')) {
+						// Only specially handle links to elements on this page
+						return;
+					}
+
 					e.preventDefault();
 					history.replaceState(link.href, '', null);
 					const idSelector = `#${link.href.split('#')[1]}`;
