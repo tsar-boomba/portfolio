@@ -2,6 +2,7 @@ $size: 4rem;
 
 .container {
 	position: relative;
+	line-height: 0;
 	@media only screen and (max-width: 768px) {
 		display: none;
 	}

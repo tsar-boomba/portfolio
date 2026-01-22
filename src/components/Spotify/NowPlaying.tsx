@@ -11,7 +11,11 @@ import {
 import { AlbumCover } from './AlbumCover';
 import styles from './NowPlaying.module.scss';
 import { NowPlayingProvider, useNowPlaying } from './store';
-import { IS_BROWSER, type Playing } from './utils';
+import {
+	IS_BROWSER,
+	type Playing,
+	type Track,
+} from './utils';
 
 export const NowPlaying = () => {
 	return (
@@ -27,7 +31,7 @@ const NowPlayingWrapper = () => {
 	// Update data whenever user interacts with site
 	const handleInteraction = () => {
 		if (playing) {
-			playing.update();
+			playing.update(false);
 		}
 	};
 
@@ -46,10 +50,17 @@ const NowPlayingWrapper = () => {
 	});
 
 	return (
-		<Show when={playing?.store.playing} fallback={null}>
+		<Show
+			when={playing?.store.playing || playing?.store.recent[0]}
+			fallback={null}
+		>
 			{playing && (
 				<NowPlayingInner
 					playing={playing.store.playing as Playing}
+					track={
+						(playing.store.playing?.playing ||
+							playing.store.recent[0].track) as Track
+					}
 					update={playing.update}
 				/>
 			)}
@@ -57,9 +68,9 @@ const NowPlayingWrapper = () => {
 	);
 };
 
-const Artists: Component<{ playing: Playing }> = (props) => {
+const Artists: Component<{ playing: Track }> = (props) => {
 	const linkableArtists = createMemo(() =>
-		props.playing.playing.artists.filter((artist) => artist.url),
+		props.playing.artists.filter((artist) => artist.url),
 	);
 
 	return (
@@ -79,16 +90,17 @@ const Artists: Component<{ playing: Playing }> = (props) => {
 };
 
 const TICK_MS = 250;
-const Progress: Component<{ playing: Playing; update: () => Promise<void> }> = (
-	props,
-) => {
+const Progress: Component<{
+	playing: Playing;
+	update: (force: boolean) => Promise<void>;
+}> = (props) => {
 	let displayProgress = 0;
 	let ref: HTMLDivElement | undefined;
 	let progressInterval: number;
 	const updateDisplayProgress = () => {
 		if (displayProgress >= props.playing.playing.duration + 1) {
 			// Song probably ended, check API for new song
-			props.update();
+			props.update(true);
 		}
 
 		displayProgress += TICK_MS / 1000;
@@ -120,8 +132,9 @@ const Progress: Component<{ playing: Playing; update: () => Promise<void> }> = (
 };
 
 const NowPlayingInner: Component<{
-	playing: Playing;
-	update: () => Promise<void>;
+	playing: Playing | null;
+	track: Track;
+	update: (force: boolean) => Promise<void>;
 }> = (props) => {
 	let titleRef: HTMLAnchorElement | undefined;
 	const [isOverflowing, setIsOverflowing] = createSignal(false);
@@ -135,7 +148,7 @@ const NowPlayingInner: Component<{
 
 	// Re-check whenever the song name changes
 	createEffect(() => {
-		props.playing.playing.name; // Track the name
+		props.playing?.playing.name; // Track the name
 		checkOverflow();
 	});
 
@@ -144,35 +157,42 @@ const NowPlayingInner: Component<{
 		window.addEventListener('resize', checkOverflow);
 	});
 
+	onCleanup(() => {
+		window.removeEventListener('resize', checkOverflow);
+	});
+
 	return (
 		<div class={styles.card}>
-			<p class={styles.text}>Isaiah's listening to...</p>
+			<p class={styles.text}>
+				Isaiah{props.playing ? ' is ' : ' was '}listening to...
+			</p>
 			<div class={styles['main-info']}>
-				<AlbumCover playing={props.playing} />
+				<AlbumCover track={props.track} />
 				<div class={styles['title-container']}>
 					<a
 						ref={titleRef}
 						class={styles.title}
 						classList={{ [styles['is-scrolling']]: isOverflowing() }}
-						href={props.playing.playing.url ?? undefined}
-						title={props.playing.playing.name}
+						href={props.track.url ?? undefined}
+						title={props.track.name}
 						target='_blank'
 					>
-						<span class={styles['scroll-text']}>
-							{props.playing.playing.name}
-						</span>
+						<span class={styles['scroll-text']}>{props.track.name}</span>
 						{/* Only show the second span if we are actually scrolling */}
 						<Show when={isOverflowing()}>
 							<span class={styles['scroll-text']} aria-hidden='true'>
-								{props.playing.playing.name}
+								{props.track.name}
 							</span>
 						</Show>
 					</a>
-					<Artists playing={props.playing} />
+					<Artists playing={props.track} />
 				</div>
 				{/* TODO: device icon & name */}
 			</div>
-			<Progress playing={props.playing} update={props.update} />
+			<Show when={props.playing}>
+				{/** biome-ignore lint/style/noNonNullAssertion: Show guarantees it is correct  */}
+				<Progress playing={props.playing!} update={props.update} />
+			</Show>
 		</div>
 	);
 };

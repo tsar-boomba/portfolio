@@ -6,45 +6,64 @@ import {
 	useContext,
 } from 'solid-js';
 import { createStore, reconcile, type Store } from 'solid-js/store';
-import { FUNCTION_URL, type Playing } from './utils';
+import {
+	FUNCTION_URL,
+	type Playing,
+	type RecentlyPlayed,
+	recent,
+} from './utils';
 
-type StoreType = { playing: Playing | null };
+type StoreType = { playing: Playing | null; recent: RecentlyPlayed[] };
 
 const Context = createContext<{
 	store: Store<StoreType>;
-	update: () => Promise<void>;
+	update: (force?: boolean) => Promise<void>;
 }>();
 
 const MIN_UPDATE_INTERVAL_MS = 2500;
 export const NowPlayingProvider: ParentComponent = (props) => {
-	const [store, setStore] = createStore<StoreType>({ playing: null });
-	let interval: number;
+	const [store, setStore] = createStore<StoreType>({
+		playing: null,
+		recent: [],
+	});
+	let playingInterval: number;
+	let recentInterval: number;
 	let unmounted = false;
 
 	let lastUpdateAtMs = 0;
-	const update = async () => {
+	const updatePlaying = async (force?: boolean) => {
 		const now = Date.now();
-		if (now - lastUpdateAtMs < MIN_UPDATE_INTERVAL_MS) return;
+		if (!force && now - lastUpdateAtMs < MIN_UPDATE_INTERVAL_MS) return;
+		lastUpdateAtMs = now;
 
 		const res = await fetch(`${FUNCTION_URL}/playing`);
 		if (res.ok && !unmounted) {
 			setStore('playing', reconcile(await res.json()));
-			lastUpdateAtMs = now;
 		}
 	};
 
-	onMount(() => {
-		interval = setInterval(update, 10000);
-		update();
+	const updateRecent = async () => {
+		const recentPlays = await recent();
+		if (!unmounted) {
+			setStore('recent', reconcile(recentPlays));
+		}
+	};
+
+	onMount(async () => {
+		playingInterval = setInterval(() => updatePlaying(true), 10 * 1000);
+		recentInterval = setInterval(updateRecent, 60 * 1000);
+		updatePlaying();
+		updateRecent();
 	});
 
 	onCleanup(() => {
-		clearInterval(interval);
+		clearInterval(playingInterval);
+		clearInterval(recentInterval);
 		unmounted = true;
 	});
 
 	return (
-		<Context.Provider value={{ store, update }}>
+		<Context.Provider value={{ store, update: updatePlaying }}>
 			{props.children}
 		</Context.Provider>
 	);
@@ -53,7 +72,7 @@ export const NowPlayingProvider: ParentComponent = (props) => {
 export const useNowPlaying = ():
 	| {
 			store: Store<StoreType>;
-			update: () => Promise<void>;
+			update: (force: boolean) => Promise<void>;
 	  }
 	| undefined => {
 	return useContext(Context);

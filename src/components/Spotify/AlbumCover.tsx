@@ -1,9 +1,9 @@
 import { type Component, createSignal } from 'solid-js';
 import styles from './AlbumCover.module.scss';
-import type { Playing } from './utils';
+import type { Track } from './utils';
 
 type Props = {
-	playing: Playing;
+	track: Track;
 	width?: string;
 	height?: string;
 	maxHeight?: string;
@@ -20,21 +20,21 @@ export const AlbumCover: Component<Props> = (props) => {
 	};
 
 	return (
-		<a href={props.playing.playing.url ?? undefined} class={styles.container}>
-			{!props.playing.playing.imageUrl && (
+		<a href={props.track.url ?? undefined} class={styles.container}>
+			{!props.track.imageUrl && (
 				<div class={styles.noImage} style={style}>
 					{/* TODO: music note icon */}
 				</div>
 			)}
-			{props.playing.playing.imageUrl && !imageLoaded && (
+			{props.track.imageUrl && !imageLoaded && (
 				<div class={styles.noImage} style={style}>
 					{/* TODO: Loading */}
 				</div>
 			)}
-			{props.playing.playing.imageUrl && (
+			{props.track.imageUrl && (
 				<img
-					src={props.playing.playing.imageUrl}
-					alt={`${props.playing.playing.name} Album Cover`}
+					src={props.track.imageUrl}
+					alt={`${props.track.name} Album Cover`}
 					style={imageLoaded() ? styles : { display: `none` }}
 					class={styles.image}
 					onLoadStart={() => setImageLoaded(false)}

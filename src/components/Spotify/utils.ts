@@ -2,6 +2,15 @@ export const IS_BROWSER: boolean = typeof document !== 'undefined';
 export const FUNCTION_URL: string =
 	'https://6q7btxffqgoyulwyg4jktyayzu0kvcyf.lambda-url.us-east-1.on.aws';
 
+export const recent = async (): Promise<RecentlyPlayed[]> => {
+	const res = await fetch(`${FUNCTION_URL}/recent`);
+	if (res.ok) {
+		return res.json();
+	}
+
+	return [];
+};
+
 export type Artist = {
 	name: string;
 	url: string | null;
