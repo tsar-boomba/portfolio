@@ -52,8 +52,8 @@ export const NowPlayingProvider: ParentComponent = (props) => {
 	onMount(async () => {
 		playingInterval = setInterval(() => updatePlaying(true), 10 * 1000);
 		recentInterval = setInterval(updateRecent, 60 * 1000);
+		setTimeout(() => updateRecent(), 750);
 		updatePlaying();
-		updateRecent();
 	});
 
 	onCleanup(() => {

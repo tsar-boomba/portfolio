@@ -70,7 +70,7 @@ const Artists: Component<{ playing: Track }> = (props) => {
 	);
 
 	return (
-		<h2 class={styles.artists}>
+		<span class={styles.artists}>
 			<Index each={linkableArtists()}>
 				{(artist, i) => (
 					<>
@@ -81,7 +81,7 @@ const Artists: Component<{ playing: Track }> = (props) => {
 					</>
 				)}
 			</Index>
-		</h2>
+		</span>
 	);
 };
 
@@ -142,19 +142,25 @@ const NowPlayingInner: Component<{
 		}
 	};
 
-	// Re-check whenever the song name changes
+	// Check overflow on track change
 	createEffect(() => {
-		props.playing?.playing.name; // Track the name
+		props.track.name; // Subscribe to name changes for this effect
 		checkOverflow();
 	});
 
+	// Check overflow when title changes size
 	onMount(() => {
-		checkOverflow();
-		window.addEventListener('resize', checkOverflow);
-	});
+		if (!titleRef) return;
 
-	onCleanup(() => {
-		window.removeEventListener('resize', checkOverflow);
+		// ResizeObserver watches the element itself
+		const ro = new ResizeObserver(() => {
+			// This fires after the DOM has updated and layout is calculated
+			checkOverflow();
+		});
+
+		ro.observe(titleRef);
+
+		onCleanup(() => ro.disconnect());
 	});
 
 	return (

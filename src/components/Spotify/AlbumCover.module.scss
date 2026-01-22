@@ -1,10 +1,14 @@
-$size: 4rem;
-
 .container {
 	position: relative;
 	line-height: 0;
-	@media only screen and (max-width: 768px) {
-		display: none;
+	--size: 4.25rem;
+
+	@media only screen and (max-width: 600px) {
+		--size: 3rem;
+	}
+
+	@media only screen and (max-width: 500px) {
+		--size: 2rem;
 	}
 }
 
@@ -13,13 +17,13 @@ $size: 4rem;
 	align-items: center;
 	justify-content: center;
 	border-radius: var(--radius);
-	height: $size;
-	width: $size;
+	height: var(--size);
+	width: var(--size);
 	background-color: var(--bg-color-dark);
 }
 
 .image {
 	border-radius: var(--radius);
-	height: $size;
-	width: $size;
+	height: var(--size);
+	width: var(--size);
 }
