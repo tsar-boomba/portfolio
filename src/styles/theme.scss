@@ -11,7 +11,8 @@ html {
 		text-decoration: none;
 		color: var(--link-color);
 
-		&:hover, &:active {
+		&:hover,
+		&:active {
 			color: var(--link-hovered-color);
 		}
 	}

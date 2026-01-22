@@ -53,13 +53,7 @@
 	position: relative;
 
 	&.is-scrolling {
-		mask-image: linear-gradient(
-			to right,
-			transparent 0%,
-			black 5%,
-			black 95%,
-			transparent 100%
-		);
+		mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%);
 	}
 
 	// When the PARENT is hovered, pause ALL child animations
@@ -82,7 +76,7 @@
 
 	// Only animate if this parent class is present
 	.is-scrolling & {
-		animation: marquee 7.5s linear infinite;
+		animation: marquee 10s linear infinite;
 	}
 }
 
@@ -127,9 +121,9 @@
 .text {
 	position: absolute;
 	margin: 0;
-	top: 0.0625rem;
+	top: 0.125rem;
 	right: 0.5rem;
-	font-size: 0.8rem;
+	font-size: 1rem;
 	font-style: oblique;
 	font-weight: 600;
 }

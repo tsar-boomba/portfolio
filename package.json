@@ -1,13 +1,13 @@
 {
 	"name": "portfolio2",
-	"type": "module",
 	"version": "0.0.1",
+	"type": "module",
 	"scripts": {
 		"dev": "astro dev",
 		"build": "biome check && astro build",
 		"preview": "astro preview",
-		"check": "biome check --fix",
-		"format": "biome format --write",
+		"check": "biome check --write",
+		"format": "biome check --write",
 		"astro": "astro",
 		"biome": "biome"
 	},

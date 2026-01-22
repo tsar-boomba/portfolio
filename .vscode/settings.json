@@ -1,5 +1,9 @@
 {
 	"biome.enabled": true,
+	"editor.codeActionsOnSave": {
+		"source.fixAll": "always"
+	},
+	"editor.defaultFormatter": "biomejs.biome",
 	"markdownlint.config": {
 		"first-line-h1": false
 	},
