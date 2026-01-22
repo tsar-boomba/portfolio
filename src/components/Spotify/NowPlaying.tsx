@@ -11,11 +11,7 @@ import {
 import { AlbumCover } from './AlbumCover';
 import styles from './NowPlaying.module.scss';
 import { NowPlayingProvider, useNowPlaying } from './store';
-import {
-	IS_BROWSER,
-	type Playing,
-	type Track,
-} from './utils';
+import { IS_BROWSER, type Playing, type Track } from './utils';
 
 export const NowPlaying = () => {
 	return (
