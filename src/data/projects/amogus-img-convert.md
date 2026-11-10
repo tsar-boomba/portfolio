@@ -1,6 +1,6 @@
 ---
 name: Amogus Image Converter
-repo: https://github.com/Yeti-Robotics/genius-dashboard
+repo: https://github.com/tsar-boomba/amogus-image-converter
 technologies: [TypeScript, React]
 addDate: Tue Jan 20 2026 19:25:13
 ---
